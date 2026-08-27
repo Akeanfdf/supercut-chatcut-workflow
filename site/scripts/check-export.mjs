@@ -1,9 +1,15 @@
-import { readFileSync, statSync } from 'node:fs';
+import { existsSync, readFileSync, statSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root = dirname(dirname(fileURLToPath(import.meta.url)));
-const html = readFileSync(join(root, 'dist', 'client', 'index.html'), 'utf8');
+const exportRoots = [join(root, 'out'), join(root, 'dist', 'client')];
+const exportRoot = exportRoots.find((candidate) => existsSync(join(candidate, 'index.html')));
+if (!exportRoot) {
+  console.error('Static export checks failed: no out/index.html or dist/client/index.html');
+  process.exit(1);
+}
+const html = readFileSync(join(exportRoot, 'index.html'), 'utf8');
 const checks = [
   ['product title', html.includes('特效感知的可编辑剪辑工作流')],
   ['hero headline', html.includes('让参考风格、真实节拍与叙事')],

@@ -26,7 +26,7 @@ jobs:
           cache-dependency-path: site/package-lock.json
       - run: npm ci
         working-directory: site
-      - run: npm run build
+      - run: npm run build:pages
         working-directory: site
         env:
           NEXT_PUBLIC_BASE_PATH: /${{ github.event.repository.name }}
@@ -36,7 +36,7 @@ jobs:
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: site/dist/client
+          path: site/out
   deploy:
     environment:
       name: github-pages
