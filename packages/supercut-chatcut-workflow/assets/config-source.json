@@ -6,7 +6,7 @@
   "package": {
     "url": "https://github.com/Akeanfdf/supercut-chatcut-workflow/releases/download/v1.1.0/supercut-chatcut-config-1.1.0.zip",
     "embedded": "config/supercut-chatcut-config-1.1.0.zip",
-    "sha256": "e4610caf103fd931ec7b215dd7fe3283a4da7a1765fb85f14f538f9e1610946a",
-    "size_bytes": 157003
+    "sha256": "bd157df4d1247805494f6d215d58c63d7ca45c587db1df98b07261742fe213b9",
+    "size_bytes": 156449
   }
 }
