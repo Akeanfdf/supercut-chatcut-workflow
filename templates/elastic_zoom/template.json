@@ -1,0 +1,60 @@
+{
+  "template_name": "弹性缩放拉镜",
+  "template_id": "elastic_zoom",
+  "version": 1,
+  "mode": "elastic_zoom",
+  "audio_policy": "source_crossfade",
+  "video": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30
+  },
+  "timing": {
+    "pre_duration": 0.8,
+    "transition_duration": 0.7,
+    "post_duration": 0.9,
+    "outgoing_start": 0.7,
+    "incoming_start": 0.4
+  },
+  "effect": {
+    "outgoing_scale_end": 1.48,
+    "incoming_scale_start": 0.62,
+    "overshoot": 0.1,
+    "radial_blur_samples": 7,
+    "flash_strength": 0.18
+  },
+  "effect_id": "elastic_zoom",
+  "usage_profile": {
+    "content_types": [
+      "game",
+      "anime",
+      "short_drama",
+      "live_stream"
+    ],
+    "trigger_events": [
+      "zoom_in",
+      "kill_confirm",
+      "character_turn",
+      "host_reaction"
+    ],
+    "transition_roles": [
+      "impact_transition",
+      "scene_transition"
+    ],
+    "source_requirements": [
+      "前后镜头视觉中心可对齐",
+      "至少0.4秒运动余量"
+    ],
+    "recommended_duration_seconds": [
+      0.3,
+      0.8
+    ],
+    "intensity": "strong",
+    "avoid_when": [
+      "固定字幕过多",
+      "前后镜头主体位置完全相反"
+    ],
+    "selection_prompt": "当素材属于游戏、动漫、短剧或实况直播并出现放大、击杀、人物转身或主播强反应时，若前后镜头视觉中心可对齐，优先使用弹性缩放拉镜；效果持续0.3至0.8秒；避免用于字幕密集或主体位置完全相反的镜头。"
+  },
+  "knowledge_path": "knowledge/effects/elastic_zoom.json"
+}

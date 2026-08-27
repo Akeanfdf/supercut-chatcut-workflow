@@ -1,0 +1,95 @@
+{
+  "schema": "supercut-effect-knowledge-v3",
+  "effect_id": "reverse_recall",
+  "name": "回溯倒放转场",
+  "principle": "time_manipulation",
+  "techniques": [
+    "reverse_motion",
+    "speed_ramp",
+    "temporal_echo"
+  ],
+  "usage_profile": {
+    "content_types": [
+      "game",
+      "anime",
+      "short_drama",
+      "live_stream"
+    ],
+    "trigger_events": [
+      "flashback",
+      "retry",
+      "death",
+      "emotion_turn"
+    ],
+    "transition_roles": [
+      "memory_transition",
+      "time_transition"
+    ],
+    "source_requirements": [
+      "动作存在可识别起点和终点",
+      "倒放后不会产生明显口型错误"
+    ],
+    "recommended_duration_seconds": [
+      0.5,
+      1.4
+    ],
+    "intensity": "medium",
+    "avoid_when": [
+      "长对白",
+      "不可逆的液体或烟雾特写"
+    ],
+    "selection_prompt": "当素材属于游戏、动漫、短剧或实况直播并出现回忆、重试、死亡回看或情绪转折时，若动作起止清晰，优先使用回溯倒放转场；效果持续0.5至1.4秒；避免用于长对白或明显不可逆运动。"
+  },
+  "implementation": {
+    "status": "catalog_only",
+    "template_path": null,
+    "renderer_path": null,
+    "runtime_status": "generic",
+    "runtime_renderer_path": "effect_runtime.py",
+    "paid_plugin_required": false
+  },
+  "references": [
+    {
+      "platform": "bilibili",
+      "bvid": "BV1SqabzaEDL",
+      "part": 34,
+      "url": "https://www.bilibili.com/video/BV1SqabzaEDL/?p=34",
+      "chapter_title": "变速与回溯转场",
+      "verification": {
+        "status": "frame_reviewed",
+        "verified_segment": {
+          "start": 0.0,
+          "end": 35.0
+        },
+        "note": "章节明确演示变速与回溯。",
+        "reviewed_sample_times": [
+          0.0,
+          3.0,
+          8.0,
+          8.75,
+          15.0,
+          15.5,
+          22.0,
+          24.9
+        ],
+        "download_sha256": "3EEBE9F6A33781F84844F5C3DBF32F63FB041E7A83602C40D310AF6BDBC97CBE",
+        "media": {
+          "width": 640,
+          "height": 360,
+          "fps": 30.0,
+          "frames": 750,
+          "duration": 25.0,
+          "bytes": 709118
+        },
+        "temporary_media_deleted": true
+      },
+      "research_snapshot": {
+        "title": "【剪辑教程】100集（全）从零开始学AE/PR软件基础教程（2025新手入门实用版）2025零基础入门教程！！！ p34 【PR教程】8.变速与回溯转场",
+        "timestamp": 1757065418,
+        "view_count": 3332,
+        "like_count": 249,
+        "comment_count": 11
+      }
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "schema": "supercut-project-config-v1",
+  "ffmpeg": {
+    "executable": null,
+    "ffprobe": null,
+    "source": "ChatCut-Inc/agent-plugin@main",
+    "verified_version": "8.1.2",
+    "sha256": {
+      "ffmpeg": "1326dde4c84ff1f96fe6b8916c5bed29e163e9b5dccf995f6f3db069d143ec5e",
+      "ffprobe": "b49ccc7c6547b141ad5a2f6ec69cc04323d7133d7704d70b331b904c63eecb07"
+    }
+  },
+  "chatcut": {
+    "enabled": true,
+    "plugin_id": "chatcut@chatcut-inc",
+    "plugin_version": "0.2.25",
+    "mcp_server": "chatcut",
+    "mcp_url": "https://api.chatcut.io/api/external-mcp/mcp",
+    "operating_mode": "editable_visual_review_layer",
+    "allow_chatcut_ai": false,
+    "require_quality_gate": true,
+    "require_user_approval_before_sync": false,
+    "require_user_approval_before_final_export": true,
+    "import_media_flags": [
+      "--no-transcribe"
+    ],
+    "export_strategy": "hosted_connector",
+    "allowed_operations": [
+      "create_project",
+      "import_media",
+      "create_tracks",
+      "place_clips",
+      "trim_clips",
+      "reorder_clips",
+      "set_speed",
+      "place_pre_rendered_effect_proxies",
+      "edit_titles",
+      "edit_audio_levels",
+      "open_editor",
+      "read_timeline",
+      "create_motion_graphic_from_code",
+      "submit_export",
+      "track_export"
+    ],
+    "blocked_operations": [
+      "submit_video",
+      "submit_image",
+      "submit_voice",
+      "submit_music",
+      "submit_sound_effect",
+      "submit_shader",
+      "manage_custom_voice",
+      "manage_transcript",
+      "agent_chat",
+      "auto_edit_with_chatcut_ai"
+    ]
+  }
+}

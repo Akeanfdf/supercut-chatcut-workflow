@@ -1,0 +1,93 @@
+{
+  "schema": "supercut-effect-knowledge-v3",
+  "effect_id": "paper_tear",
+  "name": "撕纸边缘揭示",
+  "principle": "tactile_reveal",
+  "techniques": [
+    "torn_edge_matte",
+    "paper_texture",
+    "edge_shadow"
+  ],
+  "usage_profile": {
+    "content_types": [
+      "anime",
+      "short_drama",
+      "live_stream"
+    ],
+    "trigger_events": [
+      "scene_change",
+      "emotion_turn",
+      "chapter_change"
+    ],
+    "transition_roles": [
+      "scene_transition",
+      "dramatic_break"
+    ],
+    "source_requirements": [
+      "允许纸纹覆盖画面",
+      "主体避开撕裂路径"
+    ],
+    "recommended_duration_seconds": [
+      0.35,
+      0.9
+    ],
+    "intensity": "medium",
+    "avoid_when": [
+      "纯净产品展示",
+      "主体脸部贴近边缘"
+    ],
+    "selection_prompt": "当素材属于动漫、短剧或实况直播并出现场景切换、情绪反转或章节变化时，若主体避开撕裂路径且允许纸张质感，优先使用撕纸边缘揭示；效果持续0.35至0.9秒；避免用于纯净产品展示或脸部贴边镜头。"
+  },
+  "implementation": {
+    "status": "catalog_only",
+    "template_path": null,
+    "renderer_path": null,
+    "runtime_status": "generic",
+    "runtime_renderer_path": "effect_runtime.py",
+    "paid_plugin_required": false
+  },
+  "references": [
+    {
+      "platform": "bilibili",
+      "bvid": "BV1JqraYAELK",
+      "part": 32,
+      "url": "https://www.bilibili.com/video/BV1JqraYAELK/?p=32",
+      "chapter_title": "撕纸转场",
+      "verification": {
+        "status": "frame_reviewed",
+        "verified_segment": {
+          "start": 0.0,
+          "end": 35.0
+        },
+        "note": "章节先展示撕纸成片，再拆解撕纸素材、轨道和遮罩。",
+        "reviewed_sample_times": [
+          0.0,
+          3.0,
+          8.0,
+          15.0,
+          15.797,
+          25.0,
+          27.982,
+          39.717
+        ],
+        "download_sha256": "90B06F9430DDBFE545AF4817E838AF4B49259B52B97286259FD18B4FACB5F6D3",
+        "media": {
+          "width": 1280,
+          "height": 720,
+          "fps": 30.0,
+          "frames": 1354,
+          "duration": 45.133,
+          "bytes": 2916303
+        },
+        "temporary_media_deleted": true
+      },
+      "research_snapshot": {
+        "title": "【全100集】这才叫PR转场！100个超丝滑转场案例教程，带你轻松玩转视频转场！ p32 撕纸转场",
+        "timestamp": 1736337231,
+        "view_count": 212584,
+        "like_count": 5919,
+        "comment_count": 512
+      }
+    }
+  ]
+}

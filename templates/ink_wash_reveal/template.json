@@ -1,0 +1,60 @@
+{
+  "template_name": "水墨晕染揭示",
+  "template_id": "ink_wash_reveal",
+  "version": 1,
+  "mode": "ink_wash_reveal",
+  "audio_policy": "source_crossfade",
+  "video": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30
+  },
+  "timing": {
+    "pre_duration": 0.65,
+    "transition_duration": 1.1,
+    "post_duration": 0.8,
+    "outgoing_start": 0.8,
+    "incoming_start": 0.5
+  },
+  "effect": {
+    "seed": 171,
+    "origin_x": 0.52,
+    "origin_y": 0.5,
+    "noise_strength": 0.78,
+    "edge_softness": 0.11,
+    "blur_sigma": 3.0,
+    "ink_edge_darkness": 0.34
+  },
+  "effect_id": "ink_wash_reveal",
+  "usage_profile": {
+    "content_types": [
+      "anime",
+      "short_drama"
+    ],
+    "trigger_events": [
+      "character_reveal",
+      "memory",
+      "scene_change",
+      "emotion_turn"
+    ],
+    "transition_roles": [
+      "character_reveal",
+      "memory_transition"
+    ],
+    "source_requirements": [
+      "画面留有可扩散区域",
+      "水墨颜色与主体有对比"
+    ],
+    "recommended_duration_seconds": [
+      0.6,
+      1.6
+    ],
+    "intensity": "medium",
+    "avoid_when": [
+      "电竞连续击杀",
+      "密集小字幕"
+    ],
+    "selection_prompt": "当素材属于动漫或短剧并出现人物揭示、回忆、场景切换或情绪转折时，若画面有可扩散区域且主体对比清楚，优先使用水墨晕染揭示；效果持续0.6至1.6秒；避免用于电竞连续击杀或密集小字幕。"
+  },
+  "knowledge_path": "knowledge/effects/ink_wash_reveal.json"
+}

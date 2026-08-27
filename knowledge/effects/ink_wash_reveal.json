@@ -1,0 +1,93 @@
+{
+  "schema": "supercut-effect-knowledge-v3",
+  "effect_id": "ink_wash_reveal",
+  "name": "水墨晕染揭示",
+  "principle": "organic_matte",
+  "techniques": [
+    "ink_matte",
+    "track_matte",
+    "feathered_growth"
+  ],
+  "usage_profile": {
+    "content_types": [
+      "anime",
+      "short_drama"
+    ],
+    "trigger_events": [
+      "character_reveal",
+      "memory",
+      "scene_change",
+      "emotion_turn"
+    ],
+    "transition_roles": [
+      "character_reveal",
+      "memory_transition"
+    ],
+    "source_requirements": [
+      "画面留有可扩散区域",
+      "水墨颜色与主体有对比"
+    ],
+    "recommended_duration_seconds": [
+      0.6,
+      1.6
+    ],
+    "intensity": "medium",
+    "avoid_when": [
+      "电竞连续击杀",
+      "密集小字幕"
+    ],
+    "selection_prompt": "当素材属于动漫或短剧并出现人物揭示、回忆、场景切换或情绪转折时，若画面有可扩散区域且主体对比清楚，优先使用水墨晕染揭示；效果持续0.6至1.6秒；避免用于电竞连续击杀或密集小字幕。"
+  },
+  "implementation": {
+    "status": "implemented",
+    "template_path": "templates/ink_wash_reveal/template.json",
+    "renderer_path": "tools/render_research_effect.py",
+    "runtime_status": "specialized",
+    "runtime_renderer_path": "effect_runtime.py",
+    "paid_plugin_required": false
+  },
+  "references": [
+    {
+      "platform": "bilibili",
+      "bvid": "BV1JqraYAELK",
+      "part": 14,
+      "url": "https://www.bilibili.com/video/BV1JqraYAELK/?p=14",
+      "chapter_title": "水墨转场",
+      "verification": {
+        "status": "frame_reviewed",
+        "verified_segment": {
+          "start": 0.0,
+          "end": 35.0
+        },
+        "note": "演示前后效果并以水墨素材作为轨道遮罩推进显隐。",
+        "reviewed_sample_times": [
+          0.0,
+          3.0,
+          8.0,
+          15.0,
+          15.797,
+          25.0,
+          27.982,
+          39.717
+        ],
+        "download_sha256": "47BD4245A3AA89B4F30192550C333FCA24207308E7F169A9A679CAEC83E3E864",
+        "media": {
+          "width": 1280,
+          "height": 688,
+          "fps": 30.0,
+          "frames": 1354,
+          "duration": 45.133,
+          "bytes": 2746869
+        },
+        "temporary_media_deleted": true
+      },
+      "research_snapshot": {
+        "title": "【全100集】这才叫PR转场！100个超丝滑转场案例教程，带你轻松玩转视频转场！ p14 水墨转场",
+        "timestamp": 1736337231,
+        "view_count": 212584,
+        "like_count": 5919,
+        "comment_count": 512
+      }
+    }
+  ]
+}

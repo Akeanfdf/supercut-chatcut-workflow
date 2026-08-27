@@ -1,0 +1,95 @@
+{
+  "schema": "supercut-effect-knowledge-v3",
+  "effect_id": "photo_wall",
+  "name": "三维相片墙穿梭",
+  "principle": "graphic_composition",
+  "techniques": [
+    "photo_grid",
+    "virtual_camera",
+    "depth_layers"
+  ],
+  "usage_profile": {
+    "content_types": [
+      "anime",
+      "short_drama",
+      "live_stream",
+      "game"
+    ],
+    "trigger_events": [
+      "opening",
+      "memory",
+      "cast_intro",
+      "victory_recap"
+    ],
+    "transition_roles": [
+      "opening",
+      "montage_bridge"
+    ],
+    "source_requirements": [
+      "至少8张清晰画面",
+      "画面主题可形成系列"
+    ],
+    "recommended_duration_seconds": [
+      2.5,
+      6.0
+    ],
+    "intensity": "medium",
+    "avoid_when": [
+      "素材少于5张",
+      "每张都需长时间阅读"
+    ],
+    "selection_prompt": "当素材属于动漫、短剧、实况直播或游戏并用于开场、回忆、角色介绍或胜利回顾时，若至少有8张同主题清晰画面，优先使用三维相片墙穿梭；效果持续2.5至6秒；避免用于素材少于5张或每张都需长时间阅读的内容。"
+  },
+  "implementation": {
+    "status": "catalog_only",
+    "template_path": null,
+    "renderer_path": null,
+    "runtime_status": "generic",
+    "runtime_renderer_path": "effect_runtime.py",
+    "paid_plugin_required": false
+  },
+  "references": [
+    {
+      "platform": "bilibili",
+      "bvid": "BV1SqabzaEDL",
+      "part": 17,
+      "url": "https://www.bilibili.com/video/BV1SqabzaEDL/?p=17",
+      "chapter_title": "【案例实操】排版风PV-02.相片墙效果",
+      "verification": {
+        "status": "frame_reviewed",
+        "verified_segment": {
+          "start": 0.0,
+          "end": 35.0
+        },
+        "note": "案例展示多张相片的层级排版、景深与虚拟摄像机穿梭。",
+        "reviewed_sample_times": [
+          0.0,
+          3.0,
+          8.0,
+          15.0,
+          15.785,
+          25.0,
+          27.962,
+          39.688
+        ],
+        "download_sha256": "496970409CBE545AA4629075C1FFBD36F02D48B113DA741E1E338678DEDFBB6F",
+        "media": {
+          "width": 1280,
+          "height": 720,
+          "fps": 30.0,
+          "frames": 1353,
+          "duration": 45.1,
+          "bytes": 1452040
+        },
+        "temporary_media_deleted": true
+      },
+      "research_snapshot": {
+        "title": "【剪辑教程】100集（全）从零开始学AE/PR软件基础教程（2025新手入门实用版）2025零基础入门教程！！！ p17 【案例实操】排版风PV-02.相片墙效果",
+        "timestamp": 1757065418,
+        "view_count": 3339,
+        "like_count": 249,
+        "comment_count": 11
+      }
+    }
+  ]
+}

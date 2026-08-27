@@ -1,0 +1,93 @@
+{
+  "schema": "supercut-effect-knowledge-v3",
+  "effect_id": "water_reflection",
+  "name": "水面倒影波纹",
+  "principle": "optical_geometry",
+  "techniques": [
+    "vertical_reflection",
+    "wave_displacement",
+    "light_ripple"
+  ],
+  "usage_profile": {
+    "content_types": [
+      "game",
+      "anime",
+      "short_drama"
+    ],
+    "trigger_events": [
+      "hero_reveal",
+      "calm_before_action",
+      "scene_change"
+    ],
+    "transition_roles": [
+      "atmosphere_bridge",
+      "character_reveal"
+    ],
+    "source_requirements": [
+      "主体位于上半画面",
+      "下半部可留作倒影"
+    ],
+    "recommended_duration_seconds": [
+      0.8,
+      2.0
+    ],
+    "intensity": "subtle",
+    "avoid_when": [
+      "底部HUD密集",
+      "强烈手持抖动"
+    ],
+    "selection_prompt": "当素材属于游戏、动漫或短剧并出现英雄揭示、战前静默或场景切换时，若主体位于上半部且下方可容纳倒影，优先使用水面倒影波纹；效果持续0.8至2秒；避免用于底部HUD密集或强烈手持抖动。"
+  },
+  "implementation": {
+    "status": "catalog_only",
+    "template_path": null,
+    "renderer_path": null,
+    "runtime_status": "generic",
+    "runtime_renderer_path": "effect_runtime.py",
+    "paid_plugin_required": false
+  },
+  "references": [
+    {
+      "platform": "bilibili",
+      "bvid": "BV1gnYszQEwN",
+      "part": 6,
+      "url": "https://www.bilibili.com/video/BV1gnYszQEwN/?p=6",
+      "chapter_title": "【超燃游戏剪辑】4.AE水面倒影动态壁纸",
+      "verification": {
+        "status": "frame_reviewed",
+        "verified_segment": {
+          "start": 0.0,
+          "end": 35.0
+        },
+        "note": "游戏案例展示上下镜像、波纹置换和动态高光的组合。",
+        "reviewed_sample_times": [
+          0.0,
+          3.0,
+          8.0,
+          15.0,
+          15.785,
+          25.0,
+          27.962,
+          39.688
+        ],
+        "download_sha256": "AF1B3E3A1E8CC529C29A83B69E155C36EFFA0E6A5071933102A6E39BBF224ED1",
+        "media": {
+          "width": 1280,
+          "height": 720,
+          "fps": 30.0,
+          "frames": 1353,
+          "duration": 45.1,
+          "bytes": 5882531
+        },
+        "temporary_media_deleted": true
+      },
+      "research_snapshot": {
+        "title": "【AE+PR游戏剪辑教程】教你13个相见恨晚的超燃剪辑效果，超简单的游戏剪辑入门教程，学完剪出自己高然战斗时刻！（附带素材、插件包） p06 【超燃游戏剪辑】4.AE水面倒影动态壁纸",
+        "timestamp": 1755506329,
+        "view_count": 1897,
+        "like_count": 48,
+        "comment_count": 7
+      }
+    }
+  ]
+}

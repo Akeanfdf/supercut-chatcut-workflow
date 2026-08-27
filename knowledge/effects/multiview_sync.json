@@ -1,0 +1,94 @@
+{
+  "schema": "supercut-effect-knowledge-v3",
+  "effect_id": "multiview_sync",
+  "name": "多机位同步接切",
+  "principle": "rhythm_layout",
+  "techniques": [
+    "audio_sync",
+    "angle_switch",
+    "match_action"
+  ],
+  "usage_profile": {
+    "content_types": [
+      "live_stream",
+      "short_drama",
+      "game"
+    ],
+    "trigger_events": [
+      "camera_change",
+      "dialogue_turn",
+      "highlight",
+      "host_reaction"
+    ],
+    "transition_roles": [
+      "camera_transition",
+      "continuity_edit"
+    ],
+    "source_requirements": [
+      "多机位时间同步",
+      "动作或声音有共同锚点"
+    ],
+    "recommended_duration_seconds": [
+      0.0,
+      0.35
+    ],
+    "intensity": "subtle",
+    "avoid_when": [
+      "不同步素材",
+      "机位间色彩差异过大"
+    ],
+    "selection_prompt": "当素材属于实况直播、短剧或游戏并出现机位变化、对白轮次、高光或主播反应时，若多机位时间同步且有共同声音或动作锚点，优先使用多机位同步接切；效果持续0至0.35秒；避免用于不同步或色彩差异过大的机位。"
+  },
+  "implementation": {
+    "status": "catalog_only",
+    "template_path": null,
+    "renderer_path": null,
+    "runtime_status": "generic",
+    "runtime_renderer_path": "effect_runtime.py",
+    "paid_plugin_required": false
+  },
+  "references": [
+    {
+      "platform": "bilibili",
+      "bvid": "BV1SqabzaEDL",
+      "part": 46,
+      "url": "https://www.bilibili.com/video/BV1SqabzaEDL/?p=46",
+      "chapter_title": "多机位剪辑-爱豆换装混剪",
+      "verification": {
+        "status": "frame_reviewed",
+        "verified_segment": {
+          "start": 0.0,
+          "end": 35.0
+        },
+        "note": "章节明确介绍多机位同步与换装混剪。",
+        "reviewed_sample_times": [
+          0.0,
+          3.0,
+          8.0,
+          8.75,
+          15.0,
+          15.5,
+          22.0,
+          24.9
+        ],
+        "download_sha256": "03AE3B8A6FA3C13294A450CB35D22C5A8A9079A0AB4C64F73F3F78C4CF85851B",
+        "media": {
+          "width": 640,
+          "height": 360,
+          "fps": 30.0,
+          "frames": 750,
+          "duration": 25.0,
+          "bytes": 101993
+        },
+        "temporary_media_deleted": true
+      },
+      "research_snapshot": {
+        "title": "【剪辑教程】100集（全）从零开始学AE/PR软件基础教程（2025新手入门实用版）2025零基础入门教程！！！ p46 【进阶篇】11.多机位剪辑-爱豆换装混剪",
+        "timestamp": 1757065418,
+        "view_count": 3332,
+        "like_count": 249,
+        "comment_count": 11
+      }
+    }
+  ]
+}

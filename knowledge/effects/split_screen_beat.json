@@ -1,0 +1,95 @@
+{
+  "schema": "supercut-effect-knowledge-v3",
+  "effect_id": "split_screen_beat",
+  "name": "分屏卡点",
+  "principle": "rhythm_layout",
+  "techniques": [
+    "split_screen",
+    "beat_sync",
+    "sequential_reveal"
+  ],
+  "usage_profile": {
+    "content_types": [
+      "game",
+      "anime",
+      "short_drama",
+      "live_stream"
+    ],
+    "trigger_events": [
+      "beat",
+      "parallel_action",
+      "camera_change",
+      "host_reaction"
+    ],
+    "transition_roles": [
+      "beat_transition",
+      "parallel_story"
+    ],
+    "source_requirements": [
+      "2至6条同步或对比素材",
+      "画面比例允许裁切"
+    ],
+    "recommended_duration_seconds": [
+      0.8,
+      3.5
+    ],
+    "intensity": "medium",
+    "avoid_when": [
+      "主体靠近裁切边缘",
+      "单镜头无对比关系"
+    ],
+    "selection_prompt": "当素材属于游戏、动漫、短剧或实况直播并出现节拍、平行动作、机位切换或主播反应时，若有2至6条同步或对比素材，优先使用分屏卡点；效果持续0.8至3.5秒；避免用于主体贴边或没有对比关系的单镜头。"
+  },
+  "implementation": {
+    "status": "catalog_only",
+    "template_path": null,
+    "renderer_path": null,
+    "runtime_status": "generic",
+    "runtime_renderer_path": "effect_runtime.py",
+    "paid_plugin_required": false
+  },
+  "references": [
+    {
+      "platform": "bilibili",
+      "bvid": "BV1JqraYAELK",
+      "part": 30,
+      "url": "https://www.bilibili.com/video/BV1JqraYAELK/?p=30",
+      "chapter_title": "分屏卡点转场",
+      "verification": {
+        "status": "frame_reviewed",
+        "verified_segment": {
+          "start": 0.0,
+          "end": 35.0
+        },
+        "note": "章节明确演示分屏与节拍顺序。",
+        "reviewed_sample_times": [
+          0.0,
+          3.0,
+          7.0,
+          8.0,
+          12.4,
+          15.0,
+          17.6,
+          19.9
+        ],
+        "download_sha256": "A40D755BEB2524D0A24E3B6B67BE5A17A754C453C159FF1776B7282A29F60392",
+        "media": {
+          "width": 640,
+          "height": 360,
+          "fps": 30.0,
+          "frames": 600,
+          "duration": 20.0,
+          "bytes": 1563792
+        },
+        "temporary_media_deleted": true
+      },
+      "research_snapshot": {
+        "title": "【全100集】这才叫PR转场！100个超丝滑转场案例教程，带你轻松玩转视频转场！ p30 分屏卡点转场",
+        "timestamp": 1736337231,
+        "view_count": 212393,
+        "like_count": 5914,
+        "comment_count": 510
+      }
+    }
+  ]
+}

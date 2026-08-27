@@ -1,0 +1,94 @@
+{
+  "schema": "supercut-effect-knowledge-v3",
+  "effect_id": "dolly_zoom",
+  "name": "希区柯克变焦",
+  "principle": "perspective_motion",
+  "techniques": [
+    "subject_lock",
+    "inverse_scale",
+    "background_expansion"
+  ],
+  "usage_profile": {
+    "content_types": [
+      "short_drama",
+      "anime",
+      "game"
+    ],
+    "trigger_events": [
+      "emotion_turn",
+      "reveal",
+      "boss_appear",
+      "danger"
+    ],
+    "transition_roles": [
+      "dramatic_emphasis",
+      "character_reveal"
+    ],
+    "source_requirements": [
+      "主体位置稳定",
+      "背景有明显纵深线条"
+    ],
+    "recommended_duration_seconds": [
+      0.8,
+      2.2
+    ],
+    "intensity": "strong",
+    "avoid_when": [
+      "横向高速移动",
+      "背景完全平坦"
+    ],
+    "selection_prompt": "当素材属于短剧、动漫或游戏并出现情绪反转、真相揭示、Boss登场或危险逼近时，若主体位置稳定且背景有纵深，优先使用希区柯克变焦；效果持续0.8至2.2秒；避免用于横向高速移动或平坦背景。"
+  },
+  "implementation": {
+    "status": "implemented",
+    "template_path": "templates/dolly_zoom/template.json",
+    "renderer_path": "tools/render_research_effect.py",
+    "runtime_status": "specialized",
+    "runtime_renderer_path": "effect_runtime.py",
+    "paid_plugin_required": false
+  },
+  "references": [
+    {
+      "platform": "bilibili",
+      "bvid": "BV1DF411p7Ao",
+      "part": 1,
+      "url": "https://www.bilibili.com/video/BV1DF411p7Ao/?p=1",
+      "chapter_title": "PR案例教程-希区柯克变焦",
+      "verification": {
+        "status": "frame_reviewed",
+        "verified_segment": {
+          "start": 0.0,
+          "end": 35.0
+        },
+        "note": "短教程完整展示主体近似锁定、背景透视变化及缩放关键帧。",
+        "reviewed_sample_times": [
+          0.0,
+          3.0,
+          7.42,
+          8.0,
+          13.144,
+          15.0,
+          18.656,
+          21.1
+        ],
+        "download_sha256": "3A1FDB256E2DFCF2AA94075858BD74BA9D3DC99015B881A7F5A99DA256B83C45",
+        "media": {
+          "width": 1280,
+          "height": 720,
+          "fps": 30.0,
+          "frames": 636,
+          "duration": 21.2,
+          "bytes": 4952411
+        },
+        "temporary_media_deleted": true
+      },
+      "research_snapshot": {
+        "title": "【PR教程】如何让运镜更高级？一分钟教你希区柯克变焦!",
+        "timestamp": 1644056418,
+        "view_count": 8867,
+        "like_count": 153,
+        "comment_count": 3
+      }
+    }
+  ]
+}

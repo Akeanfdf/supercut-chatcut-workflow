@@ -1,0 +1,92 @@
+{
+  "schema": "supercut-effect-knowledge-v3",
+  "effect_id": "screen_tunnel",
+  "name": "屏幕穿越",
+  "principle": "spatial_transform",
+  "techniques": [
+    "screen_insert",
+    "perspective_zoom",
+    "nested_frame"
+  ],
+  "usage_profile": {
+    "content_types": [
+      "game",
+      "anime",
+      "short_drama"
+    ],
+    "trigger_events": [
+      "scene_change",
+      "device_screen",
+      "portal_entry"
+    ],
+    "transition_roles": [
+      "scene_transition"
+    ],
+    "source_requirements": [
+      "画面内存在矩形屏幕或可跟踪平面",
+      "前后镜头景别差异明显"
+    ],
+    "recommended_duration_seconds": [
+      0.5,
+      1.3
+    ],
+    "intensity": "strong",
+    "avoid_when": [
+      "手持抖动无法跟踪",
+      "直播字幕覆盖屏幕"
+    ],
+    "selection_prompt": "当素材属于游戏、动漫或短剧并出现屏幕、门框、传送门或明显场景切换时，若存在可跟踪的矩形平面，优先使用屏幕穿越；效果持续0.5至1.3秒；避免用于无法跟踪的剧烈手持镜头。"
+  },
+  "implementation": {
+    "status": "catalog_only",
+    "template_path": null,
+    "renderer_path": null,
+    "runtime_status": "generic",
+    "runtime_renderer_path": "effect_runtime.py",
+    "paid_plugin_required": false
+  },
+  "references": [
+    {
+      "platform": "bilibili",
+      "bvid": "BV1gnYszQEwN",
+      "part": 5,
+      "url": "https://www.bilibili.com/video/BV1gnYszQEwN/?p=5",
+      "chapter_title": "AE屏幕穿越转场",
+      "verification": {
+        "status": "frame_reviewed",
+        "verified_segment": {
+          "start": 0.0,
+          "end": 35.0
+        },
+        "note": "章节明确演示屏幕内嵌与穿越转场。",
+        "reviewed_sample_times": [
+          0.0,
+          3.0,
+          8.0,
+          15.0,
+          25.0,
+          235.982,
+          418.024,
+          593.325
+        ],
+        "download_sha256": "3C492F9425D2F7A2848339D167B01DAFF1C853EAFA0A57B82F411E63E8BA2923",
+        "media": {
+          "width": 640,
+          "height": 360,
+          "fps": 30.0,
+          "frames": 20227,
+          "duration": 674.233,
+          "bytes": 16820394
+        },
+        "temporary_media_deleted": true
+      },
+      "research_snapshot": {
+        "title": "【AE+PR游戏剪辑教程】教你13个相见恨晚的超燃剪辑效果，超简单的游戏剪辑入门教程，学完剪出自己高然战斗时刻！（附带素材、插件包） p05 【超燃游戏剪辑】3.AE屏幕穿越转场",
+        "timestamp": 1755506329,
+        "view_count": 1896,
+        "like_count": 48,
+        "comment_count": 7
+      }
+    }
+  ]
+}

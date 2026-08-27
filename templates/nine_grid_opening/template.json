@@ -1,0 +1,92 @@
+{
+  "template_name": "九宫格开场",
+  "template_id": "nine_grid_opening",
+  "version": 1,
+  "audio_policy": "focus_source_only",
+  "video": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30
+  },
+  "timing": {
+    "duration": 5.4,
+    "assembly_start": 0.18,
+    "assembly_end": 1.78,
+    "grid_hold_end": 2.48,
+    "focus_end": 3.38
+  },
+  "effect": {
+    "gutter_px": 10,
+    "tile_border_px": 2,
+    "tile_border_bgr": [
+      38,
+      47,
+      55
+    ],
+    "appear_order": [
+      4,
+      1,
+      3,
+      5,
+      7,
+      0,
+      2,
+      6,
+      8
+    ],
+    "appear_overlap": 0.58,
+    "initial_tile_scale": 0.16,
+    "focus_tile": 4,
+    "focus_blur_strength": 11,
+    "focus_flash_strength": 0.16,
+    "background_bgr": [
+      0,
+      0,
+      0
+    ]
+  },
+  "source_order": [
+    "01_opening_finish.mp4",
+    "02_distortion_bridge.mp4",
+    "03_midrange_gunfight.mp4",
+    "04_doorway_kill_reload.mp4",
+    "06_multi_engagement.mp4",
+    "05_weapon_action_bridge.mp4",
+    "07_close_range_kill.mp4",
+    "08_final_kill_victory.mp4",
+    "03_midrange_gunfight.mp4"
+  ],
+  "effect_id": "nine_grid_opening",
+  "usage_profile": {
+    "content_types": [
+      "game",
+      "short_drama",
+      "live_stream"
+    ],
+    "trigger_events": [
+      "opening",
+      "highlight",
+      "camera_change",
+      "cast_intro"
+    ],
+    "transition_roles": [
+      "opening",
+      "montage_bridge"
+    ],
+    "source_requirements": [
+      "至少5条动态素材",
+      "中心主素材可持续播放"
+    ],
+    "recommended_duration_seconds": [
+      3.0,
+      6.0
+    ],
+    "intensity": "medium",
+    "avoid_when": [
+      "只有一条素材",
+      "竖屏人物被严重裁切"
+    ],
+    "selection_prompt": "当素材属于游戏、短剧或实况直播并用于开场、亮点汇总、机位变化或人物介绍时，若至少有5条动态素材，优先使用九宫格开场；效果持续3至6秒；避免用于单素材或人物严重裁切。"
+  },
+  "knowledge_path": "knowledge/effects/nine_grid_opening.json"
+}

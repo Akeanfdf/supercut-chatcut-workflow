@@ -1,0 +1,94 @@
+{
+  "schema": "supercut-effect-knowledge-v3",
+  "effect_id": "manga_panel",
+  "name": "漫画分镜转场",
+  "principle": "graphic_composition",
+  "techniques": [
+    "comic_panels",
+    "ink_outline",
+    "panel_wipe"
+  ],
+  "usage_profile": {
+    "content_types": [
+      "anime",
+      "short_drama",
+      "game"
+    ],
+    "trigger_events": [
+      "emotion_turn",
+      "character_entry",
+      "combo",
+      "scene_change"
+    ],
+    "transition_roles": [
+      "stylized_transition",
+      "montage_bridge"
+    ],
+    "source_requirements": [
+      "至少3个可辨认镜头",
+      "主体能适配分格裁切"
+    ],
+    "recommended_duration_seconds": [
+      0.9,
+      2.5
+    ],
+    "intensity": "strong",
+    "avoid_when": [
+      "单人长对白",
+      "主体均贴边"
+    ],
+    "selection_prompt": "当素材属于动漫、短剧或游戏并出现情绪反转、人物入场、连招或场景切换时，若至少有3个可辨认镜头且能适配分格，优先使用漫画分镜转场；效果持续0.9至2.5秒；避免用于单人长对白或主体贴边素材。"
+  },
+  "implementation": {
+    "status": "catalog_only",
+    "template_path": null,
+    "renderer_path": null,
+    "runtime_status": "generic",
+    "runtime_renderer_path": "effect_runtime.py",
+    "paid_plugin_required": false
+  },
+  "references": [
+    {
+      "platform": "bilibili",
+      "bvid": "BV1SqabzaEDL",
+      "part": 23,
+      "url": "https://www.bilibili.com/video/BV1SqabzaEDL/?p=23",
+      "chapter_title": "【案例实操】病娇漫画风",
+      "verification": {
+        "status": "frame_reviewed",
+        "verified_segment": {
+          "start": 0.0,
+          "end": 35.0
+        },
+        "note": "案例包含成片展示、漫画网点/描边和分镜排版的完整拆解。",
+        "reviewed_sample_times": [
+          0.0,
+          3.0,
+          8.0,
+          15.0,
+          15.785,
+          25.0,
+          27.962,
+          39.688
+        ],
+        "download_sha256": "9B8B3A609EDA3C2FA6450E764C886AE36A9AAC58FF83917086710DB2D8564B46",
+        "media": {
+          "width": 1280,
+          "height": 720,
+          "fps": 30.0,
+          "frames": 1353,
+          "duration": 45.1,
+          "bytes": 7962661
+        },
+        "temporary_media_deleted": true
+      },
+      "research_snapshot": {
+        "title": "【剪辑教程】100集（全）从零开始学AE/PR软件基础教程（2025新手入门实用版）2025零基础入门教程！！！ p23 【案例实操】病娇漫画风",
+        "timestamp": 1757065418,
+        "view_count": 3339,
+        "like_count": 249,
+        "comment_count": 11
+      }
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "schema": "supercut-effect-knowledge-v3",
+  "effect_id": "exposure_flash",
+  "name": "曝光闪白转场",
+  "principle": "exposure_luma",
+  "techniques": [
+    "exposure_peak",
+    "luma_crossfade",
+    "bloom"
+  ],
+  "usage_profile": {
+    "content_types": [
+      "game",
+      "anime",
+      "short_drama",
+      "live_stream"
+    ],
+    "trigger_events": [
+      "kill_confirm",
+      "skill_cast",
+      "eye_open",
+      "camera_flash",
+      "scene_change"
+    ],
+    "transition_roles": [
+      "impact_transition",
+      "reveal_transition"
+    ],
+    "source_requirements": [
+      "画面存在亮部或爆炸点",
+      "闪白不遮挡关键信息"
+    ],
+    "recommended_duration_seconds": [
+      0.1,
+      0.45
+    ],
+    "intensity": "strong",
+    "avoid_when": [
+      "全白场景",
+      "光敏不适风险较高的密集闪烁"
+    ],
+    "selection_prompt": "当素材属于游戏、动漫、短剧或实况直播并出现击杀、技能、睁眼、闪光或场景切换时，若画面有可利用亮部，优先使用曝光闪白转场；效果持续0.1至0.45秒；避免用于全白场景或密集闪烁。"
+  },
+  "implementation": {
+    "status": "implemented",
+    "template_path": "templates/exposure_flash/template.json",
+    "renderer_path": "tools/render_research_effect.py",
+    "runtime_status": "specialized",
+    "runtime_renderer_path": "effect_runtime.py",
+    "paid_plugin_required": false
+  },
+  "references": [
+    {
+      "platform": "bilibili",
+      "bvid": "BV1JqraYAELK",
+      "part": 34,
+      "url": "https://www.bilibili.com/video/BV1JqraYAELK/?p=34",
+      "chapter_title": "曝光转场",
+      "verification": {
+        "status": "frame_reviewed",
+        "verified_segment": {
+          "start": 0.0,
+          "end": 35.0
+        },
+        "note": "章节明确演示曝光峰值和镜头交接。",
+        "reviewed_sample_times": [
+          0.0,
+          0.887,
+          1.57,
+          2.229,
+          2.433,
+          2.433,
+          2.433,
+          2.433
+        ],
+        "download_sha256": "9E8E33DFC47E7D7C90DD969C4B901CFC943ECC829F2CF850CADE4941DAA9B20D",
+        "media": {
+          "width": 640,
+          "height": 360,
+          "fps": 30.0,
+          "frames": 76,
+          "duration": 2.533,
+          "bytes": 277994
+        },
+        "temporary_media_deleted": true
+      },
+      "research_snapshot": {
+        "title": "【全100集】这才叫PR转场！100个超丝滑转场案例教程，带你轻松玩转视频转场！ p34 曝光转场",
+        "timestamp": 1736337231,
+        "view_count": 212393,
+        "like_count": 5914,
+        "comment_count": 510
+      }
+    }
+  ]
+}

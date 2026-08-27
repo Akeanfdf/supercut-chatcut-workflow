@@ -1,0 +1,93 @@
+{
+  "schema": "supercut-effect-knowledge-v3",
+  "effect_id": "edge_shatter",
+  "name": "边角破碎重组",
+  "principle": "fragmentation",
+  "techniques": [
+    "corner_break",
+    "fragment_reveal",
+    "depth_offset"
+  ],
+  "usage_profile": {
+    "content_types": [
+      "game",
+      "anime",
+      "short_drama"
+    ],
+    "trigger_events": [
+      "skill_cast",
+      "impact",
+      "hero_reveal"
+    ],
+    "transition_roles": [
+      "impact_transition",
+      "title_transition"
+    ],
+    "source_requirements": [
+      "画面边缘具有纹理",
+      "主体位于中间安全区"
+    ],
+    "recommended_duration_seconds": [
+      0.4,
+      1.0
+    ],
+    "intensity": "strong",
+    "avoid_when": [
+      "极简白底",
+      "小字号字幕贴边"
+    ],
+    "selection_prompt": "当素材属于游戏、动漫或短剧并出现技能、冲击或英雄揭示时，若画面边缘有纹理且主体位于安全区，优先使用边角破碎重组；效果持续0.4至1秒；避免用于极简白底或贴边小字幕。"
+  },
+  "implementation": {
+    "status": "catalog_only",
+    "template_path": null,
+    "renderer_path": null,
+    "runtime_status": "generic",
+    "runtime_renderer_path": "effect_runtime.py",
+    "paid_plugin_required": false
+  },
+  "references": [
+    {
+      "platform": "bilibili",
+      "bvid": "BV1gnYszQEwN",
+      "part": 11,
+      "url": "https://www.bilibili.com/video/BV1gnYszQEwN/?p=11",
+      "chapter_title": "AE边角破碎效果",
+      "verification": {
+        "status": "frame_reviewed",
+        "verified_segment": {
+          "start": 0.0,
+          "end": 35.0
+        },
+        "note": "章节明确演示边角破碎与下一镜头揭示。",
+        "reviewed_sample_times": [
+          0.0,
+          3.0,
+          8.0,
+          15.0,
+          25.0,
+          122.815,
+          217.558,
+          308.792
+        ],
+        "download_sha256": "A5E730B784EEB7EA60137CC2D17CCAB62B7E4D7C50B72C6EBAC56B2555C621DF",
+        "media": {
+          "width": 640,
+          "height": 360,
+          "fps": 30.0,
+          "frames": 10527,
+          "duration": 350.9,
+          "bytes": 4568202
+        },
+        "temporary_media_deleted": true
+      },
+      "research_snapshot": {
+        "title": "【AE+PR游戏剪辑教程】教你13个相见恨晚的超燃剪辑效果，超简单的游戏剪辑入门教程，学完剪出自己高然战斗时刻！（附带素材、插件包） p11 【超燃游戏剪辑】9.AE边角破碎效果",
+        "timestamp": 1755506329,
+        "view_count": 1896,
+        "like_count": 48,
+        "comment_count": 7
+      }
+    }
+  ]
+}

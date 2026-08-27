@@ -1,0 +1,39 @@
+{
+  "schema": "supercut-portable-runtime-config-v1",
+  "ffmpeg": {
+    "executable": null,
+    "ffprobe": null,
+    "discovery_order": [
+      "command_line",
+      "SUPERCUT_FFMPEG_environment",
+      "project_config",
+      "PATH"
+    ]
+  },
+  "chatcut": {
+    "enabled": true,
+    "plugin_id": "chatcut@chatcut-inc",
+    "minimum_tested_version": "0.2.25",
+    "mcp_server": "chatcut",
+    "operating_mode": "editable_visual_review_layer",
+    "allow_chatcut_ai": false
+  },
+  "python": {
+    "minimum_version": "3.10",
+    "requirements_file": "runtime/requirements.txt",
+    "verified_dependencies": {
+      "yt-dlp": "2026.8.19"
+    }
+  },
+  "media_acquisition": {
+    "supported_remote_hosts": [
+      "www.bilibili.com",
+      "m.bilibili.com",
+      "b23.tv"
+    ],
+    "require_rights_confirmation": true,
+    "read_browser_cookies": false,
+    "bypass_access_controls": false,
+    "cache_visibility": "private"
+  }
+}

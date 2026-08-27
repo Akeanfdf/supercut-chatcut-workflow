@@ -1,0 +1,93 @@
+{
+  "schema": "supercut-effect-knowledge-v3",
+  "effect_id": "memory_flash",
+  "name": "回忆快闪",
+  "principle": "time_manipulation",
+  "techniques": [
+    "rapid_montage",
+    "zoom_settle",
+    "foreground_hold"
+  ],
+  "usage_profile": {
+    "content_types": [
+      "game",
+      "anime",
+      "short_drama"
+    ],
+    "trigger_events": [
+      "flashback",
+      "victory_recap",
+      "emotion_turn"
+    ],
+    "transition_roles": [
+      "memory_transition",
+      "montage_bridge"
+    ],
+    "source_requirements": [
+      "至少6个可辨认时刻",
+      "节奏点间隔稳定"
+    ],
+    "recommended_duration_seconds": [
+      1.8,
+      5.8
+    ],
+    "intensity": "strong",
+    "avoid_when": [
+      "单一长镜头",
+      "素材不足4个有效时刻"
+    ],
+    "selection_prompt": "当素材属于游戏、动漫或短剧并出现回忆、胜利回顾或情绪转折时，若至少有6个可辨认时刻，优先使用回忆快闪；效果持续1.8至5.8秒；避免用于单一长镜头或素材不足。"
+  },
+  "implementation": {
+    "status": "implemented",
+    "template_path": "templates/memory_flash/template.json",
+    "renderer_path": "tools/render_memory_flash_preview.py",
+    "runtime_status": "specialized",
+    "runtime_renderer_path": "effect_runtime.py",
+    "paid_plugin_required": false
+  },
+  "references": [
+    {
+      "platform": "bilibili",
+      "bvid": "BV1gnYszQEwN",
+      "part": 8,
+      "url": "https://www.bilibili.com/video/BV1gnYszQEwN/?p=8",
+      "chapter_title": "PR回溯转场",
+      "verification": {
+        "status": "frame_reviewed",
+        "verified_segment": {
+          "start": 0.0,
+          "end": 35.0
+        },
+        "note": "回溯章节可用于组织时间反向与回忆桥段。",
+        "reviewed_sample_times": [
+          0.0,
+          3.0,
+          8.0,
+          15.0,
+          25.0,
+          149.228,
+          264.348,
+          375.203
+        ],
+        "download_sha256": "1A21EC2499ABAD140B11CB76A139E133F3CD0CD009F11E00591BC94455071FBC",
+        "media": {
+          "width": 640,
+          "height": 360,
+          "fps": 29.998,
+          "frames": 12790,
+          "duration": 426.367,
+          "bytes": 11783425
+        },
+        "temporary_media_deleted": true
+      },
+      "research_snapshot": {
+        "title": "【AE+PR游戏剪辑教程】教你13个相见恨晚的超燃剪辑效果，超简单的游戏剪辑入门教程，学完剪出自己高然战斗时刻！（附带素材、插件包） p08 【超燃游戏剪辑】6.PR回溯转场",
+        "timestamp": 1755506329,
+        "view_count": 1896,
+        "like_count": 48,
+        "comment_count": 7
+      }
+    }
+  ]
+}

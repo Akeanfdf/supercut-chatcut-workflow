@@ -1,0 +1,33 @@
+{
+  "schema": "supercut-public-case-v1",
+  "case_id": "tunnel-to-summer",
+  "title": "通往夏天的隧道，离别的出口",
+  "reference": {
+    "url": "https://www.bilibili.com/video/BV17a8CzLEgZ/",
+    "bvid": "BV17a8CzLEgZ"
+  },
+  "target_source": {
+    "kind": "user-legally-held-local-file",
+    "duration_seconds": 4966.206
+  },
+  "edit": {
+    "duration_seconds": 68,
+    "fps": 60,
+    "frame_count": 4080,
+    "shot_count": 70,
+    "short_transition_count": 27,
+    "bgm_source_offset_seconds": 2.72,
+    "normalized_multiband_audio_correlation": 0.696807
+  },
+  "quality_gates": [
+    { "gate": 1, "score": 96, "threshold": 85, "status": "passed" },
+    { "gate": 2, "score": 97, "threshold": 85, "status": "passed" }
+  ],
+  "privacy": {
+    "full_reference_uploaded": false,
+    "full_movie_uploaded": false,
+    "original_bgm_uploaded": false,
+    "chatcut_project_id_published": false,
+    "local_paths_published": false
+  }
+}

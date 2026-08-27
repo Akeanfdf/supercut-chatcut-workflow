@@ -1,0 +1,95 @@
+{
+  "schema": "supercut-effect-knowledge-v3",
+  "effect_id": "eye_open_reveal",
+  "name": "睁眼卡点揭示",
+  "principle": "mask_reveal",
+  "techniques": [
+    "eyelid_mask",
+    "aperture_open",
+    "beat_sync"
+  ],
+  "usage_profile": {
+    "content_types": [
+      "anime",
+      "short_drama"
+    ],
+    "trigger_events": [
+      "eye_open",
+      "awakening",
+      "emotion_turn",
+      "hero_reveal"
+    ],
+    "transition_roles": [
+      "character_reveal",
+      "beat_transition"
+    ],
+    "source_requirements": [
+      "眼部或脸部特写",
+      "睁眼动作前后连续",
+      "卡点位置明确"
+    ],
+    "recommended_duration_seconds": [
+      0.2,
+      0.6
+    ],
+    "intensity": "medium",
+    "avoid_when": [
+      "远景人物",
+      "动作被遮挡",
+      "连续对白"
+    ],
+    "selection_prompt": "当素材属于动漫或短剧并出现女主睁眼、苏醒、情绪反转或人物揭示时，若存在连续眼部特写并能对齐节拍，优先使用睁眼卡点揭示；效果持续0.2至0.6秒；避免用于远景、遮挡或连续对白。"
+  },
+  "implementation": {
+    "status": "catalog_only",
+    "template_path": null,
+    "renderer_path": null,
+    "runtime_status": "generic",
+    "runtime_renderer_path": "effect_runtime.py",
+    "paid_plugin_required": false
+  },
+  "references": [
+    {
+      "platform": "bilibili",
+      "bvid": "BV1SqabzaEDL",
+      "part": 28,
+      "url": "https://www.bilibili.com/video/BV1SqabzaEDL/?p=28",
+      "chapter_title": "常用剪辑工具+睁眼卡点",
+      "verification": {
+        "status": "frame_reviewed",
+        "verified_segment": {
+          "start": 0.0,
+          "end": 35.0
+        },
+        "note": "章节标题与内容主题均明确为睁眼卡点。",
+        "reviewed_sample_times": [
+          0.0,
+          3.0,
+          8.0,
+          8.75,
+          15.0,
+          15.5,
+          22.0,
+          24.9
+        ],
+        "download_sha256": "0DB3B1D4D00CFAB5C10A269014C89C337F3EA61C803A6F3479C39EC2B7AB1A16",
+        "media": {
+          "width": 640,
+          "height": 360,
+          "fps": 30.0,
+          "frames": 750,
+          "duration": 25.0,
+          "bytes": 502944
+        },
+        "temporary_media_deleted": true
+      },
+      "research_snapshot": {
+        "title": "【剪辑教程】100集（全）从零开始学AE/PR软件基础教程（2025新手入门实用版）2025零基础入门教程！！！ p28 【PR教程】2.常用剪辑工具+睁眼卡点",
+        "timestamp": 1757065418,
+        "view_count": 3332,
+        "like_count": 249,
+        "comment_count": 11
+      }
+    }
+  ]
+}

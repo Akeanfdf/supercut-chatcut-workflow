@@ -1,0 +1,3599 @@
+{
+  "schema": "supercut-effect-catalog-v3",
+  "generated_at": "2026-08-21",
+  "summary": {
+    "effect_count": 38,
+    "content_type_coverage": {
+      "anime": 34,
+      "game": 30,
+      "live_stream": 23,
+      "short_drama": 31
+    },
+    "principle_coverage": {
+      "digital_glitch": 2,
+      "editorial_masking": 1,
+      "exposure_luma": 3,
+      "foreground_retention": 2,
+      "fragmentation": 2,
+      "graphic_composition": 6,
+      "mask_reveal": 3,
+      "optical_geometry": 2,
+      "organic_matte": 2,
+      "perspective_motion": 1,
+      "rhythm_layout": 5,
+      "spatial_transform": 3,
+      "tactile_reveal": 3,
+      "time_manipulation": 3
+    },
+    "implemented_count": 15,
+    "runtime_supported_count": 38,
+    "generic_runtime_count": 23
+  },
+  "effects": [
+    {
+      "schema": "supercut-effect-knowledge-v3",
+      "effect_id": "foreground_weapon_hold",
+      "name": "枪械前景保留遮切",
+      "principle": "foreground_retention",
+      "techniques": [
+        "foreground_cutout",
+        "background_handoff",
+        "directional_blur"
+      ],
+      "usage_profile": {
+        "content_types": [
+          "game"
+        ],
+        "trigger_events": [
+          "weapon_switch",
+          "reload",
+          "kill_confirm",
+          "scene_change"
+        ],
+        "transition_roles": [
+          "action_transition",
+          "background_replacement"
+        ],
+        "source_requirements": [
+          "枪体或手部轮廓清晰",
+          "背景与枪体颜色有区分",
+          "转场两侧各保留0.3秒余量"
+        ],
+        "recommended_duration_seconds": [
+          0.18,
+          0.45
+        ],
+        "intensity": "strong",
+        "avoid_when": [
+          "枪体被烟雾完全遮挡",
+          "第三人称镜头"
+        ],
+        "selection_prompt": "当素材属于游戏并出现切枪、换弹、击杀或场景切换时，若枪体与手部轮廓清晰且背景可分离，优先使用枪械前景保留遮切；效果持续0.18至0.45秒；避免用于枪体被烟雾遮挡或第三人称镜头。"
+      },
+      "implementation": {
+        "status": "implemented",
+        "template_path": "templates/foreground_weapon_hold/template.json",
+        "renderer_path": "tools/render_burn_glitch_preview.py",
+        "runtime_status": "specialized",
+        "runtime_renderer_path": "effect_runtime.py",
+        "paid_plugin_required": false
+      },
+      "references": [
+        {
+          "platform": "bilibili",
+          "bvid": "BV1gnYszQEwN",
+          "part": 13,
+          "url": "https://www.bilibili.com/video/BV1gnYszQEwN/?p=13",
+          "chapter_title": "AE蒙版转场与武器发光",
+          "verification": {
+            "status": "frame_reviewed",
+            "verified_segment": {
+              "start": 0.0,
+              "end": 35.0
+            },
+            "note": "章节明确演示蒙版、武器发光和背景交接。",
+            "reviewed_sample_times": [
+              0.0,
+              3.0,
+              8.0,
+              15.0,
+              25.0,
+              191.66,
+              339.512,
+              481.888
+            ],
+            "download_sha256": "99AAFE0CF4D7DC6CCD34BF0FAC063CAEEDB8529413908DE759069AC4ECDDD71C",
+            "media": {
+              "width": 640,
+              "height": 360,
+              "fps": 30.0,
+              "frames": 16428,
+              "duration": 547.6,
+              "bytes": 11190132
+            },
+            "temporary_media_deleted": true
+          },
+          "research_snapshot": {
+            "title": "【AE+PR游戏剪辑教程】教你13个相见恨晚的超燃剪辑效果，超简单的游戏剪辑入门教程，学完剪出自己高然战斗时刻！（附带素材、插件包） p13 【超燃游戏剪辑】11.AE蒙版转场与武器发光",
+            "timestamp": 1755506329,
+            "view_count": 1896,
+            "like_count": 48,
+            "comment_count": 7
+          }
+        }
+      ]
+    },
+    {
+      "schema": "supercut-effect-knowledge-v3",
+      "effect_id": "weapon_energy_glow",
+      "name": "枪体流光能量",
+      "principle": "foreground_retention",
+      "techniques": [
+        "weapon_mask",
+        "edge_glow",
+        "animated_texture"
+      ],
+      "usage_profile": {
+        "content_types": [
+          "game",
+          "anime"
+        ],
+        "trigger_events": [
+          "weapon_switch",
+          "skill_cast",
+          "hero_reveal"
+        ],
+        "transition_roles": [
+          "accent_effect"
+        ],
+        "source_requirements": [
+          "主体轮廓稳定",
+          "效果前后至少8帧"
+        ],
+        "recommended_duration_seconds": [
+          0.25,
+          0.8
+        ],
+        "intensity": "strong",
+        "avoid_when": [
+          "写实慢节奏对白",
+          "主体轮廓频繁出画"
+        ],
+        "selection_prompt": "当素材属于游戏或动漫并出现切枪、技能释放或英雄揭示时，若主体轮廓稳定，优先使用枪体流光能量；效果持续0.25至0.8秒；避免用于写实慢对白或主体频繁出画。"
+      },
+      "implementation": {
+        "status": "catalog_only",
+        "template_path": null,
+        "renderer_path": null,
+        "runtime_status": "generic",
+        "runtime_renderer_path": "effect_runtime.py",
+        "paid_plugin_required": false
+      },
+      "references": [
+        {
+          "platform": "bilibili",
+          "bvid": "BV1gnYszQEwN",
+          "part": 14,
+          "url": "https://www.bilibili.com/video/BV1gnYszQEwN/?p=14",
+          "chapter_title": "AE枪体流光火焰",
+          "verification": {
+            "status": "frame_reviewed",
+            "verified_segment": {
+              "start": 0.0,
+              "end": 35.0
+            },
+            "note": "章节以枪体为独立层叠加流光火焰。",
+            "reviewed_sample_times": [
+              0.0,
+              3.0,
+              4.258,
+              7.544,
+              8.0,
+              10.707,
+              12.067,
+              12.067
+            ],
+            "download_sha256": "08C1B06E2DDE9B54A8C0643595664260FB39613B49A6B12B2EA5A1D9AEC4E7F5",
+            "media": {
+              "width": 640,
+              "height": 360,
+              "fps": 30.0,
+              "frames": 365,
+              "duration": 12.167,
+              "bytes": 1025973
+            },
+            "temporary_media_deleted": true
+          },
+          "research_snapshot": {
+            "title": "【AE+PR游戏剪辑教程】教你13个相见恨晚的超燃剪辑效果，超简单的游戏剪辑入门教程，学完剪出自己高然战斗时刻！（附带素材、插件包） p14 【超燃游戏剪辑】12.AE枪体流光火焰",
+            "timestamp": 1755506329,
+            "view_count": 1896,
+            "like_count": 48,
+            "comment_count": 7
+          }
+        }
+      ]
+    },
+    {
+      "schema": "supercut-effect-knowledge-v3",
+      "effect_id": "mirror_slide",
+      "name": "镜面滑屏",
+      "principle": "mask_reveal",
+      "techniques": [
+        "diagonal_mask",
+        "gray_background",
+        "colored_foreground"
+      ],
+      "usage_profile": {
+        "content_types": [
+          "game",
+          "anime",
+          "short_drama",
+          "live_stream"
+        ],
+        "trigger_events": [
+          "hero_reveal",
+          "character_turn",
+          "camera_change",
+          "scene_change"
+        ],
+        "transition_roles": [
+          "character_reveal",
+          "scene_transition"
+        ],
+        "source_requirements": [
+          "主体位于画面中心附近",
+          "镜头方向稳定"
+        ],
+        "recommended_duration_seconds": [
+          0.35,
+          0.9
+        ],
+        "intensity": "medium",
+        "avoid_when": [
+          "高速连续击杀",
+          "重要字幕占据斜带区域"
+        ],
+        "selection_prompt": "当素材属于游戏、动漫、短剧或实况直播并出现英雄登场、人物转身、机位变化或场景切换时，若主体靠近视觉中心且镜头稳定，优先使用镜面滑屏；效果持续0.35至0.9秒；避免用于高速连续击杀或字幕遮挡斜带。"
+      },
+      "implementation": {
+        "status": "implemented",
+        "template_path": "templates/mirror_slide/template.json",
+        "renderer_path": "tools/render_mirror_slide_preview.py",
+        "runtime_status": "specialized",
+        "runtime_renderer_path": "effect_runtime.py",
+        "paid_plugin_required": false
+      },
+      "references": [
+        {
+          "platform": "bilibili",
+          "bvid": "BV1SqabzaEDL",
+          "part": 33,
+          "url": "https://www.bilibili.com/video/BV1SqabzaEDL/?p=33",
+          "chapter_title": "遮罩与镜面滑屏效果",
+          "verification": {
+            "status": "frame_reviewed",
+            "verified_segment": {
+              "start": 0.0,
+              "end": 35.0
+            },
+            "note": "章节明确演示遮罩与镜面滑屏。",
+            "reviewed_sample_times": [
+              0.0,
+              3.0,
+              8.0,
+              8.75,
+              15.0,
+              15.5,
+              22.0,
+              24.9
+            ],
+            "download_sha256": "899FE4F26D1FF79EB35A8B8EF3B14ABE977CB79D2C81C3E4678FA6E99C727CE2",
+            "media": {
+              "width": 640,
+              "height": 360,
+              "fps": 30.0,
+              "frames": 750,
+              "duration": 25.0,
+              "bytes": 448080
+            },
+            "temporary_media_deleted": true
+          },
+          "research_snapshot": {
+            "title": "【剪辑教程】100集（全）从零开始学AE/PR软件基础教程（2025新手入门实用版）2025零基础入门教程！！！ p33 【PR教程】7.遮罩与镜面滑屏效果",
+            "timestamp": 1757065418,
+            "view_count": 3332,
+            "like_count": 249,
+            "comment_count": 11
+          }
+        }
+      ]
+    },
+    {
+      "schema": "supercut-effect-knowledge-v3",
+      "effect_id": "eye_open_reveal",
+      "name": "睁眼卡点揭示",
+      "principle": "mask_reveal",
+      "techniques": [
+        "eyelid_mask",
+        "aperture_open",
+        "beat_sync"
+      ],
+      "usage_profile": {
+        "content_types": [
+          "anime",
+          "short_drama"
+        ],
+        "trigger_events": [
+          "eye_open",
+          "awakening",
+          "emotion_turn",
+          "hero_reveal"
+        ],
+        "transition_roles": [
+          "character_reveal",
+          "beat_transition"
+        ],
+        "source_requirements": [
+          "眼部或脸部特写",
+          "睁眼动作前后连续",
+          "卡点位置明确"
+        ],
+        "recommended_duration_seconds": [
+          0.2,
+          0.6
+        ],
+        "intensity": "medium",
+        "avoid_when": [
+          "远景人物",
+          "动作被遮挡",
+          "连续对白"
+        ],
+        "selection_prompt": "当素材属于动漫或短剧并出现女主睁眼、苏醒、情绪反转或人物揭示时，若存在连续眼部特写并能对齐节拍，优先使用睁眼卡点揭示；效果持续0.2至0.6秒；避免用于远景、遮挡或连续对白。"
+      },
+      "implementation": {
+        "status": "catalog_only",
+        "template_path": null,
+        "renderer_path": null,
+        "runtime_status": "generic",
+        "runtime_renderer_path": "effect_runtime.py",
+        "paid_plugin_required": false
+      },
+      "references": [
+        {
+          "platform": "bilibili",
+          "bvid": "BV1SqabzaEDL",
+          "part": 28,
+          "url": "https://www.bilibili.com/video/BV1SqabzaEDL/?p=28",
+          "chapter_title": "常用剪辑工具+睁眼卡点",
+          "verification": {
+            "status": "frame_reviewed",
+            "verified_segment": {
+              "start": 0.0,
+              "end": 35.0
+            },
+            "note": "章节标题与内容主题均明确为睁眼卡点。",
+            "reviewed_sample_times": [
+              0.0,
+              3.0,
+              8.0,
+              8.75,
+              15.0,
+              15.5,
+              22.0,
+              24.9
+            ],
+            "download_sha256": "0DB3B1D4D00CFAB5C10A269014C89C337F3EA61C803A6F3479C39EC2B7AB1A16",
+            "media": {
+              "width": 640,
+              "height": 360,
+              "fps": 30.0,
+              "frames": 750,
+              "duration": 25.0,
+              "bytes": 502944
+            },
+            "temporary_media_deleted": true
+          },
+          "research_snapshot": {
+            "title": "【剪辑教程】100集（全）从零开始学AE/PR软件基础教程（2025新手入门实用版）2025零基础入门教程！！！ p28 【PR教程】2.常用剪辑工具+睁眼卡点",
+            "timestamp": 1757065418,
+            "view_count": 3332,
+            "like_count": 249,
+            "comment_count": 11
+          }
+        }
+      ]
+    },
+    {
+      "schema": "supercut-effect-knowledge-v3",
+      "effect_id": "person_frequency_pop",
+      "name": "人物分频弹出",
+      "principle": "mask_reveal",
+      "techniques": [
+        "subject_cutout",
+        "channel_offset",
+        "scale_pop"
+      ],
+      "usage_profile": {
+        "content_types": [
+          "anime",
+          "short_drama",
+          "live_stream"
+        ],
+        "trigger_events": [
+          "character_entry",
+          "host_reaction",
+          "emotion_turn"
+        ],
+        "transition_roles": [
+          "character_reveal",
+          "reaction_accent"
+        ],
+        "source_requirements": [
+          "人物轮廓完整",
+          "背景相对简洁"
+        ],
+        "recommended_duration_seconds": [
+          0.25,
+          0.7
+        ],
+        "intensity": "medium",
+        "avoid_when": [
+          "多人重叠",
+          "主体运动模糊严重"
+        ],
+        "selection_prompt": "当素材属于动漫、短剧或直播并出现人物入场、主播反应或情绪转折时，若人物轮廓完整且背景简洁，优先使用人物分频弹出；效果持续0.25至0.7秒；避免用于多人重叠或严重运动模糊。"
+      },
+      "implementation": {
+        "status": "catalog_only",
+        "template_path": null,
+        "renderer_path": null,
+        "runtime_status": "generic",
+        "runtime_renderer_path": "effect_runtime.py",
+        "paid_plugin_required": false
+      },
+      "references": [
+        {
+          "platform": "bilibili",
+          "bvid": "BV1JqraYAELK",
+          "part": 7,
+          "url": "https://www.bilibili.com/video/BV1JqraYAELK/?p=7",
+          "chapter_title": "人物分频弹出转场",
+          "verification": {
+            "status": "frame_reviewed",
+            "verified_segment": {
+              "start": 0.0,
+              "end": 35.0
+            },
+            "note": "章节明确演示人物分频与弹出转场。",
+            "reviewed_sample_times": [
+              0.0,
+              3.0,
+              8.0,
+              8.75,
+              15.0,
+              15.5,
+              22.0,
+              24.9
+            ],
+            "download_sha256": "BE18A8D85DD463A3B57463F1C0FB2416C94CF4348CAB1AC2A5296A84924CF5B4",
+            "media": {
+              "width": 640,
+              "height": 360,
+              "fps": 30.0,
+              "frames": 750,
+              "duration": 25.0,
+              "bytes": 1324760
+            },
+            "temporary_media_deleted": true
+          },
+          "research_snapshot": {
+            "title": "【全100集】这才叫PR转场！100个超丝滑转场案例教程，带你轻松玩转视频转场！ p07 人物分频弹出转场",
+            "timestamp": 1736337231,
+            "view_count": 212393,
+            "like_count": 5914,
+            "comment_count": 510
+          }
+        }
+      ]
+    },
+    {
+      "schema": "supercut-effect-knowledge-v3",
+      "effect_id": "elastic_zoom",
+      "name": "弹性缩放拉镜",
+      "principle": "spatial_transform",
+      "techniques": [
+        "overshoot_zoom",
+        "radial_blur",
+        "motion_match"
+      ],
+      "usage_profile": {
+        "content_types": [
+          "game",
+          "anime",
+          "short_drama",
+          "live_stream"
+        ],
+        "trigger_events": [
+          "zoom_in",
+          "kill_confirm",
+          "character_turn",
+          "host_reaction"
+        ],
+        "transition_roles": [
+          "impact_transition",
+          "scene_transition"
+        ],
+        "source_requirements": [
+          "前后镜头视觉中心可对齐",
+          "至少0.4秒运动余量"
+        ],
+        "recommended_duration_seconds": [
+          0.3,
+          0.8
+        ],
+        "intensity": "strong",
+        "avoid_when": [
+          "固定字幕过多",
+          "前后镜头主体位置完全相反"
+        ],
+        "selection_prompt": "当素材属于游戏、动漫、短剧或实况直播并出现放大、击杀、人物转身或主播强反应时，若前后镜头视觉中心可对齐，优先使用弹性缩放拉镜；效果持续0.3至0.8秒；避免用于字幕密集或主体位置完全相反的镜头。"
+      },
+      "implementation": {
+        "status": "implemented",
+        "template_path": "templates/elastic_zoom/template.json",
+        "renderer_path": "tools/render_research_effect.py",
+        "runtime_status": "specialized",
+        "runtime_renderer_path": "effect_runtime.py",
+        "paid_plugin_required": false
+      },
+      "references": [
+        {
+          "platform": "bilibili",
+          "bvid": "BV1JqraYAELK",
+          "part": 23,
+          "url": "https://www.bilibili.com/video/BV1JqraYAELK/?p=23",
+          "chapter_title": "弹性缩放转场",
+          "verification": {
+            "status": "frame_reviewed",
+            "verified_segment": {
+              "start": 0.0,
+              "end": 35.0
+            },
+            "note": "章节明确演示弹性缩放曲线。",
+            "reviewed_sample_times": [
+              0.0,
+              3.0,
+              8.0,
+              8.75,
+              15.0,
+              15.5,
+              22.0,
+              24.9
+            ],
+            "download_sha256": "69FD9E877BF71D5281D34BE8F204F8C898C015AA26E492D04B1648F0636331B7",
+            "media": {
+              "width": 640,
+              "height": 360,
+              "fps": 30.0,
+              "frames": 750,
+              "duration": 25.0,
+              "bytes": 2507426
+            },
+            "temporary_media_deleted": true
+          },
+          "research_snapshot": {
+            "title": "【全100集】这才叫PR转场！100个超丝滑转场案例教程，带你轻松玩转视频转场！ p23 弹性缩放转场",
+            "timestamp": 1736337231,
+            "view_count": 212393,
+            "like_count": 5914,
+            "comment_count": 510
+          }
+        }
+      ]
+    },
+    {
+      "schema": "supercut-effect-knowledge-v3",
+      "effect_id": "screen_tunnel",
+      "name": "屏幕穿越",
+      "principle": "spatial_transform",
+      "techniques": [
+        "screen_insert",
+        "perspective_zoom",
+        "nested_frame"
+      ],
+      "usage_profile": {
+        "content_types": [
+          "game",
+          "anime",
+          "short_drama"
+        ],
+        "trigger_events": [
+          "scene_change",
+          "device_screen",
+          "portal_entry"
+        ],
+        "transition_roles": [
+          "scene_transition"
+        ],
+        "source_requirements": [
+          "画面内存在矩形屏幕或可跟踪平面",
+          "前后镜头景别差异明显"
+        ],
+        "recommended_duration_seconds": [
+          0.5,
+          1.3
+        ],
+        "intensity": "strong",
+        "avoid_when": [
+          "手持抖动无法跟踪",
+          "直播字幕覆盖屏幕"
+        ],
+        "selection_prompt": "当素材属于游戏、动漫或短剧并出现屏幕、门框、传送门或明显场景切换时，若存在可跟踪的矩形平面，优先使用屏幕穿越；效果持续0.5至1.3秒；避免用于无法跟踪的剧烈手持镜头。"
+      },
+      "implementation": {
+        "status": "catalog_only",
+        "template_path": null,
+        "renderer_path": null,
+        "runtime_status": "generic",
+        "runtime_renderer_path": "effect_runtime.py",
+        "paid_plugin_required": false
+      },
+      "references": [
+        {
+          "platform": "bilibili",
+          "bvid": "BV1gnYszQEwN",
+          "part": 5,
+          "url": "https://www.bilibili.com/video/BV1gnYszQEwN/?p=5",
+          "chapter_title": "AE屏幕穿越转场",
+          "verification": {
+            "status": "frame_reviewed",
+            "verified_segment": {
+              "start": 0.0,
+              "end": 35.0
+            },
+            "note": "章节明确演示屏幕内嵌与穿越转场。",
+            "reviewed_sample_times": [
+              0.0,
+              3.0,
+              8.0,
+              15.0,
+              25.0,
+              235.982,
+              418.024,
+              593.325
+            ],
+            "download_sha256": "3C492F9425D2F7A2848339D167B01DAFF1C853EAFA0A57B82F411E63E8BA2923",
+            "media": {
+              "width": 640,
+              "height": 360,
+              "fps": 30.0,
+              "frames": 20227,
+              "duration": 674.233,
+              "bytes": 16820394
+            },
+            "temporary_media_deleted": true
+          },
+          "research_snapshot": {
+            "title": "【AE+PR游戏剪辑教程】教你13个相见恨晚的超燃剪辑效果，超简单的游戏剪辑入门教程，学完剪出自己高然战斗时刻！（附带素材、插件包） p05 【超燃游戏剪辑】3.AE屏幕穿越转场",
+            "timestamp": 1755506329,
+            "view_count": 1896,
+            "like_count": 48,
+            "comment_count": 7
+          }
+        }
+      ]
+    },
+    {
+      "schema": "supercut-effect-knowledge-v3",
+      "effect_id": "camera_sweep",
+      "name": "摄像机扫移转场",
+      "principle": "spatial_transform",
+      "techniques": [
+        "virtual_camera",
+        "whip_pan",
+        "direction_match"
+      ],
+      "usage_profile": {
+        "content_types": [
+          "game",
+          "anime",
+          "short_drama",
+          "live_stream"
+        ],
+        "trigger_events": [
+          "camera_pan",
+          "scene_change",
+          "camera_change"
+        ],
+        "transition_roles": [
+          "scene_transition"
+        ],
+        "source_requirements": [
+          "前后运动方向一致",
+          "边缘有可用于模糊的纹理"
+        ],
+        "recommended_duration_seconds": [
+          0.25,
+          0.75
+        ],
+        "intensity": "medium",
+        "avoid_when": [
+          "静态特写对白",
+          "运动方向冲突"
+        ],
+        "selection_prompt": "当素材属于游戏、动漫、短剧或实况直播并出现横移、甩镜、场景或机位变化时，若前后运动方向一致，优先使用摄像机扫移转场；效果持续0.25至0.75秒；避免用于静态对白或方向冲突。"
+      },
+      "implementation": {
+        "status": "catalog_only",
+        "template_path": null,
+        "renderer_path": null,
+        "runtime_status": "generic",
+        "runtime_renderer_path": "effect_runtime.py",
+        "paid_plugin_required": false
+      },
+      "references": [
+        {
+          "platform": "bilibili",
+          "bvid": "BV1gnYszQEwN",
+          "part": 12,
+          "url": "https://www.bilibili.com/video/BV1gnYszQEwN/?p=12",
+          "chapter_title": "AE摄像机转场",
+          "verification": {
+            "status": "frame_reviewed",
+            "verified_segment": {
+              "start": 0.0,
+              "end": 35.0
+            },
+            "note": "章节以虚拟摄像机和运动匹配完成转场。",
+            "reviewed_sample_times": [
+              0.0,
+              3.0,
+              8.0,
+              15.0,
+              25.0,
+              265.078,
+              469.568,
+              666.483
+            ],
+            "download_sha256": "F6D418736572DCC2D46042DF12B944E3443ADC0061A845CA43BEEEFDB2819316",
+            "media": {
+              "width": 640,
+              "height": 360,
+              "fps": 30.0,
+              "frames": 22721,
+              "duration": 757.367,
+              "bytes": 9851831
+            },
+            "temporary_media_deleted": true
+          },
+          "research_snapshot": {
+            "title": "【AE+PR游戏剪辑教程】教你13个相见恨晚的超燃剪辑效果，超简单的游戏剪辑入门教程，学完剪出自己高然战斗时刻！（附带素材、插件包） p12 【超燃游戏剪辑】10.AE摄像机转场",
+            "timestamp": 1755506329,
+            "view_count": 1896,
+            "like_count": 48,
+            "comment_count": 7
+          }
+        }
+      ]
+    },
+    {
+      "schema": "supercut-effect-knowledge-v3",
+      "effect_id": "crack_split",
+      "name": "裂缝分割破碎",
+      "principle": "fragmentation",
+      "techniques": [
+        "irregular_tiles",
+        "crack_lines",
+        "piece_displacement"
+      ],
+      "usage_profile": {
+        "content_types": [
+          "game",
+          "anime",
+          "short_drama"
+        ],
+        "trigger_events": [
+          "kill_confirm",
+          "impact",
+          "emotion_break",
+          "scene_change"
+        ],
+        "transition_roles": [
+          "impact_transition",
+          "dramatic_break"
+        ],
+        "source_requirements": [
+          "冲击点明确",
+          "主体不贴近四周边缘"
+        ],
+        "recommended_duration_seconds": [
+          0.35,
+          0.9
+        ],
+        "intensity": "strong",
+        "avoid_when": [
+          "轻松对白",
+          "画面细节需要持续阅读"
+        ],
+        "selection_prompt": "当素材属于游戏、动漫或短剧并出现击杀、重击、关系破裂或强场景切换时，若冲击点明确且主体不贴边，优先使用裂缝分割破碎；效果持续0.35至0.9秒；避免用于轻松对白或需要持续阅读细节的画面。"
+      },
+      "implementation": {
+        "status": "implemented",
+        "template_path": "templates/crack_split/template.json",
+        "renderer_path": "tools/render_research_effect.py",
+        "runtime_status": "specialized",
+        "runtime_renderer_path": "effect_runtime.py",
+        "paid_plugin_required": false
+      },
+      "references": [
+        {
+          "platform": "bilibili",
+          "bvid": "BV1JqraYAELK",
+          "part": 9,
+          "url": "https://www.bilibili.com/video/BV1JqraYAELK/?p=9",
+          "chapter_title": "裂缝分割转场",
+          "verification": {
+            "status": "frame_reviewed",
+            "verified_segment": {
+              "start": 0.0,
+              "end": 35.0
+            },
+            "note": "章节明确演示裂缝分割转场。",
+            "reviewed_sample_times": [
+              0.0,
+              3.0,
+              8.0,
+              8.75,
+              15.0,
+              15.5,
+              22.0,
+              24.9
+            ],
+            "download_sha256": "F4BC5E2CBB55942A5B3C96F1682C16278472C66EBA87851F5F967D949BF3601D",
+            "media": {
+              "width": 640,
+              "height": 360,
+              "fps": 30.0,
+              "frames": 750,
+              "duration": 25.0,
+              "bytes": 1039177
+            },
+            "temporary_media_deleted": true
+          },
+          "research_snapshot": {
+            "title": "【全100集】这才叫PR转场！100个超丝滑转场案例教程，带你轻松玩转视频转场！ p09 裂缝分割转场",
+            "timestamp": 1736337231,
+            "view_count": 212393,
+            "like_count": 5914,
+            "comment_count": 510
+          }
+        }
+      ]
+    },
+    {
+      "schema": "supercut-effect-knowledge-v3",
+      "effect_id": "edge_shatter",
+      "name": "边角破碎重组",
+      "principle": "fragmentation",
+      "techniques": [
+        "corner_break",
+        "fragment_reveal",
+        "depth_offset"
+      ],
+      "usage_profile": {
+        "content_types": [
+          "game",
+          "anime",
+          "short_drama"
+        ],
+        "trigger_events": [
+          "skill_cast",
+          "impact",
+          "hero_reveal"
+        ],
+        "transition_roles": [
+          "impact_transition",
+          "title_transition"
+        ],
+        "source_requirements": [
+          "画面边缘具有纹理",
+          "主体位于中间安全区"
+        ],
+        "recommended_duration_seconds": [
+          0.4,
+          1.0
+        ],
+        "intensity": "strong",
+        "avoid_when": [
+          "极简白底",
+          "小字号字幕贴边"
+        ],
+        "selection_prompt": "当素材属于游戏、动漫或短剧并出现技能、冲击或英雄揭示时，若画面边缘有纹理且主体位于安全区，优先使用边角破碎重组；效果持续0.4至1秒；避免用于极简白底或贴边小字幕。"
+      },
+      "implementation": {
+        "status": "catalog_only",
+        "template_path": null,
+        "renderer_path": null,
+        "runtime_status": "generic",
+        "runtime_renderer_path": "effect_runtime.py",
+        "paid_plugin_required": false
+      },
+      "references": [
+        {
+          "platform": "bilibili",
+          "bvid": "BV1gnYszQEwN",
+          "part": 11,
+          "url": "https://www.bilibili.com/video/BV1gnYszQEwN/?p=11",
+          "chapter_title": "AE边角破碎效果",
+          "verification": {
+            "status": "frame_reviewed",
+            "verified_segment": {
+              "start": 0.0,
+              "end": 35.0
+            },
+            "note": "章节明确演示边角破碎与下一镜头揭示。",
+            "reviewed_sample_times": [
+              0.0,
+              3.0,
+              8.0,
+              15.0,
+              25.0,
+              122.815,
+              217.558,
+              308.792
+            ],
+            "download_sha256": "A5E730B784EEB7EA60137CC2D17CCAB62B7E4D7C50B72C6EBAC56B2555C621DF",
+            "media": {
+              "width": 640,
+              "height": 360,
+              "fps": 30.0,
+              "frames": 10527,
+              "duration": 350.9,
+              "bytes": 4568202
+            },
+            "temporary_media_deleted": true
+          },
+          "research_snapshot": {
+            "title": "【AE+PR游戏剪辑教程】教你13个相见恨晚的超燃剪辑效果，超简单的游戏剪辑入门教程，学完剪出自己高然战斗时刻！（附带素材、插件包） p11 【超燃游戏剪辑】9.AE边角破碎效果",
+            "timestamp": 1755506329,
+            "view_count": 1896,
+            "like_count": 48,
+            "comment_count": 7
+          }
+        }
+      ]
+    },
+    {
+      "schema": "supercut-effect-knowledge-v3",
+      "effect_id": "signal_glitch",
+      "name": "信号干扰故障",
+      "principle": "digital_glitch",
+      "techniques": [
+        "horizontal_slices",
+        "rgb_split",
+        "scanlines"
+      ],
+      "usage_profile": {
+        "content_types": [
+          "game",
+          "anime",
+          "live_stream"
+        ],
+        "trigger_events": [
+          "death",
+          "teleport",
+          "signal_loss",
+          "host_reaction",
+          "scene_change"
+        ],
+        "transition_roles": [
+          "discontinuity_transition",
+          "impact_transition"
+        ],
+        "source_requirements": [
+          "允许短暂破坏画面可读性",
+          "动作点或音效点明确"
+        ],
+        "recommended_duration_seconds": [
+          0.12,
+          0.55
+        ],
+        "intensity": "strong",
+        "avoid_when": [
+          "温柔情绪段落",
+          "重要字幕正在出现"
+        ],
+        "selection_prompt": "当素材属于游戏、动漫或实况直播并出现死亡、传送、信号中断、主播反应或强切换时，若允许短暂破坏画面可读性，优先使用信号干扰故障；效果持续0.12至0.55秒；避免用于温柔情绪段落或重要字幕。"
+      },
+      "implementation": {
+        "status": "implemented",
+        "template_path": "templates/signal_glitch/template.json",
+        "renderer_path": "tools/render_research_effect.py",
+        "runtime_status": "specialized",
+        "runtime_renderer_path": "effect_runtime.py",
+        "paid_plugin_required": false
+      },
+      "references": [
+        {
+          "platform": "bilibili",
+          "bvid": "BV1JqraYAELK",
+          "part": 20,
+          "url": "https://www.bilibili.com/video/BV1JqraYAELK/?p=20",
+          "chapter_title": "信号干扰转场",
+          "verification": {
+            "status": "frame_reviewed",
+            "verified_segment": {
+              "start": 0.0,
+              "end": 35.0
+            },
+            "note": "章节明确演示信号干扰与横向切片。",
+            "reviewed_sample_times": [
+              0.0,
+              1.785,
+              3.0,
+              3.162,
+              4.488,
+              5.0,
+              5.0,
+              5.0
+            ],
+            "download_sha256": "2E354E408D9CCF004D71A6C86496E521B04DF0F71452E6D92A1356232B843C87",
+            "media": {
+              "width": 640,
+              "height": 360,
+              "fps": 30.0,
+              "frames": 153,
+              "duration": 5.1,
+              "bytes": 1518895
+            },
+            "temporary_media_deleted": true
+          },
+          "research_snapshot": {
+            "title": "【全100集】这才叫PR转场！100个超丝滑转场案例教程，带你轻松玩转视频转场！ p20 信号干扰转场",
+            "timestamp": 1736337231,
+            "view_count": 212393,
+            "like_count": 5914,
+            "comment_count": 510
+          }
+        }
+      ]
+    },
+    {
+      "schema": "supercut-effect-knowledge-v3",
+      "effect_id": "film_glitch",
+      "name": "电影故障跳帧",
+      "principle": "digital_glitch",
+      "techniques": [
+        "frame_skip",
+        "film_dust",
+        "chromatic_aberration"
+      ],
+      "usage_profile": {
+        "content_types": [
+          "anime",
+          "short_drama",
+          "live_stream"
+        ],
+        "trigger_events": [
+          "flashback",
+          "emotion_turn",
+          "signal_loss",
+          "scene_change"
+        ],
+        "transition_roles": [
+          "memory_transition",
+          "discontinuity_transition"
+        ],
+        "source_requirements": [
+          "情绪或时间断裂明确",
+          "可接受2至4帧跳帧"
+        ],
+        "recommended_duration_seconds": [
+          0.18,
+          0.65
+        ],
+        "intensity": "medium",
+        "avoid_when": [
+          "连续口型同步",
+          "平稳产品展示"
+        ],
+        "selection_prompt": "当素材属于动漫、短剧或直播并出现闪回、情绪断裂、信号异常或场景变化时，若允许少量跳帧，优先使用电影故障跳帧；效果持续0.18至0.65秒；避免用于口型同步或平稳产品展示。"
+      },
+      "implementation": {
+        "status": "catalog_only",
+        "template_path": null,
+        "renderer_path": null,
+        "runtime_status": "generic",
+        "runtime_renderer_path": "effect_runtime.py",
+        "paid_plugin_required": false
+      },
+      "references": [
+        {
+          "platform": "bilibili",
+          "bvid": "BV1JqraYAELK",
+          "part": 20,
+          "url": "https://www.bilibili.com/video/BV1JqraYAELK/?p=20",
+          "chapter_title": "信号干扰转场",
+          "verification": {
+            "status": "frame_reviewed",
+            "verified_segment": {
+              "start": 0.0,
+              "end": 35.0
+            },
+            "note": "信号干扰章节提供无需商业插件的切片思路。",
+            "reviewed_sample_times": [
+              0.0,
+              1.785,
+              3.0,
+              3.162,
+              4.488,
+              5.0,
+              5.0,
+              5.0
+            ],
+            "download_sha256": "2E354E408D9CCF004D71A6C86496E521B04DF0F71452E6D92A1356232B843C87",
+            "media": {
+              "width": 640,
+              "height": 360,
+              "fps": 30.0,
+              "frames": 153,
+              "duration": 5.1,
+              "bytes": 1518895
+            },
+            "temporary_media_deleted": true
+          },
+          "research_snapshot": {
+            "title": "【全100集】这才叫PR转场！100个超丝滑转场案例教程，带你轻松玩转视频转场！ p20 信号干扰转场",
+            "timestamp": 1736337231,
+            "view_count": 212393,
+            "like_count": 5914,
+            "comment_count": 510
+          }
+        }
+      ]
+    },
+    {
+      "schema": "supercut-effect-knowledge-v3",
+      "effect_id": "reverse_recall",
+      "name": "回溯倒放转场",
+      "principle": "time_manipulation",
+      "techniques": [
+        "reverse_motion",
+        "speed_ramp",
+        "temporal_echo"
+      ],
+      "usage_profile": {
+        "content_types": [
+          "game",
+          "anime",
+          "short_drama",
+          "live_stream"
+        ],
+        "trigger_events": [
+          "flashback",
+          "retry",
+          "death",
+          "emotion_turn"
+        ],
+        "transition_roles": [
+          "memory_transition",
+          "time_transition"
+        ],
+        "source_requirements": [
+          "动作存在可识别起点和终点",
+          "倒放后不会产生明显口型错误"
+        ],
+        "recommended_duration_seconds": [
+          0.5,
+          1.4
+        ],
+        "intensity": "medium",
+        "avoid_when": [
+          "长对白",
+          "不可逆的液体或烟雾特写"
+        ],
+        "selection_prompt": "当素材属于游戏、动漫、短剧或实况直播并出现回忆、重试、死亡回看或情绪转折时，若动作起止清晰，优先使用回溯倒放转场；效果持续0.5至1.4秒；避免用于长对白或明显不可逆运动。"
+      },
+      "implementation": {
+        "status": "catalog_only",
+        "template_path": null,
+        "renderer_path": null,
+        "runtime_status": "generic",
+        "runtime_renderer_path": "effect_runtime.py",
+        "paid_plugin_required": false
+      },
+      "references": [
+        {
+          "platform": "bilibili",
+          "bvid": "BV1SqabzaEDL",
+          "part": 34,
+          "url": "https://www.bilibili.com/video/BV1SqabzaEDL/?p=34",
+          "chapter_title": "变速与回溯转场",
+          "verification": {
+            "status": "frame_reviewed",
+            "verified_segment": {
+              "start": 0.0,
+              "end": 35.0
+            },
+            "note": "章节明确演示变速与回溯。",
+            "reviewed_sample_times": [
+              0.0,
+              3.0,
+              8.0,
+              8.75,
+              15.0,
+              15.5,
+              22.0,
+              24.9
+            ],
+            "download_sha256": "3EEBE9F6A33781F84844F5C3DBF32F63FB041E7A83602C40D310AF6BDBC97CBE",
+            "media": {
+              "width": 640,
+              "height": 360,
+              "fps": 30.0,
+              "frames": 750,
+              "duration": 25.0,
+              "bytes": 709118
+            },
+            "temporary_media_deleted": true
+          },
+          "research_snapshot": {
+            "title": "【剪辑教程】100集（全）从零开始学AE/PR软件基础教程（2025新手入门实用版）2025零基础入门教程！！！ p34 【PR教程】8.变速与回溯转场",
+            "timestamp": 1757065418,
+            "view_count": 3332,
+            "like_count": 249,
+            "comment_count": 11
+          }
+        }
+      ]
+    },
+    {
+      "schema": "supercut-effect-knowledge-v3",
+      "effect_id": "memory_flash",
+      "name": "回忆快闪",
+      "principle": "time_manipulation",
+      "techniques": [
+        "rapid_montage",
+        "zoom_settle",
+        "foreground_hold"
+      ],
+      "usage_profile": {
+        "content_types": [
+          "game",
+          "anime",
+          "short_drama"
+        ],
+        "trigger_events": [
+          "flashback",
+          "victory_recap",
+          "emotion_turn"
+        ],
+        "transition_roles": [
+          "memory_transition",
+          "montage_bridge"
+        ],
+        "source_requirements": [
+          "至少6个可辨认时刻",
+          "节奏点间隔稳定"
+        ],
+        "recommended_duration_seconds": [
+          1.8,
+          5.8
+        ],
+        "intensity": "strong",
+        "avoid_when": [
+          "单一长镜头",
+          "素材不足4个有效时刻"
+        ],
+        "selection_prompt": "当素材属于游戏、动漫或短剧并出现回忆、胜利回顾或情绪转折时，若至少有6个可辨认时刻，优先使用回忆快闪；效果持续1.8至5.8秒；避免用于单一长镜头或素材不足。"
+      },
+      "implementation": {
+        "status": "implemented",
+        "template_path": "templates/memory_flash/template.json",
+        "renderer_path": "tools/render_memory_flash_preview.py",
+        "runtime_status": "specialized",
+        "runtime_renderer_path": "effect_runtime.py",
+        "paid_plugin_required": false
+      },
+      "references": [
+        {
+          "platform": "bilibili",
+          "bvid": "BV1gnYszQEwN",
+          "part": 8,
+          "url": "https://www.bilibili.com/video/BV1gnYszQEwN/?p=8",
+          "chapter_title": "PR回溯转场",
+          "verification": {
+            "status": "frame_reviewed",
+            "verified_segment": {
+              "start": 0.0,
+              "end": 35.0
+            },
+            "note": "回溯章节可用于组织时间反向与回忆桥段。",
+            "reviewed_sample_times": [
+              0.0,
+              3.0,
+              8.0,
+              15.0,
+              25.0,
+              149.228,
+              264.348,
+              375.203
+            ],
+            "download_sha256": "1A21EC2499ABAD140B11CB76A139E133F3CD0CD009F11E00591BC94455071FBC",
+            "media": {
+              "width": 640,
+              "height": 360,
+              "fps": 29.998,
+              "frames": 12790,
+              "duration": 426.367,
+              "bytes": 11783425
+            },
+            "temporary_media_deleted": true
+          },
+          "research_snapshot": {
+            "title": "【AE+PR游戏剪辑教程】教你13个相见恨晚的超燃剪辑效果，超简单的游戏剪辑入门教程，学完剪出自己高然战斗时刻！（附带素材、插件包） p08 【超燃游戏剪辑】6.PR回溯转场",
+            "timestamp": 1755506329,
+            "view_count": 1896,
+            "like_count": 48,
+            "comment_count": 7
+          }
+        }
+      ]
+    },
+    {
+      "schema": "supercut-effect-knowledge-v3",
+      "effect_id": "speed_ramp",
+      "name": "变速动作接切",
+      "principle": "time_manipulation",
+      "techniques": [
+        "speed_ramp",
+        "motion_match",
+        "beat_sync"
+      ],
+      "usage_profile": {
+        "content_types": [
+          "game",
+          "anime",
+          "short_drama",
+          "live_stream"
+        ],
+        "trigger_events": [
+          "impact",
+          "character_turn",
+          "camera_pan",
+          "highlight"
+        ],
+        "transition_roles": [
+          "action_transition"
+        ],
+        "source_requirements": [
+          "动作方向连续",
+          "原片帧率足够"
+        ],
+        "recommended_duration_seconds": [
+          0.35,
+          1.0
+        ],
+        "intensity": "medium",
+        "avoid_when": [
+          "低帧率素材",
+          "持续稳定对白"
+        ],
+        "selection_prompt": "当素材属于游戏、动漫、短剧或实况直播并出现冲击、转身、甩镜或高光动作时，若动作方向连续且帧率足够，优先使用变速动作接切；效果持续0.35至1秒；避免用于低帧率或稳定对白。"
+      },
+      "implementation": {
+        "status": "catalog_only",
+        "template_path": null,
+        "renderer_path": null,
+        "runtime_status": "generic",
+        "runtime_renderer_path": "effect_runtime.py",
+        "paid_plugin_required": false
+      },
+      "references": [
+        {
+          "platform": "bilibili",
+          "bvid": "BV1SqabzaEDL",
+          "part": 34,
+          "url": "https://www.bilibili.com/video/BV1SqabzaEDL/?p=34",
+          "chapter_title": "变速与回溯转场",
+          "verification": {
+            "status": "frame_reviewed",
+            "verified_segment": {
+              "start": 0.0,
+              "end": 35.0
+            },
+            "note": "变速与回溯章节包含速度曲线设计。",
+            "reviewed_sample_times": [
+              0.0,
+              3.0,
+              8.0,
+              8.75,
+              15.0,
+              15.5,
+              22.0,
+              24.9
+            ],
+            "download_sha256": "3EEBE9F6A33781F84844F5C3DBF32F63FB041E7A83602C40D310AF6BDBC97CBE",
+            "media": {
+              "width": 640,
+              "height": 360,
+              "fps": 30.0,
+              "frames": 750,
+              "duration": 25.0,
+              "bytes": 709118
+            },
+            "temporary_media_deleted": true
+          },
+          "research_snapshot": {
+            "title": "【剪辑教程】100集（全）从零开始学AE/PR软件基础教程（2025新手入门实用版）2025零基础入门教程！！！ p34 【PR教程】8.变速与回溯转场",
+            "timestamp": 1757065418,
+            "view_count": 3332,
+            "like_count": 249,
+            "comment_count": 11
+          }
+        }
+      ]
+    },
+    {
+      "schema": "supercut-effect-knowledge-v3",
+      "effect_id": "exposure_flash",
+      "name": "曝光闪白转场",
+      "principle": "exposure_luma",
+      "techniques": [
+        "exposure_peak",
+        "luma_crossfade",
+        "bloom"
+      ],
+      "usage_profile": {
+        "content_types": [
+          "game",
+          "anime",
+          "short_drama",
+          "live_stream"
+        ],
+        "trigger_events": [
+          "kill_confirm",
+          "skill_cast",
+          "eye_open",
+          "camera_flash",
+          "scene_change"
+        ],
+        "transition_roles": [
+          "impact_transition",
+          "reveal_transition"
+        ],
+        "source_requirements": [
+          "画面存在亮部或爆炸点",
+          "闪白不遮挡关键信息"
+        ],
+        "recommended_duration_seconds": [
+          0.1,
+          0.45
+        ],
+        "intensity": "strong",
+        "avoid_when": [
+          "全白场景",
+          "光敏不适风险较高的密集闪烁"
+        ],
+        "selection_prompt": "当素材属于游戏、动漫、短剧或实况直播并出现击杀、技能、睁眼、闪光或场景切换时，若画面有可利用亮部，优先使用曝光闪白转场；效果持续0.1至0.45秒；避免用于全白场景或密集闪烁。"
+      },
+      "implementation": {
+        "status": "implemented",
+        "template_path": "templates/exposure_flash/template.json",
+        "renderer_path": "tools/render_research_effect.py",
+        "runtime_status": "specialized",
+        "runtime_renderer_path": "effect_runtime.py",
+        "paid_plugin_required": false
+      },
+      "references": [
+        {
+          "platform": "bilibili",
+          "bvid": "BV1JqraYAELK",
+          "part": 34,
+          "url": "https://www.bilibili.com/video/BV1JqraYAELK/?p=34",
+          "chapter_title": "曝光转场",
+          "verification": {
+            "status": "frame_reviewed",
+            "verified_segment": {
+              "start": 0.0,
+              "end": 35.0
+            },
+            "note": "章节明确演示曝光峰值和镜头交接。",
+            "reviewed_sample_times": [
+              0.0,
+              0.887,
+              1.57,
+              2.229,
+              2.433,
+              2.433,
+              2.433,
+              2.433
+            ],
+            "download_sha256": "9E8E33DFC47E7D7C90DD969C4B901CFC943ECC829F2CF850CADE4941DAA9B20D",
+            "media": {
+              "width": 640,
+              "height": 360,
+              "fps": 30.0,
+              "frames": 76,
+              "duration": 2.533,
+              "bytes": 277994
+            },
+            "temporary_media_deleted": true
+          },
+          "research_snapshot": {
+            "title": "【全100集】这才叫PR转场！100个超丝滑转场案例教程，带你轻松玩转视频转场！ p34 曝光转场",
+            "timestamp": 1736337231,
+            "view_count": 212393,
+            "like_count": 5914,
+            "comment_count": 510
+          }
+        }
+      ]
+    },
+    {
+      "schema": "supercut-effect-knowledge-v3",
+      "effect_id": "luma_key_reveal",
+      "name": "亮度键揭示",
+      "principle": "exposure_luma",
+      "techniques": [
+        "luma_matte",
+        "highlight_reveal",
+        "soft_bloom"
+      ],
+      "usage_profile": {
+        "content_types": [
+          "game",
+          "anime",
+          "short_drama"
+        ],
+        "trigger_events": [
+          "eye_open",
+          "sunlight",
+          "explosion",
+          "emotion_turn"
+        ],
+        "transition_roles": [
+          "reveal_transition"
+        ],
+        "source_requirements": [
+          "前后镜头存在明显亮暗层次",
+          "亮部边缘连续"
+        ],
+        "recommended_duration_seconds": [
+          0.3,
+          0.9
+        ],
+        "intensity": "medium",
+        "avoid_when": [
+          "低对比灰雾画面",
+          "亮暗关系相反且无法匹配"
+        ],
+        "selection_prompt": "当素材属于游戏、动漫或短剧并出现睁眼、阳光、爆炸或情绪转折时，若前后镜头存在明显亮暗层次，优先使用亮度键揭示；效果持续0.3至0.9秒；避免用于低对比灰雾画面。"
+      },
+      "implementation": {
+        "status": "catalog_only",
+        "template_path": null,
+        "renderer_path": null,
+        "runtime_status": "generic",
+        "runtime_renderer_path": "effect_runtime.py",
+        "paid_plugin_required": false
+      },
+      "references": [
+        {
+          "platform": "bilibili",
+          "bvid": "BV1JqraYAELK",
+          "part": 29,
+          "url": "https://www.bilibili.com/video/BV1JqraYAELK/?p=29",
+          "chapter_title": "亮度键的多种转场用法",
+          "verification": {
+            "status": "frame_reviewed",
+            "verified_segment": {
+              "start": 0.0,
+              "end": 35.0
+            },
+            "note": "章节明确演示亮度键作为转场遮罩。",
+            "reviewed_sample_times": [
+              0.0,
+              3.0,
+              8.0,
+              8.75,
+              15.0,
+              15.5,
+              22.0,
+              24.9
+            ],
+            "download_sha256": "05541261DA848F6419D1477E95B40B9495BF2C256892E204B4721CF6B0575BF9",
+            "media": {
+              "width": 640,
+              "height": 360,
+              "fps": 30.0,
+              "frames": 750,
+              "duration": 25.0,
+              "bytes": 1471590
+            },
+            "temporary_media_deleted": true
+          },
+          "research_snapshot": {
+            "title": "【全100集】这才叫PR转场！100个超丝滑转场案例教程，带你轻松玩转视频转场！ p29 亮度键的多种转场用法",
+            "timestamp": 1736337231,
+            "view_count": 212393,
+            "like_count": 5914,
+            "comment_count": 510
+          }
+        }
+      ]
+    },
+    {
+      "schema": "supercut-effect-knowledge-v3",
+      "effect_id": "shockwave_impact",
+      "name": "湍流冲击波",
+      "principle": "exposure_luma",
+      "techniques": [
+        "radial_distortion",
+        "impact_flash",
+        "ring_wave"
+      ],
+      "usage_profile": {
+        "content_types": [
+          "game",
+          "anime"
+        ],
+        "trigger_events": [
+          "kill_confirm",
+          "skill_cast",
+          "explosion",
+          "impact"
+        ],
+        "transition_roles": [
+          "impact_accent"
+        ],
+        "source_requirements": [
+          "冲击中心明确",
+          "画面允许短暂扭曲"
+        ],
+        "recommended_duration_seconds": [
+          0.18,
+          0.65
+        ],
+        "intensity": "strong",
+        "avoid_when": [
+          "慢节奏对白",
+          "主体脸部需要保持自然"
+        ],
+        "selection_prompt": "当素材属于游戏或动漫并出现击杀、技能、爆炸或重击时，若冲击中心明确，优先使用湍流冲击波；效果持续0.18至0.65秒；避免用于慢对白或脸部需要保持自然的镜头。"
+      },
+      "implementation": {
+        "status": "catalog_only",
+        "template_path": null,
+        "renderer_path": null,
+        "runtime_status": "generic",
+        "runtime_renderer_path": "effect_runtime.py",
+        "paid_plugin_required": false
+      },
+      "references": [
+        {
+          "platform": "bilibili",
+          "bvid": "BV1gnYszQEwN",
+          "part": 15,
+          "url": "https://www.bilibili.com/video/BV1gnYszQEwN/?p=15",
+          "chapter_title": "AE湍流冲击波",
+          "verification": {
+            "status": "frame_reviewed",
+            "verified_segment": {
+              "start": 0.0,
+              "end": 35.0
+            },
+            "note": "章节明确演示湍流冲击波。",
+            "reviewed_sample_times": [
+              0.0,
+              3.0,
+              8.0,
+              8.75,
+              15.0,
+              15.5,
+              22.0,
+              24.9
+            ],
+            "download_sha256": "2255B63149593AAF01F5521911CFE8ADD9EC2907C89363E93983F4F1BF777ADD",
+            "media": {
+              "width": 640,
+              "height": 360,
+              "fps": 30.0,
+              "frames": 750,
+              "duration": 25.0,
+              "bytes": 2207116
+            },
+            "temporary_media_deleted": true
+          },
+          "research_snapshot": {
+            "title": "【AE+PR游戏剪辑教程】教你13个相见恨晚的超燃剪辑效果，超简单的游戏剪辑入门教程，学完剪出自己高然战斗时刻！（附带素材、插件包） p15 【超燃游戏剪辑】13.AE湍流冲击波",
+            "timestamp": 1755506329,
+            "view_count": 1896,
+            "like_count": 48,
+            "comment_count": 7
+          }
+        }
+      ]
+    },
+    {
+      "schema": "supercut-effect-knowledge-v3",
+      "effect_id": "mask_beat",
+      "name": "蒙版卡点",
+      "principle": "rhythm_layout",
+      "techniques": [
+        "multi_mask",
+        "still_insert",
+        "beat_sync"
+      ],
+      "usage_profile": {
+        "content_types": [
+          "game",
+          "anime",
+          "live_stream"
+        ],
+        "trigger_events": [
+          "kill_chain",
+          "beat",
+          "highlight",
+          "host_reaction"
+        ],
+        "transition_roles": [
+          "beat_transition",
+          "montage_bridge"
+        ],
+        "source_requirements": [
+          "至少5个独立高光画面",
+          "音乐卡点清晰"
+        ],
+        "recommended_duration_seconds": [
+          2.5,
+          6.0
+        ],
+        "intensity": "strong",
+        "avoid_when": [
+          "单一对白镜头",
+          "画面主体位置变化过大"
+        ],
+        "selection_prompt": "当素材属于游戏、动漫或实况直播并出现连续击杀、节拍、高光或主播反应时，若至少有5个独立画面且卡点清晰，优先使用蒙版卡点；效果持续2.5至6秒；避免用于单一对白或主体位置剧烈漂移。"
+      },
+      "implementation": {
+        "status": "implemented",
+        "template_path": "templates/mask_beat/template.json",
+        "renderer_path": "tools/render_mask_beat_preview.py",
+        "runtime_status": "specialized",
+        "runtime_renderer_path": "effect_runtime.py",
+        "paid_plugin_required": false
+      },
+      "references": [
+        {
+          "platform": "bilibili",
+          "bvid": "BV1JqraYAELK",
+          "part": 30,
+          "url": "https://www.bilibili.com/video/BV1JqraYAELK/?p=30",
+          "chapter_title": "分屏卡点转场",
+          "verification": {
+            "status": "frame_reviewed",
+            "verified_segment": {
+              "start": 0.0,
+              "end": 35.0
+            },
+            "note": "分屏卡点章节展示多画面按节拍揭示。",
+            "reviewed_sample_times": [
+              0.0,
+              3.0,
+              7.0,
+              8.0,
+              12.4,
+              15.0,
+              17.6,
+              19.9
+            ],
+            "download_sha256": "A40D755BEB2524D0A24E3B6B67BE5A17A754C453C159FF1776B7282A29F60392",
+            "media": {
+              "width": 640,
+              "height": 360,
+              "fps": 30.0,
+              "frames": 600,
+              "duration": 20.0,
+              "bytes": 1563792
+            },
+            "temporary_media_deleted": true
+          },
+          "research_snapshot": {
+            "title": "【全100集】这才叫PR转场！100个超丝滑转场案例教程，带你轻松玩转视频转场！ p30 分屏卡点转场",
+            "timestamp": 1736337231,
+            "view_count": 212393,
+            "like_count": 5914,
+            "comment_count": 510
+          }
+        }
+      ]
+    },
+    {
+      "schema": "supercut-effect-knowledge-v3",
+      "effect_id": "dynamic_collage",
+      "name": "动态拼贴转场",
+      "principle": "rhythm_layout",
+      "techniques": [
+        "tile_collage",
+        "layer_motion",
+        "focus_handoff"
+      ],
+      "usage_profile": {
+        "content_types": [
+          "game",
+          "anime",
+          "live_stream"
+        ],
+        "trigger_events": [
+          "highlight",
+          "character_group",
+          "camera_change"
+        ],
+        "transition_roles": [
+          "montage_bridge",
+          "scene_transition"
+        ],
+        "source_requirements": [
+          "至少4条视觉差异明显的素材",
+          "主体可在格内辨认"
+        ],
+        "recommended_duration_seconds": [
+          1.2,
+          4.0
+        ],
+        "intensity": "medium",
+        "avoid_when": [
+          "仅有单条素材",
+          "字幕必须全程完整显示"
+        ],
+        "selection_prompt": "当素材属于游戏、动漫或实况直播并出现高光汇总、角色群像或机位变化时，若至少有4条差异明显的素材，优先使用动态拼贴转场；效果持续1.2至4秒；避免用于单条素材或必须全程显示字幕的段落。"
+      },
+      "implementation": {
+        "status": "catalog_only",
+        "template_path": null,
+        "renderer_path": null,
+        "runtime_status": "generic",
+        "runtime_renderer_path": "effect_runtime.py",
+        "paid_plugin_required": false
+      },
+      "references": [
+        {
+          "platform": "bilibili",
+          "bvid": "BV1gnYszQEwN",
+          "part": 4,
+          "url": "https://www.bilibili.com/video/BV1gnYszQEwN/?p=4",
+          "chapter_title": "AE动态拼贴转场",
+          "verification": {
+            "status": "frame_reviewed",
+            "verified_segment": {
+              "start": 0.0,
+              "end": 35.0
+            },
+            "note": "章节明确演示多层动态拼贴。",
+            "reviewed_sample_times": [
+              0.0,
+              3.0,
+              8.0,
+              15.0,
+              25.0,
+              158.935,
+              281.542,
+              399.608
+            ],
+            "download_sha256": "2E189BEF5673149AE2795580AB8D1E5D8D2A5BCEDBC99B3FE2A062BCE3991766",
+            "media": {
+              "width": 640,
+              "height": 360,
+              "fps": 30.0,
+              "frames": 13623,
+              "duration": 454.1,
+              "bytes": 7629333
+            },
+            "temporary_media_deleted": true
+          },
+          "research_snapshot": {
+            "title": "【AE+PR游戏剪辑教程】教你13个相见恨晚的超燃剪辑效果，超简单的游戏剪辑入门教程，学完剪出自己高然战斗时刻！（附带素材、插件包） p04 【超燃游戏剪辑】2.AE动态拼贴转场",
+            "timestamp": 1755506329,
+            "view_count": 1896,
+            "like_count": 48,
+            "comment_count": 7
+          }
+        }
+      ]
+    },
+    {
+      "schema": "supercut-effect-knowledge-v3",
+      "effect_id": "split_screen_beat",
+      "name": "分屏卡点",
+      "principle": "rhythm_layout",
+      "techniques": [
+        "split_screen",
+        "beat_sync",
+        "sequential_reveal"
+      ],
+      "usage_profile": {
+        "content_types": [
+          "game",
+          "anime",
+          "short_drama",
+          "live_stream"
+        ],
+        "trigger_events": [
+          "beat",
+          "parallel_action",
+          "camera_change",
+          "host_reaction"
+        ],
+        "transition_roles": [
+          "beat_transition",
+          "parallel_story"
+        ],
+        "source_requirements": [
+          "2至6条同步或对比素材",
+          "画面比例允许裁切"
+        ],
+        "recommended_duration_seconds": [
+          0.8,
+          3.5
+        ],
+        "intensity": "medium",
+        "avoid_when": [
+          "主体靠近裁切边缘",
+          "单镜头无对比关系"
+        ],
+        "selection_prompt": "当素材属于游戏、动漫、短剧或实况直播并出现节拍、平行动作、机位切换或主播反应时，若有2至6条同步或对比素材，优先使用分屏卡点；效果持续0.8至3.5秒；避免用于主体贴边或没有对比关系的单镜头。"
+      },
+      "implementation": {
+        "status": "catalog_only",
+        "template_path": null,
+        "renderer_path": null,
+        "runtime_status": "generic",
+        "runtime_renderer_path": "effect_runtime.py",
+        "paid_plugin_required": false
+      },
+      "references": [
+        {
+          "platform": "bilibili",
+          "bvid": "BV1JqraYAELK",
+          "part": 30,
+          "url": "https://www.bilibili.com/video/BV1JqraYAELK/?p=30",
+          "chapter_title": "分屏卡点转场",
+          "verification": {
+            "status": "frame_reviewed",
+            "verified_segment": {
+              "start": 0.0,
+              "end": 35.0
+            },
+            "note": "章节明确演示分屏与节拍顺序。",
+            "reviewed_sample_times": [
+              0.0,
+              3.0,
+              7.0,
+              8.0,
+              12.4,
+              15.0,
+              17.6,
+              19.9
+            ],
+            "download_sha256": "A40D755BEB2524D0A24E3B6B67BE5A17A754C453C159FF1776B7282A29F60392",
+            "media": {
+              "width": 640,
+              "height": 360,
+              "fps": 30.0,
+              "frames": 600,
+              "duration": 20.0,
+              "bytes": 1563792
+            },
+            "temporary_media_deleted": true
+          },
+          "research_snapshot": {
+            "title": "【全100集】这才叫PR转场！100个超丝滑转场案例教程，带你轻松玩转视频转场！ p30 分屏卡点转场",
+            "timestamp": 1736337231,
+            "view_count": 212393,
+            "like_count": 5914,
+            "comment_count": 510
+          }
+        }
+      ]
+    },
+    {
+      "schema": "supercut-effect-knowledge-v3",
+      "effect_id": "nine_grid_opening",
+      "name": "九宫格开场",
+      "principle": "rhythm_layout",
+      "techniques": [
+        "nine_grid",
+        "sequential_assembly",
+        "focus_takeover"
+      ],
+      "usage_profile": {
+        "content_types": [
+          "game",
+          "short_drama",
+          "live_stream"
+        ],
+        "trigger_events": [
+          "opening",
+          "highlight",
+          "camera_change",
+          "cast_intro"
+        ],
+        "transition_roles": [
+          "opening",
+          "montage_bridge"
+        ],
+        "source_requirements": [
+          "至少5条动态素材",
+          "中心主素材可持续播放"
+        ],
+        "recommended_duration_seconds": [
+          3.0,
+          6.0
+        ],
+        "intensity": "medium",
+        "avoid_when": [
+          "只有一条素材",
+          "竖屏人物被严重裁切"
+        ],
+        "selection_prompt": "当素材属于游戏、短剧或实况直播并用于开场、亮点汇总、机位变化或人物介绍时，若至少有5条动态素材，优先使用九宫格开场；效果持续3至6秒；避免用于单素材或人物严重裁切。"
+      },
+      "implementation": {
+        "status": "implemented",
+        "template_path": "templates/nine_grid_opening/template.json",
+        "renderer_path": "tools/render_nine_grid_opening.py",
+        "runtime_status": "specialized",
+        "runtime_renderer_path": "effect_runtime.py",
+        "paid_plugin_required": false
+      },
+      "references": [
+        {
+          "platform": "bilibili",
+          "bvid": "BV1SqabzaEDL",
+          "part": 46,
+          "url": "https://www.bilibili.com/video/BV1SqabzaEDL/?p=46",
+          "chapter_title": "多机位剪辑-爱豆换装混剪",
+          "verification": {
+            "status": "frame_reviewed",
+            "verified_segment": {
+              "start": 0.0,
+              "end": 35.0
+            },
+            "note": "多机位章节提供同步与主视角接管思路。",
+            "reviewed_sample_times": [
+              0.0,
+              3.0,
+              8.0,
+              8.75,
+              15.0,
+              15.5,
+              22.0,
+              24.9
+            ],
+            "download_sha256": "03AE3B8A6FA3C13294A450CB35D22C5A8A9079A0AB4C64F73F3F78C4CF85851B",
+            "media": {
+              "width": 640,
+              "height": 360,
+              "fps": 30.0,
+              "frames": 750,
+              "duration": 25.0,
+              "bytes": 101993
+            },
+            "temporary_media_deleted": true
+          },
+          "research_snapshot": {
+            "title": "【剪辑教程】100集（全）从零开始学AE/PR软件基础教程（2025新手入门实用版）2025零基础入门教程！！！ p46 【进阶篇】11.多机位剪辑-爱豆换装混剪",
+            "timestamp": 1757065418,
+            "view_count": 3332,
+            "like_count": 249,
+            "comment_count": 11
+          }
+        }
+      ]
+    },
+    {
+      "schema": "supercut-effect-knowledge-v3",
+      "effect_id": "multiview_sync",
+      "name": "多机位同步接切",
+      "principle": "rhythm_layout",
+      "techniques": [
+        "audio_sync",
+        "angle_switch",
+        "match_action"
+      ],
+      "usage_profile": {
+        "content_types": [
+          "live_stream",
+          "short_drama",
+          "game"
+        ],
+        "trigger_events": [
+          "camera_change",
+          "dialogue_turn",
+          "highlight",
+          "host_reaction"
+        ],
+        "transition_roles": [
+          "camera_transition",
+          "continuity_edit"
+        ],
+        "source_requirements": [
+          "多机位时间同步",
+          "动作或声音有共同锚点"
+        ],
+        "recommended_duration_seconds": [
+          0.0,
+          0.35
+        ],
+        "intensity": "subtle",
+        "avoid_when": [
+          "不同步素材",
+          "机位间色彩差异过大"
+        ],
+        "selection_prompt": "当素材属于实况直播、短剧或游戏并出现机位变化、对白轮次、高光或主播反应时，若多机位时间同步且有共同声音或动作锚点，优先使用多机位同步接切；效果持续0至0.35秒；避免用于不同步或色彩差异过大的机位。"
+      },
+      "implementation": {
+        "status": "catalog_only",
+        "template_path": null,
+        "renderer_path": null,
+        "runtime_status": "generic",
+        "runtime_renderer_path": "effect_runtime.py",
+        "paid_plugin_required": false
+      },
+      "references": [
+        {
+          "platform": "bilibili",
+          "bvid": "BV1SqabzaEDL",
+          "part": 46,
+          "url": "https://www.bilibili.com/video/BV1SqabzaEDL/?p=46",
+          "chapter_title": "多机位剪辑-爱豆换装混剪",
+          "verification": {
+            "status": "frame_reviewed",
+            "verified_segment": {
+              "start": 0.0,
+              "end": 35.0
+            },
+            "note": "章节明确介绍多机位同步与换装混剪。",
+            "reviewed_sample_times": [
+              0.0,
+              3.0,
+              8.0,
+              8.75,
+              15.0,
+              15.5,
+              22.0,
+              24.9
+            ],
+            "download_sha256": "03AE3B8A6FA3C13294A450CB35D22C5A8A9079A0AB4C64F73F3F78C4CF85851B",
+            "media": {
+              "width": 640,
+              "height": 360,
+              "fps": 30.0,
+              "frames": 750,
+              "duration": 25.0,
+              "bytes": 101993
+            },
+            "temporary_media_deleted": true
+          },
+          "research_snapshot": {
+            "title": "【剪辑教程】100集（全）从零开始学AE/PR软件基础教程（2025新手入门实用版）2025零基础入门教程！！！ p46 【进阶篇】11.多机位剪辑-爱豆换装混剪",
+            "timestamp": 1757065418,
+            "view_count": 3332,
+            "like_count": 249,
+            "comment_count": 11
+          }
+        }
+      ]
+    },
+    {
+      "schema": "supercut-effect-knowledge-v3",
+      "effect_id": "page_fold",
+      "name": "折叠翻页",
+      "principle": "tactile_reveal",
+      "techniques": [
+        "perspective_fold",
+        "hinge_shadow",
+        "page_handoff"
+      ],
+      "usage_profile": {
+        "content_types": [
+          "anime",
+          "short_drama",
+          "live_stream"
+        ],
+        "trigger_events": [
+          "scene_change",
+          "chapter_change",
+          "host_reaction"
+        ],
+        "transition_roles": [
+          "scene_transition",
+          "chapter_transition"
+        ],
+        "source_requirements": [
+          "前后镜头构图稳定",
+          "折页边缘不遮挡关键字幕"
+        ],
+        "recommended_duration_seconds": [
+          0.45,
+          1.1
+        ],
+        "intensity": "medium",
+        "avoid_when": [
+          "高速枪战",
+          "画面边缘有重要UI"
+        ],
+        "selection_prompt": "当素材属于动漫、短剧或实况直播并出现场景切换、章节变化或主播反应时，若前后构图稳定且边缘无关键信息，优先使用折叠翻页；效果持续0.45至1.1秒；避免用于高速枪战或边缘重要UI。"
+      },
+      "implementation": {
+        "status": "implemented",
+        "template_path": "templates/page_fold/template.json",
+        "renderer_path": "tools/render_research_effect.py",
+        "runtime_status": "specialized",
+        "runtime_renderer_path": "effect_runtime.py",
+        "paid_plugin_required": false
+      },
+      "references": [
+        {
+          "platform": "bilibili",
+          "bvid": "BV1SqabzaEDL",
+          "part": 35,
+          "url": "https://www.bilibili.com/video/BV1SqabzaEDL/?p=35",
+          "chapter_title": "【PR教程】9.折叠翻页效果",
+          "verification": {
+            "status": "frame_reviewed",
+            "verified_segment": {
+              "start": 0.0,
+              "end": 35.0
+            },
+            "note": "开头展示折页交接，后续用位置、缩放与阴影关键帧拆解。",
+            "reviewed_sample_times": [
+              0.0,
+              3.0,
+              8.0,
+              15.0,
+              15.75,
+              25.0,
+              27.9,
+              39.6
+            ],
+            "download_sha256": "4C89B66703E6EBF6C6B9BE789877B38EC78CDA527E4B5300F7E22D5BBCE115E5",
+            "media": {
+              "width": 1280,
+              "height": 720,
+              "fps": 30.0,
+              "frames": 1350,
+              "duration": 45.0,
+              "bytes": 2916972
+            },
+            "temporary_media_deleted": true
+          },
+          "research_snapshot": {
+            "title": "【剪辑教程】100集（全）从零开始学AE/PR软件基础教程（2025新手入门实用版）2025零基础入门教程！！！ p35 【PR教程】9.折叠翻页效果",
+            "timestamp": 1757065418,
+            "view_count": 3339,
+            "like_count": 249,
+            "comment_count": 11
+          }
+        }
+      ]
+    },
+    {
+      "schema": "supercut-effect-knowledge-v3",
+      "effect_id": "paper_tear",
+      "name": "撕纸边缘揭示",
+      "principle": "tactile_reveal",
+      "techniques": [
+        "torn_edge_matte",
+        "paper_texture",
+        "edge_shadow"
+      ],
+      "usage_profile": {
+        "content_types": [
+          "anime",
+          "short_drama",
+          "live_stream"
+        ],
+        "trigger_events": [
+          "scene_change",
+          "emotion_turn",
+          "chapter_change"
+        ],
+        "transition_roles": [
+          "scene_transition",
+          "dramatic_break"
+        ],
+        "source_requirements": [
+          "允许纸纹覆盖画面",
+          "主体避开撕裂路径"
+        ],
+        "recommended_duration_seconds": [
+          0.35,
+          0.9
+        ],
+        "intensity": "medium",
+        "avoid_when": [
+          "纯净产品展示",
+          "主体脸部贴近边缘"
+        ],
+        "selection_prompt": "当素材属于动漫、短剧或实况直播并出现场景切换、情绪反转或章节变化时，若主体避开撕裂路径且允许纸张质感，优先使用撕纸边缘揭示；效果持续0.35至0.9秒；避免用于纯净产品展示或脸部贴边镜头。"
+      },
+      "implementation": {
+        "status": "catalog_only",
+        "template_path": null,
+        "renderer_path": null,
+        "runtime_status": "generic",
+        "runtime_renderer_path": "effect_runtime.py",
+        "paid_plugin_required": false
+      },
+      "references": [
+        {
+          "platform": "bilibili",
+          "bvid": "BV1JqraYAELK",
+          "part": 32,
+          "url": "https://www.bilibili.com/video/BV1JqraYAELK/?p=32",
+          "chapter_title": "撕纸转场",
+          "verification": {
+            "status": "frame_reviewed",
+            "verified_segment": {
+              "start": 0.0,
+              "end": 35.0
+            },
+            "note": "章节先展示撕纸成片，再拆解撕纸素材、轨道和遮罩。",
+            "reviewed_sample_times": [
+              0.0,
+              3.0,
+              8.0,
+              15.0,
+              15.797,
+              25.0,
+              27.982,
+              39.717
+            ],
+            "download_sha256": "90B06F9430DDBFE545AF4817E838AF4B49259B52B97286259FD18B4FACB5F6D3",
+            "media": {
+              "width": 1280,
+              "height": 720,
+              "fps": 30.0,
+              "frames": 1354,
+              "duration": 45.133,
+              "bytes": 2916303
+            },
+            "temporary_media_deleted": true
+          },
+          "research_snapshot": {
+            "title": "【全100集】这才叫PR转场！100个超丝滑转场案例教程，带你轻松玩转视频转场！ p32 撕纸转场",
+            "timestamp": 1736337231,
+            "view_count": 212584,
+            "like_count": 5919,
+            "comment_count": 512
+          }
+        }
+      ]
+    },
+    {
+      "schema": "supercut-effect-knowledge-v3",
+      "effect_id": "ink_wash_reveal",
+      "name": "水墨晕染揭示",
+      "principle": "organic_matte",
+      "techniques": [
+        "ink_matte",
+        "track_matte",
+        "feathered_growth"
+      ],
+      "usage_profile": {
+        "content_types": [
+          "anime",
+          "short_drama"
+        ],
+        "trigger_events": [
+          "character_reveal",
+          "memory",
+          "scene_change",
+          "emotion_turn"
+        ],
+        "transition_roles": [
+          "character_reveal",
+          "memory_transition"
+        ],
+        "source_requirements": [
+          "画面留有可扩散区域",
+          "水墨颜色与主体有对比"
+        ],
+        "recommended_duration_seconds": [
+          0.6,
+          1.6
+        ],
+        "intensity": "medium",
+        "avoid_when": [
+          "电竞连续击杀",
+          "密集小字幕"
+        ],
+        "selection_prompt": "当素材属于动漫或短剧并出现人物揭示、回忆、场景切换或情绪转折时，若画面有可扩散区域且主体对比清楚，优先使用水墨晕染揭示；效果持续0.6至1.6秒；避免用于电竞连续击杀或密集小字幕。"
+      },
+      "implementation": {
+        "status": "implemented",
+        "template_path": "templates/ink_wash_reveal/template.json",
+        "renderer_path": "tools/render_research_effect.py",
+        "runtime_status": "specialized",
+        "runtime_renderer_path": "effect_runtime.py",
+        "paid_plugin_required": false
+      },
+      "references": [
+        {
+          "platform": "bilibili",
+          "bvid": "BV1JqraYAELK",
+          "part": 14,
+          "url": "https://www.bilibili.com/video/BV1JqraYAELK/?p=14",
+          "chapter_title": "水墨转场",
+          "verification": {
+            "status": "frame_reviewed",
+            "verified_segment": {
+              "start": 0.0,
+              "end": 35.0
+            },
+            "note": "演示前后效果并以水墨素材作为轨道遮罩推进显隐。",
+            "reviewed_sample_times": [
+              0.0,
+              3.0,
+              8.0,
+              15.0,
+              15.797,
+              25.0,
+              27.982,
+              39.717
+            ],
+            "download_sha256": "47BD4245A3AA89B4F30192550C333FCA24207308E7F169A9A679CAEC83E3E864",
+            "media": {
+              "width": 1280,
+              "height": 688,
+              "fps": 30.0,
+              "frames": 1354,
+              "duration": 45.133,
+              "bytes": 2746869
+            },
+            "temporary_media_deleted": true
+          },
+          "research_snapshot": {
+            "title": "【全100集】这才叫PR转场！100个超丝滑转场案例教程，带你轻松玩转视频转场！ p14 水墨转场",
+            "timestamp": 1736337231,
+            "view_count": 212584,
+            "like_count": 5919,
+            "comment_count": 512
+          }
+        }
+      ]
+    },
+    {
+      "schema": "supercut-effect-knowledge-v3",
+      "effect_id": "film_burn",
+      "name": "胶片燃烧吞噬",
+      "principle": "tactile_reveal",
+      "techniques": [
+        "burn_matte",
+        "hot_edge",
+        "film_grain"
+      ],
+      "usage_profile": {
+        "content_types": [
+          "anime",
+          "short_drama",
+          "game"
+        ],
+        "trigger_events": [
+          "death",
+          "emotion_turn",
+          "scene_change",
+          "flashback"
+        ],
+        "transition_roles": [
+          "dramatic_break",
+          "memory_transition"
+        ],
+        "source_requirements": [
+          "存在可承接高亮边缘的暗部",
+          "允许短暂橙白高光"
+        ],
+        "recommended_duration_seconds": [
+          0.35,
+          1.0
+        ],
+        "intensity": "strong",
+        "avoid_when": [
+          "温柔长对白",
+          "全白画面"
+        ],
+        "selection_prompt": "当素材属于动漫、短剧或游戏并出现死亡、情绪反转、场景切换或闪回时，若画面有暗部且允许橙白高亮，优先使用胶片燃烧吞噬；效果持续0.35至1秒；避免用于温柔长对白或全白画面。"
+      },
+      "implementation": {
+        "status": "catalog_only",
+        "template_path": null,
+        "renderer_path": null,
+        "runtime_status": "generic",
+        "runtime_renderer_path": "effect_runtime.py",
+        "paid_plugin_required": false
+      },
+      "references": [
+        {
+          "platform": "bilibili",
+          "bvid": "BV1JqraYAELK",
+          "part": 33,
+          "url": "https://www.bilibili.com/video/BV1JqraYAELK/?p=33",
+          "chapter_title": "燃烧转场",
+          "verification": {
+            "status": "frame_reviewed",
+            "verified_segment": {
+              "start": 0.0,
+              "end": 35.0
+            },
+            "note": "章节展示燃烧边缘向内吞噬，并拆解混合模式和遮罩。",
+            "reviewed_sample_times": [
+              0.0,
+              3.0,
+              8.0,
+              15.0,
+              15.797,
+              25.0,
+              27.982,
+              39.717
+            ],
+            "download_sha256": "9B477F9C1749E6EF9BF1B6097F6151FF5777AFFCDA2B08E9C4101D4B1D58BE64",
+            "media": {
+              "width": 1280,
+              "height": 720,
+              "fps": 30.0,
+              "frames": 1354,
+              "duration": 45.133,
+              "bytes": 6531869
+            },
+            "temporary_media_deleted": true
+          },
+          "research_snapshot": {
+            "title": "【全100集】这才叫PR转场！100个超丝滑转场案例教程，带你轻松玩转视频转场！ p33 燃烧转场",
+            "timestamp": 1736337231,
+            "view_count": 212584,
+            "like_count": 5919,
+            "comment_count": 512
+          }
+        }
+      ]
+    },
+    {
+      "schema": "supercut-effect-knowledge-v3",
+      "effect_id": "erosion_dissolve",
+      "name": "颗粒侵蚀溶解",
+      "principle": "organic_matte",
+      "techniques": [
+        "noise_matte",
+        "threshold_erode",
+        "particle_edge"
+      ],
+      "usage_profile": {
+        "content_types": [
+          "game",
+          "anime",
+          "short_drama"
+        ],
+        "trigger_events": [
+          "death",
+          "teleport",
+          "disappear",
+          "scene_change"
+        ],
+        "transition_roles": [
+          "disappearance",
+          "scene_transition"
+        ],
+        "source_requirements": [
+          "主体轮廓清晰",
+          "背景与主体有亮度差"
+        ],
+        "recommended_duration_seconds": [
+          0.4,
+          1.2
+        ],
+        "intensity": "strong",
+        "avoid_when": [
+          "多人重叠",
+          "口型同步对白"
+        ],
+        "selection_prompt": "当素材属于游戏、动漫或短剧并出现死亡、传送、消失或场景切换时，若主体轮廓清晰且与背景有亮度差，优先使用颗粒侵蚀溶解；效果持续0.4至1.2秒；避免用于多人重叠或口型同步对白。"
+      },
+      "implementation": {
+        "status": "catalog_only",
+        "template_path": null,
+        "renderer_path": null,
+        "runtime_status": "generic",
+        "runtime_renderer_path": "effect_runtime.py",
+        "paid_plugin_required": false
+      },
+      "references": [
+        {
+          "platform": "bilibili",
+          "bvid": "BV1JqraYAELK",
+          "part": 31,
+          "url": "https://www.bilibili.com/video/BV1JqraYAELK/?p=31",
+          "chapter_title": "侵蚀转场",
+          "verification": {
+            "status": "frame_reviewed",
+            "verified_segment": {
+              "start": 0.0,
+              "end": 35.0
+            },
+            "note": "章节展示噪波阈值逐步侵蚀画面并揭示下一镜头。",
+            "reviewed_sample_times": [
+              0.0,
+              3.0,
+              8.0,
+              15.0,
+              15.785,
+              25.0,
+              27.962,
+              39.688
+            ],
+            "download_sha256": "FE2B73736779784747EA320B84935CA334B4F89E3E8D3596B5C7A92569E61CB6",
+            "media": {
+              "width": 1280,
+              "height": 720,
+              "fps": 30.0,
+              "frames": 1353,
+              "duration": 45.1,
+              "bytes": 4504646
+            },
+            "temporary_media_deleted": true
+          },
+          "research_snapshot": {
+            "title": "【全100集】这才叫PR转场！100个超丝滑转场案例教程，带你轻松玩转视频转场！ p31 侵蚀转场",
+            "timestamp": 1736337231,
+            "view_count": 212584,
+            "like_count": 5919,
+            "comment_count": 512
+          }
+        }
+      ]
+    },
+    {
+      "schema": "supercut-effect-knowledge-v3",
+      "effect_id": "kaleidoscope_cut",
+      "name": "万花筒切割",
+      "principle": "optical_geometry",
+      "techniques": [
+        "mirrored_sectors",
+        "rotation",
+        "radial_zoom"
+      ],
+      "usage_profile": {
+        "content_types": [
+          "game",
+          "anime",
+          "live_stream"
+        ],
+        "trigger_events": [
+          "skill_cast",
+          "beat",
+          "scene_change",
+          "host_reaction"
+        ],
+        "transition_roles": [
+          "impact_transition",
+          "beat_transition"
+        ],
+        "source_requirements": [
+          "画面中心有明确主体",
+          "允许短暂几何重复"
+        ],
+        "recommended_duration_seconds": [
+          0.25,
+          0.75
+        ],
+        "intensity": "strong",
+        "avoid_when": [
+          "写实严肃对白",
+          "主体贴边"
+        ],
+        "selection_prompt": "当素材属于游戏、动漫或实况直播并出现技能释放、卡点、场景切换或主播反应时，若主体居中且允许几何重复，优先使用万花筒切割；效果持续0.25至0.75秒；避免用于写实严肃对白或主体贴边镜头。"
+      },
+      "implementation": {
+        "status": "implemented",
+        "template_path": "templates/kaleidoscope_cut/template.json",
+        "renderer_path": "tools/render_research_effect.py",
+        "runtime_status": "specialized",
+        "runtime_renderer_path": "effect_runtime.py",
+        "paid_plugin_required": false
+      },
+      "references": [
+        {
+          "platform": "bilibili",
+          "bvid": "BV1d8o1YuEqR",
+          "part": 1,
+          "url": "https://www.bilibili.com/video/BV1d8o1YuEqR/?p=1",
+          "chapter_title": "【零基础实训篇】万花筒切割转场教程",
+          "verification": {
+            "status": "frame_reviewed",
+            "verified_segment": {
+              "start": 0.0,
+              "end": 35.0
+            },
+            "note": "教程先给出万花筒切割效果，再通过镜像、旋转和关键帧复刻。",
+            "reviewed_sample_times": [
+              0.0,
+              3.0,
+              8.0,
+              15.0,
+              15.797,
+              25.0,
+              27.982,
+              39.717
+            ],
+            "download_sha256": "8D3F7E56BA1AC53C3E5D5A0CA5836A72661B25A3D82751E74215F96D84C93FA1",
+            "media": {
+              "width": 1280,
+              "height": 720,
+              "fps": 30.0,
+              "frames": 1354,
+              "duration": 45.133,
+              "bytes": 2959771
+            },
+            "temporary_media_deleted": true
+          },
+          "research_snapshot": {
+            "title": "【PR教程】PR零基础效果教程，配套素材练习免费提供，手把手教你用PR！！！B站最细致教程篇~ p01 【零基础实训篇】万花筒切割转场教程",
+            "timestamp": 1742801561,
+            "view_count": 30540,
+            "like_count": 914,
+            "comment_count": 26
+          }
+        }
+      ]
+    },
+    {
+      "schema": "supercut-effect-knowledge-v3",
+      "effect_id": "dolly_zoom",
+      "name": "希区柯克变焦",
+      "principle": "perspective_motion",
+      "techniques": [
+        "subject_lock",
+        "inverse_scale",
+        "background_expansion"
+      ],
+      "usage_profile": {
+        "content_types": [
+          "short_drama",
+          "anime",
+          "game"
+        ],
+        "trigger_events": [
+          "emotion_turn",
+          "reveal",
+          "boss_appear",
+          "danger"
+        ],
+        "transition_roles": [
+          "dramatic_emphasis",
+          "character_reveal"
+        ],
+        "source_requirements": [
+          "主体位置稳定",
+          "背景有明显纵深线条"
+        ],
+        "recommended_duration_seconds": [
+          0.8,
+          2.2
+        ],
+        "intensity": "strong",
+        "avoid_when": [
+          "横向高速移动",
+          "背景完全平坦"
+        ],
+        "selection_prompt": "当素材属于短剧、动漫或游戏并出现情绪反转、真相揭示、Boss登场或危险逼近时，若主体位置稳定且背景有纵深，优先使用希区柯克变焦；效果持续0.8至2.2秒；避免用于横向高速移动或平坦背景。"
+      },
+      "implementation": {
+        "status": "implemented",
+        "template_path": "templates/dolly_zoom/template.json",
+        "renderer_path": "tools/render_research_effect.py",
+        "runtime_status": "specialized",
+        "runtime_renderer_path": "effect_runtime.py",
+        "paid_plugin_required": false
+      },
+      "references": [
+        {
+          "platform": "bilibili",
+          "bvid": "BV1DF411p7Ao",
+          "part": 1,
+          "url": "https://www.bilibili.com/video/BV1DF411p7Ao/?p=1",
+          "chapter_title": "PR案例教程-希区柯克变焦",
+          "verification": {
+            "status": "frame_reviewed",
+            "verified_segment": {
+              "start": 0.0,
+              "end": 35.0
+            },
+            "note": "短教程完整展示主体近似锁定、背景透视变化及缩放关键帧。",
+            "reviewed_sample_times": [
+              0.0,
+              3.0,
+              7.42,
+              8.0,
+              13.144,
+              15.0,
+              18.656,
+              21.1
+            ],
+            "download_sha256": "3A1FDB256E2DFCF2AA94075858BD74BA9D3DC99015B881A7F5A99DA256B83C45",
+            "media": {
+              "width": 1280,
+              "height": 720,
+              "fps": 30.0,
+              "frames": 636,
+              "duration": 21.2,
+              "bytes": 4952411
+            },
+            "temporary_media_deleted": true
+          },
+          "research_snapshot": {
+            "title": "【PR教程】如何让运镜更高级？一分钟教你希区柯克变焦!",
+            "timestamp": 1644056418,
+            "view_count": 8867,
+            "like_count": 153,
+            "comment_count": 3
+          }
+        }
+      ]
+    },
+    {
+      "schema": "supercut-effect-knowledge-v3",
+      "effect_id": "object_occlusion_wipe",
+      "name": "遮挡物无缝转场",
+      "principle": "editorial_masking",
+      "techniques": [
+        "object_matte",
+        "tracked_mask",
+        "direction_match"
+      ],
+      "usage_profile": {
+        "content_types": [
+          "game",
+          "short_drama",
+          "live_stream"
+        ],
+        "trigger_events": [
+          "camera_pan",
+          "scene_change",
+          "camera_change",
+          "character_cross"
+        ],
+        "transition_roles": [
+          "continuity_transition",
+          "scene_transition"
+        ],
+        "source_requirements": [
+          "有物体完整掠过画面",
+          "前后运动方向一致"
+        ],
+        "recommended_duration_seconds": [
+          0.2,
+          0.65
+        ],
+        "intensity": "subtle",
+        "avoid_when": [
+          "遮挡物未覆盖切口",
+          "运动方向相反"
+        ],
+        "selection_prompt": "当素材属于游戏、短剧或实况直播并出现甩镜、场景切换、机位变化或人物横穿时，若有遮挡物完整掠过且前后方向一致，优先使用遮挡物无缝转场；效果持续0.2至0.65秒；避免用于遮挡物未覆盖切口或方向相反的镜头。"
+      },
+      "implementation": {
+        "status": "implemented",
+        "template_path": "templates/object_occlusion_wipe/template.json",
+        "renderer_path": "tools/render_research_effect.py",
+        "runtime_status": "specialized",
+        "runtime_renderer_path": "effect_runtime.py",
+        "paid_plugin_required": false
+      },
+      "references": [
+        {
+          "platform": "bilibili",
+          "bvid": "BV1ct411f7kH",
+          "part": 1,
+          "url": "https://www.bilibili.com/video/BV1ct411f7kH/?p=1",
+          "chapter_title": "【PR教程】遮罩转场，让你的vlog视频做到无缝衔接！",
+          "verification": {
+            "status": "frame_reviewed",
+            "verified_segment": {
+              "start": 0.0,
+              "end": 35.0
+            },
+            "note": "教程强调先寻找合适遮挡物，再绘制蒙版并跟踪关键帧。",
+            "reviewed_sample_times": [
+              0.0,
+              3.0,
+              8.0,
+              15.0,
+              25.0,
+              65.758,
+              116.486,
+              165.334
+            ],
+            "download_sha256": "BAC9C153132224F04E0F1E26AB41590BB47EA11819B281C7826C1A9103B3A4CF",
+            "media": {
+              "width": 640,
+              "height": 360,
+              "fps": 25.0,
+              "frames": 4697,
+              "duration": 187.88,
+              "bytes": 4485458
+            },
+            "temporary_media_deleted": true
+          },
+          "research_snapshot": {
+            "title": "【PR教程】遮罩转场，让你的vlog视频做到无缝衔接！",
+            "timestamp": 1539774256,
+            "view_count": 358885,
+            "like_count": 9606,
+            "comment_count": 1022
+          }
+        }
+      ]
+    },
+    {
+      "schema": "supercut-effect-knowledge-v3",
+      "effect_id": "freeze_frame_outline",
+      "name": "人物定格描边",
+      "principle": "graphic_composition",
+      "techniques": [
+        "freeze_frame",
+        "subject_cutout",
+        "outline_stroke"
+      ],
+      "usage_profile": {
+        "content_types": [
+          "game",
+          "anime",
+          "short_drama",
+          "live_stream"
+        ],
+        "trigger_events": [
+          "character_entry",
+          "kill_confirm",
+          "host_reaction",
+          "hero_reveal"
+        ],
+        "transition_roles": [
+          "character_intro",
+          "impact_accent"
+        ],
+        "source_requirements": [
+          "人物轮廓完整",
+          "定格帧清晰无严重拖影"
+        ],
+        "recommended_duration_seconds": [
+          0.45,
+          1.3
+        ],
+        "intensity": "medium",
+        "avoid_when": [
+          "多人遮挡",
+          "低清运动模糊"
+        ],
+        "selection_prompt": "当素材属于游戏、动漫、短剧或实况直播并出现人物入场、击杀、主播反应或英雄揭示时，若人物轮廓完整且定格帧清晰，优先使用人物定格描边；效果持续0.45至1.3秒；避免用于多人遮挡或低清运动模糊。"
+      },
+      "implementation": {
+        "status": "catalog_only",
+        "template_path": null,
+        "renderer_path": null,
+        "runtime_status": "generic",
+        "runtime_renderer_path": "effect_runtime.py",
+        "paid_plugin_required": false
+      },
+      "references": [
+        {
+          "platform": "bilibili",
+          "bvid": "BV1d8o1YuEqR",
+          "part": 30,
+          "url": "https://www.bilibili.com/video/BV1d8o1YuEqR/?p=30",
+          "chapter_title": "【零基础实训篇】人物定格出场",
+          "verification": {
+            "status": "frame_reviewed",
+            "verified_segment": {
+              "start": 0.0,
+              "end": 35.0
+            },
+            "note": "章节展示人物冻结、抠像分层和定格出场节奏。",
+            "reviewed_sample_times": [
+              0.0,
+              3.0,
+              8.0,
+              15.0,
+              15.785,
+              25.0,
+              27.962,
+              39.688
+            ],
+            "download_sha256": "EFC1563ECA28E465658882E2E1A4060494A577499870EBF87668AA072E76EAEC",
+            "media": {
+              "width": 1280,
+              "height": 720,
+              "fps": 30.0,
+              "frames": 1353,
+              "duration": 45.1,
+              "bytes": 2548553
+            },
+            "temporary_media_deleted": true
+          },
+          "research_snapshot": {
+            "title": "【PR教程】PR零基础效果教程，配套素材练习免费提供，手把手教你用PR！！！B站最细致教程篇~ p30 【零基础实训篇】人物定格出场",
+            "timestamp": 1742801561,
+            "view_count": 30540,
+            "like_count": 914,
+            "comment_count": 26
+          }
+        }
+      ]
+    },
+    {
+      "schema": "supercut-effect-knowledge-v3",
+      "effect_id": "manga_panel",
+      "name": "漫画分镜转场",
+      "principle": "graphic_composition",
+      "techniques": [
+        "comic_panels",
+        "ink_outline",
+        "panel_wipe"
+      ],
+      "usage_profile": {
+        "content_types": [
+          "anime",
+          "short_drama",
+          "game"
+        ],
+        "trigger_events": [
+          "emotion_turn",
+          "character_entry",
+          "combo",
+          "scene_change"
+        ],
+        "transition_roles": [
+          "stylized_transition",
+          "montage_bridge"
+        ],
+        "source_requirements": [
+          "至少3个可辨认镜头",
+          "主体能适配分格裁切"
+        ],
+        "recommended_duration_seconds": [
+          0.9,
+          2.5
+        ],
+        "intensity": "strong",
+        "avoid_when": [
+          "单人长对白",
+          "主体均贴边"
+        ],
+        "selection_prompt": "当素材属于动漫、短剧或游戏并出现情绪反转、人物入场、连招或场景切换时，若至少有3个可辨认镜头且能适配分格，优先使用漫画分镜转场；效果持续0.9至2.5秒；避免用于单人长对白或主体贴边素材。"
+      },
+      "implementation": {
+        "status": "catalog_only",
+        "template_path": null,
+        "renderer_path": null,
+        "runtime_status": "generic",
+        "runtime_renderer_path": "effect_runtime.py",
+        "paid_plugin_required": false
+      },
+      "references": [
+        {
+          "platform": "bilibili",
+          "bvid": "BV1SqabzaEDL",
+          "part": 23,
+          "url": "https://www.bilibili.com/video/BV1SqabzaEDL/?p=23",
+          "chapter_title": "【案例实操】病娇漫画风",
+          "verification": {
+            "status": "frame_reviewed",
+            "verified_segment": {
+              "start": 0.0,
+              "end": 35.0
+            },
+            "note": "案例包含成片展示、漫画网点/描边和分镜排版的完整拆解。",
+            "reviewed_sample_times": [
+              0.0,
+              3.0,
+              8.0,
+              15.0,
+              15.785,
+              25.0,
+              27.962,
+              39.688
+            ],
+            "download_sha256": "9B8B3A609EDA3C2FA6450E764C886AE36A9AAC58FF83917086710DB2D8564B46",
+            "media": {
+              "width": 1280,
+              "height": 720,
+              "fps": 30.0,
+              "frames": 1353,
+              "duration": 45.1,
+              "bytes": 7962661
+            },
+            "temporary_media_deleted": true
+          },
+          "research_snapshot": {
+            "title": "【剪辑教程】100集（全）从零开始学AE/PR软件基础教程（2025新手入门实用版）2025零基础入门教程！！！ p23 【案例实操】病娇漫画风",
+            "timestamp": 1757065418,
+            "view_count": 3339,
+            "like_count": 249,
+            "comment_count": 11
+          }
+        }
+      ]
+    },
+    {
+      "schema": "supercut-effect-knowledge-v3",
+      "effect_id": "typography_wipe",
+      "name": "文字遮罩卡点",
+      "principle": "graphic_composition",
+      "techniques": [
+        "text_matte",
+        "scale_type",
+        "beat_sync"
+      ],
+      "usage_profile": {
+        "content_types": [
+          "anime",
+          "short_drama",
+          "live_stream"
+        ],
+        "trigger_events": [
+          "title",
+          "beat",
+          "quote",
+          "chapter_change"
+        ],
+        "transition_roles": [
+          "title_transition",
+          "beat_transition"
+        ],
+        "source_requirements": [
+          "有1至4个短词",
+          "文字与背景对比足够"
+        ],
+        "recommended_duration_seconds": [
+          0.35,
+          1.1
+        ],
+        "intensity": "medium",
+        "avoid_when": [
+          "长句字幕",
+          "重要画面细节位于字形内部"
+        ],
+        "selection_prompt": "当素材属于动漫、短剧或实况直播并出现标题、卡点、金句或章节变化时，若文案为1至4个短词且对比清晰，优先使用文字遮罩卡点；效果持续0.35至1.1秒；避免用于长句字幕或字形内有重要细节的画面。"
+      },
+      "implementation": {
+        "status": "implemented",
+        "template_path": "templates/typography_wipe/template.json",
+        "renderer_path": "tools/render_research_effect.py",
+        "runtime_status": "specialized",
+        "runtime_renderer_path": "effect_runtime.py",
+        "paid_plugin_required": false
+      },
+      "references": [
+        {
+          "platform": "bilibili",
+          "bvid": "BV1SqabzaEDL",
+          "part": 97,
+          "url": "https://www.bilibili.com/video/BV1SqabzaEDL/?p=97",
+          "chapter_title": "【卡点篇】片头文字卡点",
+          "verification": {
+            "status": "frame_reviewed",
+            "verified_segment": {
+              "start": 0.0,
+              "end": 35.0
+            },
+            "note": "章节以片头短词为节拍锚点，展示文字大小、位置和显隐关键帧。",
+            "reviewed_sample_times": [
+              0.0,
+              3.0,
+              8.0,
+              15.0,
+              15.785,
+              25.0,
+              27.962,
+              39.688
+            ],
+            "download_sha256": "DD69D0CBC0C7ADE59A3FBBE88461D12006AB93078F08244B7406201A8A3281A4",
+            "media": {
+              "width": 1280,
+              "height": 720,
+              "fps": 30.0,
+              "frames": 1353,
+              "duration": 45.1,
+              "bytes": 2642325
+            },
+            "temporary_media_deleted": true
+          },
+          "research_snapshot": {
+            "title": "【剪辑教程】100集（全）从零开始学AE/PR软件基础教程（2025新手入门实用版）2025零基础入门教程！！！ p97 【卡点篇】片头文字卡点",
+            "timestamp": 1757065418,
+            "view_count": 3339,
+            "like_count": 249,
+            "comment_count": 11
+          }
+        }
+      ]
+    },
+    {
+      "schema": "supercut-effect-knowledge-v3",
+      "effect_id": "card_flip",
+      "name": "卡牌翻转揭示",
+      "principle": "graphic_composition",
+      "techniques": [
+        "card_layers",
+        "y_rotation",
+        "depth_shadow"
+      ],
+      "usage_profile": {
+        "content_types": [
+          "anime",
+          "short_drama",
+          "live_stream"
+        ],
+        "trigger_events": [
+          "character_entry",
+          "costume_change",
+          "cast_intro",
+          "chapter_change"
+        ],
+        "transition_roles": [
+          "character_reveal",
+          "chapter_transition"
+        ],
+        "source_requirements": [
+          "主体可裁成竖向卡牌",
+          "至少2个对比造型或角色"
+        ],
+        "recommended_duration_seconds": [
+          0.6,
+          1.5
+        ],
+        "intensity": "medium",
+        "avoid_when": [
+          "横向群像",
+          "高速连续动作"
+        ],
+        "selection_prompt": "当素材属于动漫、短剧或实况直播并出现人物入场、换装、角色介绍或章节变化时，若主体可裁成卡牌且至少有2个造型，优先使用卡牌翻转揭示；效果持续0.6至1.5秒；避免用于横向群像或高速连续动作。"
+      },
+      "implementation": {
+        "status": "catalog_only",
+        "template_path": null,
+        "renderer_path": null,
+        "runtime_status": "generic",
+        "runtime_renderer_path": "effect_runtime.py",
+        "paid_plugin_required": false
+      },
+      "references": [
+        {
+          "platform": "bilibili",
+          "bvid": "BV1SqabzaEDL",
+          "part": 12,
+          "url": "https://www.bilibili.com/video/BV1SqabzaEDL/?p=12",
+          "chapter_title": "【AE教程】12.爱豆卡牌翻转",
+          "verification": {
+            "status": "frame_reviewed",
+            "verified_segment": {
+              "start": 0.0,
+              "end": 35.0
+            },
+            "note": "AE章节展示卡牌图层、三维翻转与阴影关系。",
+            "reviewed_sample_times": [
+              0.0,
+              3.0,
+              8.0,
+              15.0,
+              15.785,
+              25.0,
+              27.962,
+              39.688
+            ],
+            "download_sha256": "84DACDA45164B77D9130669BF8D5E7B9EB68A172C84E8B328CC450CE49F6BCCB",
+            "media": {
+              "width": 1280,
+              "height": 720,
+              "fps": 30.0,
+              "frames": 1353,
+              "duration": 45.1,
+              "bytes": 1306580
+            },
+            "temporary_media_deleted": true
+          },
+          "research_snapshot": {
+            "title": "【剪辑教程】100集（全）从零开始学AE/PR软件基础教程（2025新手入门实用版）2025零基础入门教程！！！ p12 【AE教程】12.爱豆卡牌翻转",
+            "timestamp": 1757065418,
+            "view_count": 3339,
+            "like_count": 249,
+            "comment_count": 11
+          }
+        }
+      ]
+    },
+    {
+      "schema": "supercut-effect-knowledge-v3",
+      "effect_id": "photo_wall",
+      "name": "三维相片墙穿梭",
+      "principle": "graphic_composition",
+      "techniques": [
+        "photo_grid",
+        "virtual_camera",
+        "depth_layers"
+      ],
+      "usage_profile": {
+        "content_types": [
+          "anime",
+          "short_drama",
+          "live_stream",
+          "game"
+        ],
+        "trigger_events": [
+          "opening",
+          "memory",
+          "cast_intro",
+          "victory_recap"
+        ],
+        "transition_roles": [
+          "opening",
+          "montage_bridge"
+        ],
+        "source_requirements": [
+          "至少8张清晰画面",
+          "画面主题可形成系列"
+        ],
+        "recommended_duration_seconds": [
+          2.5,
+          6.0
+        ],
+        "intensity": "medium",
+        "avoid_when": [
+          "素材少于5张",
+          "每张都需长时间阅读"
+        ],
+        "selection_prompt": "当素材属于动漫、短剧、实况直播或游戏并用于开场、回忆、角色介绍或胜利回顾时，若至少有8张同主题清晰画面，优先使用三维相片墙穿梭；效果持续2.5至6秒；避免用于素材少于5张或每张都需长时间阅读的内容。"
+      },
+      "implementation": {
+        "status": "catalog_only",
+        "template_path": null,
+        "renderer_path": null,
+        "runtime_status": "generic",
+        "runtime_renderer_path": "effect_runtime.py",
+        "paid_plugin_required": false
+      },
+      "references": [
+        {
+          "platform": "bilibili",
+          "bvid": "BV1SqabzaEDL",
+          "part": 17,
+          "url": "https://www.bilibili.com/video/BV1SqabzaEDL/?p=17",
+          "chapter_title": "【案例实操】排版风PV-02.相片墙效果",
+          "verification": {
+            "status": "frame_reviewed",
+            "verified_segment": {
+              "start": 0.0,
+              "end": 35.0
+            },
+            "note": "案例展示多张相片的层级排版、景深与虚拟摄像机穿梭。",
+            "reviewed_sample_times": [
+              0.0,
+              3.0,
+              8.0,
+              15.0,
+              15.785,
+              25.0,
+              27.962,
+              39.688
+            ],
+            "download_sha256": "496970409CBE545AA4629075C1FFBD36F02D48B113DA741E1E338678DEDFBB6F",
+            "media": {
+              "width": 1280,
+              "height": 720,
+              "fps": 30.0,
+              "frames": 1353,
+              "duration": 45.1,
+              "bytes": 1452040
+            },
+            "temporary_media_deleted": true
+          },
+          "research_snapshot": {
+            "title": "【剪辑教程】100集（全）从零开始学AE/PR软件基础教程（2025新手入门实用版）2025零基础入门教程！！！ p17 【案例实操】排版风PV-02.相片墙效果",
+            "timestamp": 1757065418,
+            "view_count": 3339,
+            "like_count": 249,
+            "comment_count": 11
+          }
+        }
+      ]
+    },
+    {
+      "schema": "supercut-effect-knowledge-v3",
+      "effect_id": "water_reflection",
+      "name": "水面倒影波纹",
+      "principle": "optical_geometry",
+      "techniques": [
+        "vertical_reflection",
+        "wave_displacement",
+        "light_ripple"
+      ],
+      "usage_profile": {
+        "content_types": [
+          "game",
+          "anime",
+          "short_drama"
+        ],
+        "trigger_events": [
+          "hero_reveal",
+          "calm_before_action",
+          "scene_change"
+        ],
+        "transition_roles": [
+          "atmosphere_bridge",
+          "character_reveal"
+        ],
+        "source_requirements": [
+          "主体位于上半画面",
+          "下半部可留作倒影"
+        ],
+        "recommended_duration_seconds": [
+          0.8,
+          2.0
+        ],
+        "intensity": "subtle",
+        "avoid_when": [
+          "底部HUD密集",
+          "强烈手持抖动"
+        ],
+        "selection_prompt": "当素材属于游戏、动漫或短剧并出现英雄揭示、战前静默或场景切换时，若主体位于上半部且下方可容纳倒影，优先使用水面倒影波纹；效果持续0.8至2秒；避免用于底部HUD密集或强烈手持抖动。"
+      },
+      "implementation": {
+        "status": "catalog_only",
+        "template_path": null,
+        "renderer_path": null,
+        "runtime_status": "generic",
+        "runtime_renderer_path": "effect_runtime.py",
+        "paid_plugin_required": false
+      },
+      "references": [
+        {
+          "platform": "bilibili",
+          "bvid": "BV1gnYszQEwN",
+          "part": 6,
+          "url": "https://www.bilibili.com/video/BV1gnYszQEwN/?p=6",
+          "chapter_title": "【超燃游戏剪辑】4.AE水面倒影动态壁纸",
+          "verification": {
+            "status": "frame_reviewed",
+            "verified_segment": {
+              "start": 0.0,
+              "end": 35.0
+            },
+            "note": "游戏案例展示上下镜像、波纹置换和动态高光的组合。",
+            "reviewed_sample_times": [
+              0.0,
+              3.0,
+              8.0,
+              15.0,
+              15.785,
+              25.0,
+              27.962,
+              39.688
+            ],
+            "download_sha256": "AF1B3E3A1E8CC529C29A83B69E155C36EFFA0E6A5071933102A6E39BBF224ED1",
+            "media": {
+              "width": 1280,
+              "height": 720,
+              "fps": 30.0,
+              "frames": 1353,
+              "duration": 45.1,
+              "bytes": 5882531
+            },
+            "temporary_media_deleted": true
+          },
+          "research_snapshot": {
+            "title": "【AE+PR游戏剪辑教程】教你13个相见恨晚的超燃剪辑效果，超简单的游戏剪辑入门教程，学完剪出自己高然战斗时刻！（附带素材、插件包） p06 【超燃游戏剪辑】4.AE水面倒影动态壁纸",
+            "timestamp": 1755506329,
+            "view_count": 1897,
+            "like_count": 48,
+            "comment_count": 7
+          }
+        }
+      ]
+    },
+    {
+      "schema": "supercut-effect-knowledge-v3",
+      "effect_id": "vinyl_outro",
+      "name": "唱片旋转收尾",
+      "principle": "graphic_composition",
+      "techniques": [
+        "disc_mask",
+        "rotation",
+        "audio_fade"
+      ],
+      "usage_profile": {
+        "content_types": [
+          "game",
+          "anime",
+          "short_drama",
+          "live_stream"
+        ],
+        "trigger_events": [
+          "outro",
+          "victory_recap",
+          "ending_quote",
+          "stream_end"
+        ],
+        "transition_roles": [
+          "outro",
+          "audio_bridge"
+        ],
+        "source_requirements": [
+          "有代表性封面帧",
+          "结尾音乐可保留2秒以上"
+        ],
+        "recommended_duration_seconds": [
+          2.0,
+          5.0
+        ],
+        "intensity": "subtle",
+        "avoid_when": [
+          "剧情仍未收束",
+          "无可用音乐尾奏"
+        ],
+        "selection_prompt": "当素材属于游戏、动漫、短剧或实况直播并进入片尾、胜利回顾、结尾金句或下播时，若有代表性封面帧且音乐可延续，优先使用唱片旋转收尾；效果持续2至5秒；避免用于剧情未收束或没有音乐尾奏的片段。"
+      },
+      "implementation": {
+        "status": "catalog_only",
+        "template_path": null,
+        "renderer_path": null,
+        "runtime_status": "generic",
+        "runtime_renderer_path": "effect_runtime.py",
+        "paid_plugin_required": false
+      },
+      "references": [
+        {
+          "platform": "bilibili",
+          "bvid": "BV1gnYszQEwN",
+          "part": 7,
+          "url": "https://www.bilibili.com/video/BV1gnYszQEwN/?p=7",
+          "chapter_title": "【超燃游戏剪辑】5.AE唱片结尾",
+          "verification": {
+            "status": "frame_reviewed",
+            "verified_segment": {
+              "start": 0.0,
+              "end": 35.0
+            },
+            "note": "游戏教程展示画面裁成唱片、持续旋转并配合音频淡出的结尾。",
+            "reviewed_sample_times": [
+              0.0,
+              3.0,
+              8.0,
+              15.0,
+              15.785,
+              25.0,
+              27.962,
+              39.688
+            ],
+            "download_sha256": "2A8896F5BF655DF72798306C70833649F0BC50D14BFFAC7F96E87306E468F381",
+            "media": {
+              "width": 1280,
+              "height": 720,
+              "fps": 30.0,
+              "frames": 1353,
+              "duration": 45.1,
+              "bytes": 3772949
+            },
+            "temporary_media_deleted": true
+          },
+          "research_snapshot": {
+            "title": "【AE+PR游戏剪辑教程】教你13个相见恨晚的超燃剪辑效果，超简单的游戏剪辑入门教程，学完剪出自己高然战斗时刻！（附带素材、插件包） p07 【超燃游戏剪辑】5.AE唱片结尾",
+            "timestamp": 1755506329,
+            "view_count": 1897,
+            "like_count": 48,
+            "comment_count": 7
+          }
+        }
+      ]
+    }
+  ]
+}

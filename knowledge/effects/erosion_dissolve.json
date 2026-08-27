@@ -1,0 +1,94 @@
+{
+  "schema": "supercut-effect-knowledge-v3",
+  "effect_id": "erosion_dissolve",
+  "name": "颗粒侵蚀溶解",
+  "principle": "organic_matte",
+  "techniques": [
+    "noise_matte",
+    "threshold_erode",
+    "particle_edge"
+  ],
+  "usage_profile": {
+    "content_types": [
+      "game",
+      "anime",
+      "short_drama"
+    ],
+    "trigger_events": [
+      "death",
+      "teleport",
+      "disappear",
+      "scene_change"
+    ],
+    "transition_roles": [
+      "disappearance",
+      "scene_transition"
+    ],
+    "source_requirements": [
+      "主体轮廓清晰",
+      "背景与主体有亮度差"
+    ],
+    "recommended_duration_seconds": [
+      0.4,
+      1.2
+    ],
+    "intensity": "strong",
+    "avoid_when": [
+      "多人重叠",
+      "口型同步对白"
+    ],
+    "selection_prompt": "当素材属于游戏、动漫或短剧并出现死亡、传送、消失或场景切换时，若主体轮廓清晰且与背景有亮度差，优先使用颗粒侵蚀溶解；效果持续0.4至1.2秒；避免用于多人重叠或口型同步对白。"
+  },
+  "implementation": {
+    "status": "catalog_only",
+    "template_path": null,
+    "renderer_path": null,
+    "runtime_status": "generic",
+    "runtime_renderer_path": "effect_runtime.py",
+    "paid_plugin_required": false
+  },
+  "references": [
+    {
+      "platform": "bilibili",
+      "bvid": "BV1JqraYAELK",
+      "part": 31,
+      "url": "https://www.bilibili.com/video/BV1JqraYAELK/?p=31",
+      "chapter_title": "侵蚀转场",
+      "verification": {
+        "status": "frame_reviewed",
+        "verified_segment": {
+          "start": 0.0,
+          "end": 35.0
+        },
+        "note": "章节展示噪波阈值逐步侵蚀画面并揭示下一镜头。",
+        "reviewed_sample_times": [
+          0.0,
+          3.0,
+          8.0,
+          15.0,
+          15.785,
+          25.0,
+          27.962,
+          39.688
+        ],
+        "download_sha256": "FE2B73736779784747EA320B84935CA334B4F89E3E8D3596B5C7A92569E61CB6",
+        "media": {
+          "width": 1280,
+          "height": 720,
+          "fps": 30.0,
+          "frames": 1353,
+          "duration": 45.1,
+          "bytes": 4504646
+        },
+        "temporary_media_deleted": true
+      },
+      "research_snapshot": {
+        "title": "【全100集】这才叫PR转场！100个超丝滑转场案例教程，带你轻松玩转视频转场！ p31 侵蚀转场",
+        "timestamp": 1736337231,
+        "view_count": 212584,
+        "like_count": 5919,
+        "comment_count": 512
+      }
+    }
+  ]
+}

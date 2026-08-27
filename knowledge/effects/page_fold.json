@@ -1,0 +1,93 @@
+{
+  "schema": "supercut-effect-knowledge-v3",
+  "effect_id": "page_fold",
+  "name": "折叠翻页",
+  "principle": "tactile_reveal",
+  "techniques": [
+    "perspective_fold",
+    "hinge_shadow",
+    "page_handoff"
+  ],
+  "usage_profile": {
+    "content_types": [
+      "anime",
+      "short_drama",
+      "live_stream"
+    ],
+    "trigger_events": [
+      "scene_change",
+      "chapter_change",
+      "host_reaction"
+    ],
+    "transition_roles": [
+      "scene_transition",
+      "chapter_transition"
+    ],
+    "source_requirements": [
+      "前后镜头构图稳定",
+      "折页边缘不遮挡关键字幕"
+    ],
+    "recommended_duration_seconds": [
+      0.45,
+      1.1
+    ],
+    "intensity": "medium",
+    "avoid_when": [
+      "高速枪战",
+      "画面边缘有重要UI"
+    ],
+    "selection_prompt": "当素材属于动漫、短剧或实况直播并出现场景切换、章节变化或主播反应时，若前后构图稳定且边缘无关键信息，优先使用折叠翻页；效果持续0.45至1.1秒；避免用于高速枪战或边缘重要UI。"
+  },
+  "implementation": {
+    "status": "implemented",
+    "template_path": "templates/page_fold/template.json",
+    "renderer_path": "tools/render_research_effect.py",
+    "runtime_status": "specialized",
+    "runtime_renderer_path": "effect_runtime.py",
+    "paid_plugin_required": false
+  },
+  "references": [
+    {
+      "platform": "bilibili",
+      "bvid": "BV1SqabzaEDL",
+      "part": 35,
+      "url": "https://www.bilibili.com/video/BV1SqabzaEDL/?p=35",
+      "chapter_title": "【PR教程】9.折叠翻页效果",
+      "verification": {
+        "status": "frame_reviewed",
+        "verified_segment": {
+          "start": 0.0,
+          "end": 35.0
+        },
+        "note": "开头展示折页交接，后续用位置、缩放与阴影关键帧拆解。",
+        "reviewed_sample_times": [
+          0.0,
+          3.0,
+          8.0,
+          15.0,
+          15.75,
+          25.0,
+          27.9,
+          39.6
+        ],
+        "download_sha256": "4C89B66703E6EBF6C6B9BE789877B38EC78CDA527E4B5300F7E22D5BBCE115E5",
+        "media": {
+          "width": 1280,
+          "height": 720,
+          "fps": 30.0,
+          "frames": 1350,
+          "duration": 45.0,
+          "bytes": 2916972
+        },
+        "temporary_media_deleted": true
+      },
+      "research_snapshot": {
+        "title": "【剪辑教程】100集（全）从零开始学AE/PR软件基础教程（2025新手入门实用版）2025零基础入门教程！！！ p35 【PR教程】9.折叠翻页效果",
+        "timestamp": 1757065418,
+        "view_count": 3339,
+        "like_count": 249,
+        "comment_count": 11
+      }
+    }
+  ]
+}

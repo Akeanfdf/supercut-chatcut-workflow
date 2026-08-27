@@ -1,0 +1,95 @@
+{
+  "schema": "supercut-effect-knowledge-v3",
+  "effect_id": "mirror_slide",
+  "name": "镜面滑屏",
+  "principle": "mask_reveal",
+  "techniques": [
+    "diagonal_mask",
+    "gray_background",
+    "colored_foreground"
+  ],
+  "usage_profile": {
+    "content_types": [
+      "game",
+      "anime",
+      "short_drama",
+      "live_stream"
+    ],
+    "trigger_events": [
+      "hero_reveal",
+      "character_turn",
+      "camera_change",
+      "scene_change"
+    ],
+    "transition_roles": [
+      "character_reveal",
+      "scene_transition"
+    ],
+    "source_requirements": [
+      "主体位于画面中心附近",
+      "镜头方向稳定"
+    ],
+    "recommended_duration_seconds": [
+      0.35,
+      0.9
+    ],
+    "intensity": "medium",
+    "avoid_when": [
+      "高速连续击杀",
+      "重要字幕占据斜带区域"
+    ],
+    "selection_prompt": "当素材属于游戏、动漫、短剧或实况直播并出现英雄登场、人物转身、机位变化或场景切换时，若主体靠近视觉中心且镜头稳定，优先使用镜面滑屏；效果持续0.35至0.9秒；避免用于高速连续击杀或字幕遮挡斜带。"
+  },
+  "implementation": {
+    "status": "implemented",
+    "template_path": "templates/mirror_slide/template.json",
+    "renderer_path": "tools/render_mirror_slide_preview.py",
+    "runtime_status": "specialized",
+    "runtime_renderer_path": "effect_runtime.py",
+    "paid_plugin_required": false
+  },
+  "references": [
+    {
+      "platform": "bilibili",
+      "bvid": "BV1SqabzaEDL",
+      "part": 33,
+      "url": "https://www.bilibili.com/video/BV1SqabzaEDL/?p=33",
+      "chapter_title": "遮罩与镜面滑屏效果",
+      "verification": {
+        "status": "frame_reviewed",
+        "verified_segment": {
+          "start": 0.0,
+          "end": 35.0
+        },
+        "note": "章节明确演示遮罩与镜面滑屏。",
+        "reviewed_sample_times": [
+          0.0,
+          3.0,
+          8.0,
+          8.75,
+          15.0,
+          15.5,
+          22.0,
+          24.9
+        ],
+        "download_sha256": "899FE4F26D1FF79EB35A8B8EF3B14ABE977CB79D2C81C3E4678FA6E99C727CE2",
+        "media": {
+          "width": 640,
+          "height": 360,
+          "fps": 30.0,
+          "frames": 750,
+          "duration": 25.0,
+          "bytes": 448080
+        },
+        "temporary_media_deleted": true
+      },
+      "research_snapshot": {
+        "title": "【剪辑教程】100集（全）从零开始学AE/PR软件基础教程（2025新手入门实用版）2025零基础入门教程！！！ p33 【PR教程】7.遮罩与镜面滑屏效果",
+        "timestamp": 1757065418,
+        "view_count": 3332,
+        "like_count": 249,
+        "comment_count": 11
+      }
+    }
+  ]
+}

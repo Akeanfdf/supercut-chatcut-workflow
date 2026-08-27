@@ -1,0 +1,94 @@
+{
+  "schema": "supercut-effect-knowledge-v3",
+  "effect_id": "kaleidoscope_cut",
+  "name": "万花筒切割",
+  "principle": "optical_geometry",
+  "techniques": [
+    "mirrored_sectors",
+    "rotation",
+    "radial_zoom"
+  ],
+  "usage_profile": {
+    "content_types": [
+      "game",
+      "anime",
+      "live_stream"
+    ],
+    "trigger_events": [
+      "skill_cast",
+      "beat",
+      "scene_change",
+      "host_reaction"
+    ],
+    "transition_roles": [
+      "impact_transition",
+      "beat_transition"
+    ],
+    "source_requirements": [
+      "画面中心有明确主体",
+      "允许短暂几何重复"
+    ],
+    "recommended_duration_seconds": [
+      0.25,
+      0.75
+    ],
+    "intensity": "strong",
+    "avoid_when": [
+      "写实严肃对白",
+      "主体贴边"
+    ],
+    "selection_prompt": "当素材属于游戏、动漫或实况直播并出现技能释放、卡点、场景切换或主播反应时，若主体居中且允许几何重复，优先使用万花筒切割；效果持续0.25至0.75秒；避免用于写实严肃对白或主体贴边镜头。"
+  },
+  "implementation": {
+    "status": "implemented",
+    "template_path": "templates/kaleidoscope_cut/template.json",
+    "renderer_path": "tools/render_research_effect.py",
+    "runtime_status": "specialized",
+    "runtime_renderer_path": "effect_runtime.py",
+    "paid_plugin_required": false
+  },
+  "references": [
+    {
+      "platform": "bilibili",
+      "bvid": "BV1d8o1YuEqR",
+      "part": 1,
+      "url": "https://www.bilibili.com/video/BV1d8o1YuEqR/?p=1",
+      "chapter_title": "【零基础实训篇】万花筒切割转场教程",
+      "verification": {
+        "status": "frame_reviewed",
+        "verified_segment": {
+          "start": 0.0,
+          "end": 35.0
+        },
+        "note": "教程先给出万花筒切割效果，再通过镜像、旋转和关键帧复刻。",
+        "reviewed_sample_times": [
+          0.0,
+          3.0,
+          8.0,
+          15.0,
+          15.797,
+          25.0,
+          27.982,
+          39.717
+        ],
+        "download_sha256": "8D3F7E56BA1AC53C3E5D5A0CA5836A72661B25A3D82751E74215F96D84C93FA1",
+        "media": {
+          "width": 1280,
+          "height": 720,
+          "fps": 30.0,
+          "frames": 1354,
+          "duration": 45.133,
+          "bytes": 2959771
+        },
+        "temporary_media_deleted": true
+      },
+      "research_snapshot": {
+        "title": "【PR教程】PR零基础效果教程，配套素材练习免费提供，手把手教你用PR！！！B站最细致教程篇~ p01 【零基础实训篇】万花筒切割转场教程",
+        "timestamp": 1742801561,
+        "view_count": 30540,
+        "like_count": 914,
+        "comment_count": 26
+      }
+    }
+  ]
+}

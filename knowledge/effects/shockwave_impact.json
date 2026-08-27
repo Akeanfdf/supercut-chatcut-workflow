@@ -1,0 +1,92 @@
+{
+  "schema": "supercut-effect-knowledge-v3",
+  "effect_id": "shockwave_impact",
+  "name": "湍流冲击波",
+  "principle": "exposure_luma",
+  "techniques": [
+    "radial_distortion",
+    "impact_flash",
+    "ring_wave"
+  ],
+  "usage_profile": {
+    "content_types": [
+      "game",
+      "anime"
+    ],
+    "trigger_events": [
+      "kill_confirm",
+      "skill_cast",
+      "explosion",
+      "impact"
+    ],
+    "transition_roles": [
+      "impact_accent"
+    ],
+    "source_requirements": [
+      "冲击中心明确",
+      "画面允许短暂扭曲"
+    ],
+    "recommended_duration_seconds": [
+      0.18,
+      0.65
+    ],
+    "intensity": "strong",
+    "avoid_when": [
+      "慢节奏对白",
+      "主体脸部需要保持自然"
+    ],
+    "selection_prompt": "当素材属于游戏或动漫并出现击杀、技能、爆炸或重击时，若冲击中心明确，优先使用湍流冲击波；效果持续0.18至0.65秒；避免用于慢对白或脸部需要保持自然的镜头。"
+  },
+  "implementation": {
+    "status": "catalog_only",
+    "template_path": null,
+    "renderer_path": null,
+    "runtime_status": "generic",
+    "runtime_renderer_path": "effect_runtime.py",
+    "paid_plugin_required": false
+  },
+  "references": [
+    {
+      "platform": "bilibili",
+      "bvid": "BV1gnYszQEwN",
+      "part": 15,
+      "url": "https://www.bilibili.com/video/BV1gnYszQEwN/?p=15",
+      "chapter_title": "AE湍流冲击波",
+      "verification": {
+        "status": "frame_reviewed",
+        "verified_segment": {
+          "start": 0.0,
+          "end": 35.0
+        },
+        "note": "章节明确演示湍流冲击波。",
+        "reviewed_sample_times": [
+          0.0,
+          3.0,
+          8.0,
+          8.75,
+          15.0,
+          15.5,
+          22.0,
+          24.9
+        ],
+        "download_sha256": "2255B63149593AAF01F5521911CFE8ADD9EC2907C89363E93983F4F1BF777ADD",
+        "media": {
+          "width": 640,
+          "height": 360,
+          "fps": 30.0,
+          "frames": 750,
+          "duration": 25.0,
+          "bytes": 2207116
+        },
+        "temporary_media_deleted": true
+      },
+      "research_snapshot": {
+        "title": "【AE+PR游戏剪辑教程】教你13个相见恨晚的超燃剪辑效果，超简单的游戏剪辑入门教程，学完剪出自己高然战斗时刻！（附带素材、插件包） p15 【超燃游戏剪辑】13.AE湍流冲击波",
+        "timestamp": 1755506329,
+        "view_count": 1896,
+        "like_count": 48,
+        "comment_count": 7
+      }
+    }
+  ]
+}

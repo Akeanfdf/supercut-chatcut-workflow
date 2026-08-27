@@ -1,0 +1,31 @@
+name: Release
+
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -X utf8 packages/supercut-chatcut-workflow/scripts/build_release.py
+      - name: Create release and upload verified packages
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          VERSION="${GITHUB_REF_NAME#v}"
+          RELEASE_DIR="dist/supercut-chatcut-workflow-${VERSION}"
+          gh release create "$GITHUB_REF_NAME" \
+            "$RELEASE_DIR/supercut-chatcut-workflow-${VERSION}.zip" \
+            "$RELEASE_DIR/supercut-chatcut-config-${VERSION}.zip" \
+            "$RELEASE_DIR/release-manifest.json" \
+            "$RELEASE_DIR/INSTALL.md" \
+            --title "$GITHUB_REF_NAME" \
+            --notes-file CHANGELOG.md

@@ -1,0 +1,55 @@
+{
+  "template_name": "折叠翻页",
+  "template_id": "page_fold",
+  "version": 1,
+  "mode": "page_fold",
+  "audio_policy": "source_crossfade",
+  "video": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30
+  },
+  "timing": {
+    "pre_duration": 0.7,
+    "transition_duration": 0.85,
+    "post_duration": 0.8,
+    "outgoing_start": 0.8,
+    "incoming_start": 0.5
+  },
+  "effect": {
+    "fold_width_ratio": 0.14,
+    "shadow_strength": 72
+  },
+  "effect_id": "page_fold",
+  "usage_profile": {
+    "content_types": [
+      "anime",
+      "short_drama",
+      "live_stream"
+    ],
+    "trigger_events": [
+      "scene_change",
+      "chapter_change",
+      "host_reaction"
+    ],
+    "transition_roles": [
+      "scene_transition",
+      "chapter_transition"
+    ],
+    "source_requirements": [
+      "前后镜头构图稳定",
+      "折页边缘不遮挡关键字幕"
+    ],
+    "recommended_duration_seconds": [
+      0.45,
+      1.1
+    ],
+    "intensity": "medium",
+    "avoid_when": [
+      "高速枪战",
+      "画面边缘有重要UI"
+    ],
+    "selection_prompt": "当素材属于动漫、短剧或实况直播并出现场景切换、章节变化或主播反应时，若前后构图稳定且边缘无关键信息，优先使用折叠翻页；效果持续0.45至1.1秒；避免用于高速枪战或边缘重要UI。"
+  },
+  "knowledge_path": "knowledge/effects/page_fold.json"
+}

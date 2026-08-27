@@ -1,0 +1,94 @@
+{
+  "schema": "supercut-effect-knowledge-v3",
+  "effect_id": "nine_grid_opening",
+  "name": "九宫格开场",
+  "principle": "rhythm_layout",
+  "techniques": [
+    "nine_grid",
+    "sequential_assembly",
+    "focus_takeover"
+  ],
+  "usage_profile": {
+    "content_types": [
+      "game",
+      "short_drama",
+      "live_stream"
+    ],
+    "trigger_events": [
+      "opening",
+      "highlight",
+      "camera_change",
+      "cast_intro"
+    ],
+    "transition_roles": [
+      "opening",
+      "montage_bridge"
+    ],
+    "source_requirements": [
+      "至少5条动态素材",
+      "中心主素材可持续播放"
+    ],
+    "recommended_duration_seconds": [
+      3.0,
+      6.0
+    ],
+    "intensity": "medium",
+    "avoid_when": [
+      "只有一条素材",
+      "竖屏人物被严重裁切"
+    ],
+    "selection_prompt": "当素材属于游戏、短剧或实况直播并用于开场、亮点汇总、机位变化或人物介绍时，若至少有5条动态素材，优先使用九宫格开场；效果持续3至6秒；避免用于单素材或人物严重裁切。"
+  },
+  "implementation": {
+    "status": "implemented",
+    "template_path": "templates/nine_grid_opening/template.json",
+    "renderer_path": "tools/render_nine_grid_opening.py",
+    "runtime_status": "specialized",
+    "runtime_renderer_path": "effect_runtime.py",
+    "paid_plugin_required": false
+  },
+  "references": [
+    {
+      "platform": "bilibili",
+      "bvid": "BV1SqabzaEDL",
+      "part": 46,
+      "url": "https://www.bilibili.com/video/BV1SqabzaEDL/?p=46",
+      "chapter_title": "多机位剪辑-爱豆换装混剪",
+      "verification": {
+        "status": "frame_reviewed",
+        "verified_segment": {
+          "start": 0.0,
+          "end": 35.0
+        },
+        "note": "多机位章节提供同步与主视角接管思路。",
+        "reviewed_sample_times": [
+          0.0,
+          3.0,
+          8.0,
+          8.75,
+          15.0,
+          15.5,
+          22.0,
+          24.9
+        ],
+        "download_sha256": "03AE3B8A6FA3C13294A450CB35D22C5A8A9079A0AB4C64F73F3F78C4CF85851B",
+        "media": {
+          "width": 640,
+          "height": 360,
+          "fps": 30.0,
+          "frames": 750,
+          "duration": 25.0,
+          "bytes": 101993
+        },
+        "temporary_media_deleted": true
+      },
+      "research_snapshot": {
+        "title": "【剪辑教程】100集（全）从零开始学AE/PR软件基础教程（2025新手入门实用版）2025零基础入门教程！！！ p46 【进阶篇】11.多机位剪辑-爱豆换装混剪",
+        "timestamp": 1757065418,
+        "view_count": 3332,
+        "like_count": 249,
+        "comment_count": 11
+      }
+    }
+  ]
+}

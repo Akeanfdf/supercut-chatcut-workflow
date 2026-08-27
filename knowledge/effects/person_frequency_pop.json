@@ -1,0 +1,93 @@
+{
+  "schema": "supercut-effect-knowledge-v3",
+  "effect_id": "person_frequency_pop",
+  "name": "人物分频弹出",
+  "principle": "mask_reveal",
+  "techniques": [
+    "subject_cutout",
+    "channel_offset",
+    "scale_pop"
+  ],
+  "usage_profile": {
+    "content_types": [
+      "anime",
+      "short_drama",
+      "live_stream"
+    ],
+    "trigger_events": [
+      "character_entry",
+      "host_reaction",
+      "emotion_turn"
+    ],
+    "transition_roles": [
+      "character_reveal",
+      "reaction_accent"
+    ],
+    "source_requirements": [
+      "人物轮廓完整",
+      "背景相对简洁"
+    ],
+    "recommended_duration_seconds": [
+      0.25,
+      0.7
+    ],
+    "intensity": "medium",
+    "avoid_when": [
+      "多人重叠",
+      "主体运动模糊严重"
+    ],
+    "selection_prompt": "当素材属于动漫、短剧或直播并出现人物入场、主播反应或情绪转折时，若人物轮廓完整且背景简洁，优先使用人物分频弹出；效果持续0.25至0.7秒；避免用于多人重叠或严重运动模糊。"
+  },
+  "implementation": {
+    "status": "catalog_only",
+    "template_path": null,
+    "renderer_path": null,
+    "runtime_status": "generic",
+    "runtime_renderer_path": "effect_runtime.py",
+    "paid_plugin_required": false
+  },
+  "references": [
+    {
+      "platform": "bilibili",
+      "bvid": "BV1JqraYAELK",
+      "part": 7,
+      "url": "https://www.bilibili.com/video/BV1JqraYAELK/?p=7",
+      "chapter_title": "人物分频弹出转场",
+      "verification": {
+        "status": "frame_reviewed",
+        "verified_segment": {
+          "start": 0.0,
+          "end": 35.0
+        },
+        "note": "章节明确演示人物分频与弹出转场。",
+        "reviewed_sample_times": [
+          0.0,
+          3.0,
+          8.0,
+          8.75,
+          15.0,
+          15.5,
+          22.0,
+          24.9
+        ],
+        "download_sha256": "BE18A8D85DD463A3B57463F1C0FB2416C94CF4348CAB1AC2A5296A84924CF5B4",
+        "media": {
+          "width": 640,
+          "height": 360,
+          "fps": 30.0,
+          "frames": 750,
+          "duration": 25.0,
+          "bytes": 1324760
+        },
+        "temporary_media_deleted": true
+      },
+      "research_snapshot": {
+        "title": "【全100集】这才叫PR转场！100个超丝滑转场案例教程，带你轻松玩转视频转场！ p07 人物分频弹出转场",
+        "timestamp": 1736337231,
+        "view_count": 212393,
+        "like_count": 5914,
+        "comment_count": 510
+      }
+    }
+  ]
+}

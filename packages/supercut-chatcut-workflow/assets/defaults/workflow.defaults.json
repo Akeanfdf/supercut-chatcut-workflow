@@ -1,0 +1,51 @@
+{
+  "schema": "supercut-workflow-defaults-v1",
+  "workflow_version": "1.0.0",
+  "quality_gates": {
+    "minimum_score": 85,
+    "reference_timeline_requires_no_gaps_or_overlaps": true,
+    "require_asset_coverage": true,
+    "require_user_approval_before_final": true,
+    "require_structural_pixel_and_audible_review": true
+  },
+  "rhythm": {
+    "cut_anchor_priority": [
+      "observed_downbeat_or_strong_onset",
+      "action_landing_point",
+      "narrative_boundary",
+      "composition_or_motion_match",
+      "secondary_onset"
+    ],
+    "mechanical_every_beat_cut": false,
+    "analyze_actual_waveform": true
+  },
+  "effects": {
+    "catalog_first": true,
+    "default_intensity": "balanced",
+    "minimum_source_confidence": 0.7,
+    "balanced_obvious_effect_interval_seconds": 6.0,
+    "balanced_strong_effect_separation_seconds": 6.0,
+    "fallbacks": [
+      "hard_cut",
+      "action_match_cut",
+      "composition_match_cut",
+      "sound_bridge",
+      "basic_transition"
+    ]
+  },
+  "chatcut": {
+    "role": "editable_visual_review_layer",
+    "allow_builtin_ai": false,
+    "require_pull_before_local_overwrite": true,
+    "tracks": [
+      "SC_STORYBOARD",
+      "SC_MAIN_A",
+      "SC_MAIN_B",
+      "SC_VFX_PREVIEW",
+      "SC_TITLES",
+      "SC_AUDIO",
+      "SC_SFX",
+      "SC_NOTES"
+    ]
+  }
+}

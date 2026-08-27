@@ -1,0 +1,39 @@
+{
+  "schema": "supercut-reference-annotations-v1",
+  "shots": [
+    {
+      "index": 1,
+      "start_frame": "主体位于画面左侧，环境空间完整可见",
+      "end_frame": "主体动作落点停在画面中心",
+      "subject_anchor": "只记录体型、服装层次和道具位置，不记录原人物身份",
+      "action_trajectory": "主体由左向右移动，动作先缓后快并在中心完成",
+      "expression_change": "从观察转为集中",
+      "scene_space": "主体与背景保持明确前后距离",
+      "depth_layers": "前景遮挡、中景主体、后景环境",
+      "shot_size": "中景",
+      "lens": "中等焦段的透视关系",
+      "composition": "主体从三分线进入视觉中心",
+      "depth_of_field": "主体清晰，背景轻度虚化",
+      "camera_motion": "稳定横向跟随",
+      "motion_speed": "缓慢起步后加速",
+      "light_direction": "主光从画面右上方进入",
+      "color_temperature": "冷环境配中性主体",
+      "materials": "金属道具保持清晰高光，环境表面粗糙",
+      "rhythm": "先建立空间，再在动作峰值切镜",
+      "environment_sound": "保留环境底噪和动作落点声",
+      "transition_in": "由前一镜头的运动方向承接",
+      "transition_out": "在动作落点硬切",
+      "reusable_method": "复用从空间建立到动作落点的镜头逻辑",
+      "do_not_copy": [
+        "原人物身份",
+        "品牌",
+        "台词",
+        "具体故事"
+      ],
+      "events": [
+        "camera_change"
+      ],
+      "confidence": 0.92
+    }
+  ]
+}

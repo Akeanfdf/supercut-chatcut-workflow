@@ -1,0 +1,94 @@
+{
+  "schema": "supercut-effect-knowledge-v3",
+  "effect_id": "card_flip",
+  "name": "卡牌翻转揭示",
+  "principle": "graphic_composition",
+  "techniques": [
+    "card_layers",
+    "y_rotation",
+    "depth_shadow"
+  ],
+  "usage_profile": {
+    "content_types": [
+      "anime",
+      "short_drama",
+      "live_stream"
+    ],
+    "trigger_events": [
+      "character_entry",
+      "costume_change",
+      "cast_intro",
+      "chapter_change"
+    ],
+    "transition_roles": [
+      "character_reveal",
+      "chapter_transition"
+    ],
+    "source_requirements": [
+      "主体可裁成竖向卡牌",
+      "至少2个对比造型或角色"
+    ],
+    "recommended_duration_seconds": [
+      0.6,
+      1.5
+    ],
+    "intensity": "medium",
+    "avoid_when": [
+      "横向群像",
+      "高速连续动作"
+    ],
+    "selection_prompt": "当素材属于动漫、短剧或实况直播并出现人物入场、换装、角色介绍或章节变化时，若主体可裁成卡牌且至少有2个造型，优先使用卡牌翻转揭示；效果持续0.6至1.5秒；避免用于横向群像或高速连续动作。"
+  },
+  "implementation": {
+    "status": "catalog_only",
+    "template_path": null,
+    "renderer_path": null,
+    "runtime_status": "generic",
+    "runtime_renderer_path": "effect_runtime.py",
+    "paid_plugin_required": false
+  },
+  "references": [
+    {
+      "platform": "bilibili",
+      "bvid": "BV1SqabzaEDL",
+      "part": 12,
+      "url": "https://www.bilibili.com/video/BV1SqabzaEDL/?p=12",
+      "chapter_title": "【AE教程】12.爱豆卡牌翻转",
+      "verification": {
+        "status": "frame_reviewed",
+        "verified_segment": {
+          "start": 0.0,
+          "end": 35.0
+        },
+        "note": "AE章节展示卡牌图层、三维翻转与阴影关系。",
+        "reviewed_sample_times": [
+          0.0,
+          3.0,
+          8.0,
+          15.0,
+          15.785,
+          25.0,
+          27.962,
+          39.688
+        ],
+        "download_sha256": "84DACDA45164B77D9130669BF8D5E7B9EB68A172C84E8B328CC450CE49F6BCCB",
+        "media": {
+          "width": 1280,
+          "height": 720,
+          "fps": 30.0,
+          "frames": 1353,
+          "duration": 45.1,
+          "bytes": 1306580
+        },
+        "temporary_media_deleted": true
+      },
+      "research_snapshot": {
+        "title": "【剪辑教程】100集（全）从零开始学AE/PR软件基础教程（2025新手入门实用版）2025零基础入门教程！！！ p12 【AE教程】12.爱豆卡牌翻转",
+        "timestamp": 1757065418,
+        "view_count": 3339,
+        "like_count": 249,
+        "comment_count": 11
+      }
+    }
+  ]
+}

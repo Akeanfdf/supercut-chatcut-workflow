@@ -1,0 +1,81 @@
+{
+  "template_name": "回忆快闪",
+  "template_id": "memory_flash",
+  "version": 1,
+  "audio_policy": "source_only",
+  "video": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30
+  },
+  "timing": {
+    "source_start": 0.0,
+    "duration": 5.7,
+    "active_start": 0.55,
+    "active_end": 5.25,
+    "memory_count": 10
+  },
+  "effect": {
+    "start_scale": 1.16,
+    "end_scale": 1.015,
+    "start_rotation_deg": 4.2,
+    "shake_px": 11.0,
+    "chromatic_shift_px": 8,
+    "background_gain": 0.82,
+    "foreground_opacity": 0.96,
+    "foreground_outline_px": 5,
+    "foreground_outline_bgr": [
+      238,
+      244,
+      255
+    ],
+    "foreground_glow_px": 13,
+    "cut_flash_strength": 0.22,
+    "entry_flash_strength": 0.42,
+    "fade_frames": 5,
+    "memory_positions": [
+      0.04,
+      0.14,
+      0.25,
+      0.36,
+      0.46,
+      0.57,
+      0.67,
+      0.77,
+      0.87,
+      0.96
+    ]
+  },
+  "effect_id": "memory_flash",
+  "usage_profile": {
+    "content_types": [
+      "game",
+      "anime",
+      "short_drama"
+    ],
+    "trigger_events": [
+      "flashback",
+      "victory_recap",
+      "emotion_turn"
+    ],
+    "transition_roles": [
+      "memory_transition",
+      "montage_bridge"
+    ],
+    "source_requirements": [
+      "至少6个可辨认时刻",
+      "节奏点间隔稳定"
+    ],
+    "recommended_duration_seconds": [
+      1.8,
+      5.8
+    ],
+    "intensity": "strong",
+    "avoid_when": [
+      "单一长镜头",
+      "素材不足4个有效时刻"
+    ],
+    "selection_prompt": "当素材属于游戏、动漫或短剧并出现回忆、胜利回顾或情绪转折时，若至少有6个可辨认时刻，优先使用回忆快闪；效果持续1.8至5.8秒；避免用于单一长镜头或素材不足。"
+  },
+  "knowledge_path": "knowledge/effects/memory_flash.json"
+}

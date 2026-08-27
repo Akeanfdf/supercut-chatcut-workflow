@@ -1,0 +1,60 @@
+{
+  "template_name": "希区柯克变焦",
+  "template_id": "dolly_zoom",
+  "version": 1,
+  "mode": "dolly_zoom",
+  "audio_policy": "source_crossfade",
+  "video": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30
+  },
+  "timing": {
+    "pre_duration": 0.75,
+    "transition_duration": 1.35,
+    "post_duration": 0.85,
+    "outgoing_start": 0.8,
+    "incoming_start": 0.5
+  },
+  "effect": {
+    "outgoing_zoom": 0.3,
+    "incoming_start_scale": 0.76,
+    "blur_samples": 5,
+    "subject_radius_x": 0.22,
+    "subject_radius_y": 0.34,
+    "subject_y": 0.46
+  },
+  "effect_id": "dolly_zoom",
+  "usage_profile": {
+    "content_types": [
+      "short_drama",
+      "anime",
+      "game"
+    ],
+    "trigger_events": [
+      "emotion_turn",
+      "reveal",
+      "boss_appear",
+      "danger"
+    ],
+    "transition_roles": [
+      "dramatic_emphasis",
+      "character_reveal"
+    ],
+    "source_requirements": [
+      "主体位置稳定",
+      "背景有明显纵深线条"
+    ],
+    "recommended_duration_seconds": [
+      0.8,
+      2.2
+    ],
+    "intensity": "strong",
+    "avoid_when": [
+      "横向高速移动",
+      "背景完全平坦"
+    ],
+    "selection_prompt": "当素材属于短剧、动漫或游戏并出现情绪反转、真相揭示、Boss登场或危险逼近时，若主体位置稳定且背景有纵深，优先使用希区柯克变焦；效果持续0.8至2.2秒；避免用于横向高速移动或平坦背景。"
+  },
+  "knowledge_path": "knowledge/effects/dolly_zoom.json"
+}

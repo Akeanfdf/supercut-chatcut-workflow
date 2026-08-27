@@ -1,0 +1,54 @@
+{
+  "template_name": "枪械前景保留遮切",
+  "template_id": "foreground_weapon_hold",
+  "version": 1,
+  "audio_policy": "source_crossfade",
+  "video": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30
+  },
+  "timing": {
+    "pre_duration": 0.75,
+    "transition_duration": 1.0,
+    "post_duration": 0.9
+  },
+  "effect": {
+    "foreground_subject": "第一人称枪械与手部",
+    "background_handoff": true,
+    "mask_method": "grabcut_envelope",
+    "glitch_frames": 5
+  },
+  "effect_id": "foreground_weapon_hold",
+  "usage_profile": {
+    "content_types": [
+      "game"
+    ],
+    "trigger_events": [
+      "weapon_switch",
+      "reload",
+      "kill_confirm",
+      "scene_change"
+    ],
+    "transition_roles": [
+      "action_transition",
+      "background_replacement"
+    ],
+    "source_requirements": [
+      "枪体或手部轮廓清晰",
+      "背景与枪体颜色有区分",
+      "转场两侧各保留0.3秒余量"
+    ],
+    "recommended_duration_seconds": [
+      0.18,
+      0.45
+    ],
+    "intensity": "strong",
+    "avoid_when": [
+      "枪体被烟雾完全遮挡",
+      "第三人称镜头"
+    ],
+    "selection_prompt": "当素材属于游戏并出现切枪、换弹、击杀或场景切换时，若枪体与手部轮廓清晰且背景可分离，优先使用枪械前景保留遮切；效果持续0.18至0.45秒；避免用于枪体被烟雾遮挡或第三人称镜头。"
+  },
+  "knowledge_path": "knowledge/effects/foreground_weapon_hold.json"
+}

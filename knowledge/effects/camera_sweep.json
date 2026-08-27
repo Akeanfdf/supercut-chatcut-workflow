@@ -1,0 +1,93 @@
+{
+  "schema": "supercut-effect-knowledge-v3",
+  "effect_id": "camera_sweep",
+  "name": "摄像机扫移转场",
+  "principle": "spatial_transform",
+  "techniques": [
+    "virtual_camera",
+    "whip_pan",
+    "direction_match"
+  ],
+  "usage_profile": {
+    "content_types": [
+      "game",
+      "anime",
+      "short_drama",
+      "live_stream"
+    ],
+    "trigger_events": [
+      "camera_pan",
+      "scene_change",
+      "camera_change"
+    ],
+    "transition_roles": [
+      "scene_transition"
+    ],
+    "source_requirements": [
+      "前后运动方向一致",
+      "边缘有可用于模糊的纹理"
+    ],
+    "recommended_duration_seconds": [
+      0.25,
+      0.75
+    ],
+    "intensity": "medium",
+    "avoid_when": [
+      "静态特写对白",
+      "运动方向冲突"
+    ],
+    "selection_prompt": "当素材属于游戏、动漫、短剧或实况直播并出现横移、甩镜、场景或机位变化时，若前后运动方向一致，优先使用摄像机扫移转场；效果持续0.25至0.75秒；避免用于静态对白或方向冲突。"
+  },
+  "implementation": {
+    "status": "catalog_only",
+    "template_path": null,
+    "renderer_path": null,
+    "runtime_status": "generic",
+    "runtime_renderer_path": "effect_runtime.py",
+    "paid_plugin_required": false
+  },
+  "references": [
+    {
+      "platform": "bilibili",
+      "bvid": "BV1gnYszQEwN",
+      "part": 12,
+      "url": "https://www.bilibili.com/video/BV1gnYszQEwN/?p=12",
+      "chapter_title": "AE摄像机转场",
+      "verification": {
+        "status": "frame_reviewed",
+        "verified_segment": {
+          "start": 0.0,
+          "end": 35.0
+        },
+        "note": "章节以虚拟摄像机和运动匹配完成转场。",
+        "reviewed_sample_times": [
+          0.0,
+          3.0,
+          8.0,
+          15.0,
+          25.0,
+          265.078,
+          469.568,
+          666.483
+        ],
+        "download_sha256": "F6D418736572DCC2D46042DF12B944E3443ADC0061A845CA43BEEEFDB2819316",
+        "media": {
+          "width": 640,
+          "height": 360,
+          "fps": 30.0,
+          "frames": 22721,
+          "duration": 757.367,
+          "bytes": 9851831
+        },
+        "temporary_media_deleted": true
+      },
+      "research_snapshot": {
+        "title": "【AE+PR游戏剪辑教程】教你13个相见恨晚的超燃剪辑效果，超简单的游戏剪辑入门教程，学完剪出自己高然战斗时刻！（附带素材、插件包） p12 【超燃游戏剪辑】10.AE摄像机转场",
+        "timestamp": 1755506329,
+        "view_count": 1896,
+        "like_count": 48,
+        "comment_count": 7
+      }
+    }
+  ]
+}

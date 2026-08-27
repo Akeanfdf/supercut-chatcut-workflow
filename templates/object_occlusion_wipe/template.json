@@ -1,0 +1,57 @@
+{
+  "template_name": "遮挡物无缝转场",
+  "template_id": "object_occlusion_wipe",
+  "version": 1,
+  "mode": "object_occlusion_wipe",
+  "audio_policy": "source_crossfade",
+  "video": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30
+  },
+  "timing": {
+    "pre_duration": 0.75,
+    "transition_duration": 0.55,
+    "post_duration": 0.85,
+    "outgoing_start": 0.8,
+    "incoming_start": 0.5
+  },
+  "effect": {
+    "occluder_width_ratio": 0.19,
+    "feather_ratio": 0.018,
+    "occluder_darkness": 0.44
+  },
+  "effect_id": "object_occlusion_wipe",
+  "usage_profile": {
+    "content_types": [
+      "game",
+      "short_drama",
+      "live_stream"
+    ],
+    "trigger_events": [
+      "camera_pan",
+      "scene_change",
+      "camera_change",
+      "character_cross"
+    ],
+    "transition_roles": [
+      "continuity_transition",
+      "scene_transition"
+    ],
+    "source_requirements": [
+      "有物体完整掠过画面",
+      "前后运动方向一致"
+    ],
+    "recommended_duration_seconds": [
+      0.2,
+      0.65
+    ],
+    "intensity": "subtle",
+    "avoid_when": [
+      "遮挡物未覆盖切口",
+      "运动方向相反"
+    ],
+    "selection_prompt": "当素材属于游戏、短剧或实况直播并出现甩镜、场景切换、机位变化或人物横穿时，若有遮挡物完整掠过且前后方向一致，优先使用遮挡物无缝转场；效果持续0.2至0.65秒；避免用于遮挡物未覆盖切口或方向相反的镜头。"
+  },
+  "knowledge_path": "knowledge/effects/object_occlusion_wipe.json"
+}

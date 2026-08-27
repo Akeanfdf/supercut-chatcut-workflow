@@ -1,0 +1,61 @@
+{
+  "template_name": "信号干扰故障",
+  "template_id": "signal_glitch",
+  "version": 1,
+  "mode": "signal_glitch",
+  "audio_policy": "source_crossfade",
+  "video": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30
+  },
+  "timing": {
+    "pre_duration": 0.85,
+    "transition_duration": 0.5,
+    "post_duration": 0.95,
+    "outgoing_start": 0.8,
+    "incoming_start": 0.5
+  },
+  "effect": {
+    "bands": 16,
+    "max_shift_px": 95,
+    "rgb_shift_px": 11,
+    "noise_strength": 0.08,
+    "scanline_strength": 0.16,
+    "seed": 29
+  },
+  "effect_id": "signal_glitch",
+  "usage_profile": {
+    "content_types": [
+      "game",
+      "anime",
+      "live_stream"
+    ],
+    "trigger_events": [
+      "death",
+      "teleport",
+      "signal_loss",
+      "host_reaction",
+      "scene_change"
+    ],
+    "transition_roles": [
+      "discontinuity_transition",
+      "impact_transition"
+    ],
+    "source_requirements": [
+      "允许短暂破坏画面可读性",
+      "动作点或音效点明确"
+    ],
+    "recommended_duration_seconds": [
+      0.12,
+      0.55
+    ],
+    "intensity": "strong",
+    "avoid_when": [
+      "温柔情绪段落",
+      "重要字幕正在出现"
+    ],
+    "selection_prompt": "当素材属于游戏、动漫或实况直播并出现死亡、传送、信号中断、主播反应或强切换时，若允许短暂破坏画面可读性，优先使用信号干扰故障；效果持续0.12至0.55秒；避免用于温柔情绪段落或重要字幕。"
+  },
+  "knowledge_path": "knowledge/effects/signal_glitch.json"
+}

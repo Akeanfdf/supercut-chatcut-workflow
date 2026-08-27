@@ -1,0 +1,94 @@
+{
+  "schema": "supercut-effect-knowledge-v3",
+  "effect_id": "crack_split",
+  "name": "裂缝分割破碎",
+  "principle": "fragmentation",
+  "techniques": [
+    "irregular_tiles",
+    "crack_lines",
+    "piece_displacement"
+  ],
+  "usage_profile": {
+    "content_types": [
+      "game",
+      "anime",
+      "short_drama"
+    ],
+    "trigger_events": [
+      "kill_confirm",
+      "impact",
+      "emotion_break",
+      "scene_change"
+    ],
+    "transition_roles": [
+      "impact_transition",
+      "dramatic_break"
+    ],
+    "source_requirements": [
+      "冲击点明确",
+      "主体不贴近四周边缘"
+    ],
+    "recommended_duration_seconds": [
+      0.35,
+      0.9
+    ],
+    "intensity": "strong",
+    "avoid_when": [
+      "轻松对白",
+      "画面细节需要持续阅读"
+    ],
+    "selection_prompt": "当素材属于游戏、动漫或短剧并出现击杀、重击、关系破裂或强场景切换时，若冲击点明确且主体不贴边，优先使用裂缝分割破碎；效果持续0.35至0.9秒；避免用于轻松对白或需要持续阅读细节的画面。"
+  },
+  "implementation": {
+    "status": "implemented",
+    "template_path": "templates/crack_split/template.json",
+    "renderer_path": "tools/render_research_effect.py",
+    "runtime_status": "specialized",
+    "runtime_renderer_path": "effect_runtime.py",
+    "paid_plugin_required": false
+  },
+  "references": [
+    {
+      "platform": "bilibili",
+      "bvid": "BV1JqraYAELK",
+      "part": 9,
+      "url": "https://www.bilibili.com/video/BV1JqraYAELK/?p=9",
+      "chapter_title": "裂缝分割转场",
+      "verification": {
+        "status": "frame_reviewed",
+        "verified_segment": {
+          "start": 0.0,
+          "end": 35.0
+        },
+        "note": "章节明确演示裂缝分割转场。",
+        "reviewed_sample_times": [
+          0.0,
+          3.0,
+          8.0,
+          8.75,
+          15.0,
+          15.5,
+          22.0,
+          24.9
+        ],
+        "download_sha256": "F4BC5E2CBB55942A5B3C96F1682C16278472C66EBA87851F5F967D949BF3601D",
+        "media": {
+          "width": 640,
+          "height": 360,
+          "fps": 30.0,
+          "frames": 750,
+          "duration": 25.0,
+          "bytes": 1039177
+        },
+        "temporary_media_deleted": true
+      },
+      "research_snapshot": {
+        "title": "【全100集】这才叫PR转场！100个超丝滑转场案例教程，带你轻松玩转视频转场！ p09 裂缝分割转场",
+        "timestamp": 1736337231,
+        "view_count": 212393,
+        "like_count": 5914,
+        "comment_count": 510
+      }
+    }
+  ]
+}

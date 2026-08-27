@@ -1,0 +1,60 @@
+{
+  "template_name": "曝光闪白转场",
+  "template_id": "exposure_flash",
+  "version": 1,
+  "mode": "exposure_flash",
+  "audio_policy": "source_crossfade",
+  "video": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30
+  },
+  "timing": {
+    "pre_duration": 0.85,
+    "transition_duration": 0.42,
+    "post_duration": 0.95,
+    "outgoing_start": 0.8,
+    "incoming_start": 0.5
+  },
+  "effect": {
+    "peak_gain": 2.2,
+    "luma_threshold": 0.48,
+    "bloom_sigma": 18,
+    "white_hold_frames": 2
+  },
+  "effect_id": "exposure_flash",
+  "usage_profile": {
+    "content_types": [
+      "game",
+      "anime",
+      "short_drama",
+      "live_stream"
+    ],
+    "trigger_events": [
+      "kill_confirm",
+      "skill_cast",
+      "eye_open",
+      "camera_flash",
+      "scene_change"
+    ],
+    "transition_roles": [
+      "impact_transition",
+      "reveal_transition"
+    ],
+    "source_requirements": [
+      "画面存在亮部或爆炸点",
+      "闪白不遮挡关键信息"
+    ],
+    "recommended_duration_seconds": [
+      0.1,
+      0.45
+    ],
+    "intensity": "strong",
+    "avoid_when": [
+      "全白场景",
+      "光敏不适风险较高的密集闪烁"
+    ],
+    "selection_prompt": "当素材属于游戏、动漫、短剧或实况直播并出现击杀、技能、睁眼、闪光或场景切换时，若画面有可利用亮部，优先使用曝光闪白转场；效果持续0.1至0.45秒；避免用于全白场景或密集闪烁。"
+  },
+  "knowledge_path": "knowledge/effects/exposure_flash.json"
+}

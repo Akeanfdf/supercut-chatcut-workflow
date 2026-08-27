@@ -1,0 +1,94 @@
+{
+  "schema": "supercut-effect-knowledge-v3",
+  "effect_id": "film_burn",
+  "name": "胶片燃烧吞噬",
+  "principle": "tactile_reveal",
+  "techniques": [
+    "burn_matte",
+    "hot_edge",
+    "film_grain"
+  ],
+  "usage_profile": {
+    "content_types": [
+      "anime",
+      "short_drama",
+      "game"
+    ],
+    "trigger_events": [
+      "death",
+      "emotion_turn",
+      "scene_change",
+      "flashback"
+    ],
+    "transition_roles": [
+      "dramatic_break",
+      "memory_transition"
+    ],
+    "source_requirements": [
+      "存在可承接高亮边缘的暗部",
+      "允许短暂橙白高光"
+    ],
+    "recommended_duration_seconds": [
+      0.35,
+      1.0
+    ],
+    "intensity": "strong",
+    "avoid_when": [
+      "温柔长对白",
+      "全白画面"
+    ],
+    "selection_prompt": "当素材属于动漫、短剧或游戏并出现死亡、情绪反转、场景切换或闪回时，若画面有暗部且允许橙白高亮，优先使用胶片燃烧吞噬；效果持续0.35至1秒；避免用于温柔长对白或全白画面。"
+  },
+  "implementation": {
+    "status": "catalog_only",
+    "template_path": null,
+    "renderer_path": null,
+    "runtime_status": "generic",
+    "runtime_renderer_path": "effect_runtime.py",
+    "paid_plugin_required": false
+  },
+  "references": [
+    {
+      "platform": "bilibili",
+      "bvid": "BV1JqraYAELK",
+      "part": 33,
+      "url": "https://www.bilibili.com/video/BV1JqraYAELK/?p=33",
+      "chapter_title": "燃烧转场",
+      "verification": {
+        "status": "frame_reviewed",
+        "verified_segment": {
+          "start": 0.0,
+          "end": 35.0
+        },
+        "note": "章节展示燃烧边缘向内吞噬，并拆解混合模式和遮罩。",
+        "reviewed_sample_times": [
+          0.0,
+          3.0,
+          8.0,
+          15.0,
+          15.797,
+          25.0,
+          27.982,
+          39.717
+        ],
+        "download_sha256": "9B477F9C1749E6EF9BF1B6097F6151FF5777AFFCDA2B08E9C4101D4B1D58BE64",
+        "media": {
+          "width": 1280,
+          "height": 720,
+          "fps": 30.0,
+          "frames": 1354,
+          "duration": 45.133,
+          "bytes": 6531869
+        },
+        "temporary_media_deleted": true
+      },
+      "research_snapshot": {
+        "title": "【全100集】这才叫PR转场！100个超丝滑转场案例教程，带你轻松玩转视频转场！ p33 燃烧转场",
+        "timestamp": 1736337231,
+        "view_count": 212584,
+        "like_count": 5919,
+        "comment_count": 512
+      }
+    }
+  ]
+}

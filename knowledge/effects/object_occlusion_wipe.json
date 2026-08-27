@@ -1,0 +1,94 @@
+{
+  "schema": "supercut-effect-knowledge-v3",
+  "effect_id": "object_occlusion_wipe",
+  "name": "遮挡物无缝转场",
+  "principle": "editorial_masking",
+  "techniques": [
+    "object_matte",
+    "tracked_mask",
+    "direction_match"
+  ],
+  "usage_profile": {
+    "content_types": [
+      "game",
+      "short_drama",
+      "live_stream"
+    ],
+    "trigger_events": [
+      "camera_pan",
+      "scene_change",
+      "camera_change",
+      "character_cross"
+    ],
+    "transition_roles": [
+      "continuity_transition",
+      "scene_transition"
+    ],
+    "source_requirements": [
+      "有物体完整掠过画面",
+      "前后运动方向一致"
+    ],
+    "recommended_duration_seconds": [
+      0.2,
+      0.65
+    ],
+    "intensity": "subtle",
+    "avoid_when": [
+      "遮挡物未覆盖切口",
+      "运动方向相反"
+    ],
+    "selection_prompt": "当素材属于游戏、短剧或实况直播并出现甩镜、场景切换、机位变化或人物横穿时，若有遮挡物完整掠过且前后方向一致，优先使用遮挡物无缝转场；效果持续0.2至0.65秒；避免用于遮挡物未覆盖切口或方向相反的镜头。"
+  },
+  "implementation": {
+    "status": "implemented",
+    "template_path": "templates/object_occlusion_wipe/template.json",
+    "renderer_path": "tools/render_research_effect.py",
+    "runtime_status": "specialized",
+    "runtime_renderer_path": "effect_runtime.py",
+    "paid_plugin_required": false
+  },
+  "references": [
+    {
+      "platform": "bilibili",
+      "bvid": "BV1ct411f7kH",
+      "part": 1,
+      "url": "https://www.bilibili.com/video/BV1ct411f7kH/?p=1",
+      "chapter_title": "【PR教程】遮罩转场，让你的vlog视频做到无缝衔接！",
+      "verification": {
+        "status": "frame_reviewed",
+        "verified_segment": {
+          "start": 0.0,
+          "end": 35.0
+        },
+        "note": "教程强调先寻找合适遮挡物，再绘制蒙版并跟踪关键帧。",
+        "reviewed_sample_times": [
+          0.0,
+          3.0,
+          8.0,
+          15.0,
+          25.0,
+          65.758,
+          116.486,
+          165.334
+        ],
+        "download_sha256": "BAC9C153132224F04E0F1E26AB41590BB47EA11819B281C7826C1A9103B3A4CF",
+        "media": {
+          "width": 640,
+          "height": 360,
+          "fps": 25.0,
+          "frames": 4697,
+          "duration": 187.88,
+          "bytes": 4485458
+        },
+        "temporary_media_deleted": true
+      },
+      "research_snapshot": {
+        "title": "【PR教程】遮罩转场，让你的vlog视频做到无缝衔接！",
+        "timestamp": 1539774256,
+        "view_count": 358885,
+        "like_count": 9606,
+        "comment_count": 1022
+      }
+    }
+  ]
+}

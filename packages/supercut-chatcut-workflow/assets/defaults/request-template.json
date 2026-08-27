@@ -1,0 +1,22 @@
+{
+  "schema": "supercut-workflow-trigger-v1",
+  "trigger": "执行超级剪辑终版工作流",
+  "mode": "reference_driven",
+  "title": "项目名称",
+  "objective": "成片目标与叙事目标",
+  "content_type": "anime",
+  "reference": "参考视频 URL 或本地文件；原创模式可省略",
+  "source": "持有使用权的素材文件、目录或 ChatCut 工程",
+  "music": "持有使用权的 BGM 文件；可省略",
+  "target_duration": 60,
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "platform": "bilibili",
+  "effect_intensity": "balanced",
+  "allow_generation": false,
+  "text_strategy": "verified_source_only",
+  "review_policy": "chatcut_required_before_final",
+  "must_keep": [],
+  "forbidden": []
+}

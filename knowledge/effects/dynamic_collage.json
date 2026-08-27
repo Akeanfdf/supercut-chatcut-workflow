@@ -1,0 +1,93 @@
+{
+  "schema": "supercut-effect-knowledge-v3",
+  "effect_id": "dynamic_collage",
+  "name": "动态拼贴转场",
+  "principle": "rhythm_layout",
+  "techniques": [
+    "tile_collage",
+    "layer_motion",
+    "focus_handoff"
+  ],
+  "usage_profile": {
+    "content_types": [
+      "game",
+      "anime",
+      "live_stream"
+    ],
+    "trigger_events": [
+      "highlight",
+      "character_group",
+      "camera_change"
+    ],
+    "transition_roles": [
+      "montage_bridge",
+      "scene_transition"
+    ],
+    "source_requirements": [
+      "至少4条视觉差异明显的素材",
+      "主体可在格内辨认"
+    ],
+    "recommended_duration_seconds": [
+      1.2,
+      4.0
+    ],
+    "intensity": "medium",
+    "avoid_when": [
+      "仅有单条素材",
+      "字幕必须全程完整显示"
+    ],
+    "selection_prompt": "当素材属于游戏、动漫或实况直播并出现高光汇总、角色群像或机位变化时，若至少有4条差异明显的素材，优先使用动态拼贴转场；效果持续1.2至4秒；避免用于单条素材或必须全程显示字幕的段落。"
+  },
+  "implementation": {
+    "status": "catalog_only",
+    "template_path": null,
+    "renderer_path": null,
+    "runtime_status": "generic",
+    "runtime_renderer_path": "effect_runtime.py",
+    "paid_plugin_required": false
+  },
+  "references": [
+    {
+      "platform": "bilibili",
+      "bvid": "BV1gnYszQEwN",
+      "part": 4,
+      "url": "https://www.bilibili.com/video/BV1gnYszQEwN/?p=4",
+      "chapter_title": "AE动态拼贴转场",
+      "verification": {
+        "status": "frame_reviewed",
+        "verified_segment": {
+          "start": 0.0,
+          "end": 35.0
+        },
+        "note": "章节明确演示多层动态拼贴。",
+        "reviewed_sample_times": [
+          0.0,
+          3.0,
+          8.0,
+          15.0,
+          25.0,
+          158.935,
+          281.542,
+          399.608
+        ],
+        "download_sha256": "2E189BEF5673149AE2795580AB8D1E5D8D2A5BCEDBC99B3FE2A062BCE3991766",
+        "media": {
+          "width": 640,
+          "height": 360,
+          "fps": 30.0,
+          "frames": 13623,
+          "duration": 454.1,
+          "bytes": 7629333
+        },
+        "temporary_media_deleted": true
+      },
+      "research_snapshot": {
+        "title": "【AE+PR游戏剪辑教程】教你13个相见恨晚的超燃剪辑效果，超简单的游戏剪辑入门教程，学完剪出自己高然战斗时刻！（附带素材、插件包） p04 【超燃游戏剪辑】2.AE动态拼贴转场",
+        "timestamp": 1755506329,
+        "view_count": 1896,
+        "like_count": 48,
+        "comment_count": 7
+      }
+    }
+  ]
+}

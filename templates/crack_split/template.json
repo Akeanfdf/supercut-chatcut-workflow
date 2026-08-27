@@ -1,0 +1,61 @@
+{
+  "template_name": "裂缝分割破碎",
+  "template_id": "crack_split",
+  "version": 1,
+  "mode": "crack_split",
+  "audio_policy": "source_crossfade",
+  "video": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30
+  },
+  "timing": {
+    "pre_duration": 0.8,
+    "transition_duration": 0.8,
+    "post_duration": 0.9,
+    "outgoing_start": 0.7,
+    "incoming_start": 0.4
+  },
+  "effect": {
+    "columns": 6,
+    "rows": 4,
+    "jitter_px": 32,
+    "scatter_px": 175,
+    "crack_width_px": 4,
+    "flash_strength": 0.28,
+    "seed": 17
+  },
+  "effect_id": "crack_split",
+  "usage_profile": {
+    "content_types": [
+      "game",
+      "anime",
+      "short_drama"
+    ],
+    "trigger_events": [
+      "kill_confirm",
+      "impact",
+      "emotion_break",
+      "scene_change"
+    ],
+    "transition_roles": [
+      "impact_transition",
+      "dramatic_break"
+    ],
+    "source_requirements": [
+      "冲击点明确",
+      "主体不贴近四周边缘"
+    ],
+    "recommended_duration_seconds": [
+      0.35,
+      0.9
+    ],
+    "intensity": "strong",
+    "avoid_when": [
+      "轻松对白",
+      "画面细节需要持续阅读"
+    ],
+    "selection_prompt": "当素材属于游戏、动漫或短剧并出现击杀、重击、关系破裂或强场景切换时，若冲击点明确且主体不贴边，优先使用裂缝分割破碎；效果持续0.35至0.9秒；避免用于轻松对白或需要持续阅读细节的画面。"
+  },
+  "knowledge_path": "knowledge/effects/crack_split.json"
+}

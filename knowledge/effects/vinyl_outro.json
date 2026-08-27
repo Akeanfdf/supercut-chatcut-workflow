@@ -1,0 +1,95 @@
+{
+  "schema": "supercut-effect-knowledge-v3",
+  "effect_id": "vinyl_outro",
+  "name": "唱片旋转收尾",
+  "principle": "graphic_composition",
+  "techniques": [
+    "disc_mask",
+    "rotation",
+    "audio_fade"
+  ],
+  "usage_profile": {
+    "content_types": [
+      "game",
+      "anime",
+      "short_drama",
+      "live_stream"
+    ],
+    "trigger_events": [
+      "outro",
+      "victory_recap",
+      "ending_quote",
+      "stream_end"
+    ],
+    "transition_roles": [
+      "outro",
+      "audio_bridge"
+    ],
+    "source_requirements": [
+      "有代表性封面帧",
+      "结尾音乐可保留2秒以上"
+    ],
+    "recommended_duration_seconds": [
+      2.0,
+      5.0
+    ],
+    "intensity": "subtle",
+    "avoid_when": [
+      "剧情仍未收束",
+      "无可用音乐尾奏"
+    ],
+    "selection_prompt": "当素材属于游戏、动漫、短剧或实况直播并进入片尾、胜利回顾、结尾金句或下播时，若有代表性封面帧且音乐可延续，优先使用唱片旋转收尾；效果持续2至5秒；避免用于剧情未收束或没有音乐尾奏的片段。"
+  },
+  "implementation": {
+    "status": "catalog_only",
+    "template_path": null,
+    "renderer_path": null,
+    "runtime_status": "generic",
+    "runtime_renderer_path": "effect_runtime.py",
+    "paid_plugin_required": false
+  },
+  "references": [
+    {
+      "platform": "bilibili",
+      "bvid": "BV1gnYszQEwN",
+      "part": 7,
+      "url": "https://www.bilibili.com/video/BV1gnYszQEwN/?p=7",
+      "chapter_title": "【超燃游戏剪辑】5.AE唱片结尾",
+      "verification": {
+        "status": "frame_reviewed",
+        "verified_segment": {
+          "start": 0.0,
+          "end": 35.0
+        },
+        "note": "游戏教程展示画面裁成唱片、持续旋转并配合音频淡出的结尾。",
+        "reviewed_sample_times": [
+          0.0,
+          3.0,
+          8.0,
+          15.0,
+          15.785,
+          25.0,
+          27.962,
+          39.688
+        ],
+        "download_sha256": "2A8896F5BF655DF72798306C70833649F0BC50D14BFFAC7F96E87306E468F381",
+        "media": {
+          "width": 1280,
+          "height": 720,
+          "fps": 30.0,
+          "frames": 1353,
+          "duration": 45.1,
+          "bytes": 3772949
+        },
+        "temporary_media_deleted": true
+      },
+      "research_snapshot": {
+        "title": "【AE+PR游戏剪辑教程】教你13个相见恨晚的超燃剪辑效果，超简单的游戏剪辑入门教程，学完剪出自己高然战斗时刻！（附带素材、插件包） p07 【超燃游戏剪辑】5.AE唱片结尾",
+        "timestamp": 1755506329,
+        "view_count": 1897,
+        "like_count": 48,
+        "comment_count": 7
+      }
+    }
+  ]
+}

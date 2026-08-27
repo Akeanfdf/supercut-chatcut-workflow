@@ -1,0 +1,93 @@
+{
+  "schema": "supercut-effect-knowledge-v3",
+  "effect_id": "foreground_weapon_hold",
+  "name": "枪械前景保留遮切",
+  "principle": "foreground_retention",
+  "techniques": [
+    "foreground_cutout",
+    "background_handoff",
+    "directional_blur"
+  ],
+  "usage_profile": {
+    "content_types": [
+      "game"
+    ],
+    "trigger_events": [
+      "weapon_switch",
+      "reload",
+      "kill_confirm",
+      "scene_change"
+    ],
+    "transition_roles": [
+      "action_transition",
+      "background_replacement"
+    ],
+    "source_requirements": [
+      "枪体或手部轮廓清晰",
+      "背景与枪体颜色有区分",
+      "转场两侧各保留0.3秒余量"
+    ],
+    "recommended_duration_seconds": [
+      0.18,
+      0.45
+    ],
+    "intensity": "strong",
+    "avoid_when": [
+      "枪体被烟雾完全遮挡",
+      "第三人称镜头"
+    ],
+    "selection_prompt": "当素材属于游戏并出现切枪、换弹、击杀或场景切换时，若枪体与手部轮廓清晰且背景可分离，优先使用枪械前景保留遮切；效果持续0.18至0.45秒；避免用于枪体被烟雾遮挡或第三人称镜头。"
+  },
+  "implementation": {
+    "status": "implemented",
+    "template_path": "templates/foreground_weapon_hold/template.json",
+    "renderer_path": "tools/render_burn_glitch_preview.py",
+    "runtime_status": "specialized",
+    "runtime_renderer_path": "effect_runtime.py",
+    "paid_plugin_required": false
+  },
+  "references": [
+    {
+      "platform": "bilibili",
+      "bvid": "BV1gnYszQEwN",
+      "part": 13,
+      "url": "https://www.bilibili.com/video/BV1gnYszQEwN/?p=13",
+      "chapter_title": "AE蒙版转场与武器发光",
+      "verification": {
+        "status": "frame_reviewed",
+        "verified_segment": {
+          "start": 0.0,
+          "end": 35.0
+        },
+        "note": "章节明确演示蒙版、武器发光和背景交接。",
+        "reviewed_sample_times": [
+          0.0,
+          3.0,
+          8.0,
+          15.0,
+          25.0,
+          191.66,
+          339.512,
+          481.888
+        ],
+        "download_sha256": "99AAFE0CF4D7DC6CCD34BF0FAC063CAEEDB8529413908DE759069AC4ECDDD71C",
+        "media": {
+          "width": 640,
+          "height": 360,
+          "fps": 30.0,
+          "frames": 16428,
+          "duration": 547.6,
+          "bytes": 11190132
+        },
+        "temporary_media_deleted": true
+      },
+      "research_snapshot": {
+        "title": "【AE+PR游戏剪辑教程】教你13个相见恨晚的超燃剪辑效果，超简单的游戏剪辑入门教程，学完剪出自己高然战斗时刻！（附带素材、插件包） p13 【超燃游戏剪辑】11.AE蒙版转场与武器发光",
+        "timestamp": 1755506329,
+        "view_count": 1896,
+        "like_count": 48,
+        "comment_count": 7
+      }
+    }
+  ]
+}

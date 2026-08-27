@@ -1,0 +1,100 @@
+{
+  "template_name": "蒙版卡点",
+  "template_id": "mask_beat",
+  "version": 2,
+  "audio_policy": "base_source_only",
+  "video": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30
+  },
+  "timing": {
+    "duration": 5.7,
+    "beat_starts": [
+      0.42,
+      1.34,
+      2.26,
+      3.18,
+      4.1
+    ],
+    "beat_duration": 0.78
+  },
+  "effect": {
+    "mask_sequence": [
+      "horizontal",
+      "cross",
+      "fan",
+      "steps",
+      "circles"
+    ],
+    "focus_x_ratio": 0.58,
+    "focus_y_ratio": 0.54,
+    "mask_feather_px": 9,
+    "base_gain": 0.76,
+    "base_saturation": 0.74,
+    "overlay_gain": 1.08,
+    "overlay_saturation": 1.18,
+    "rim_width_px": 3,
+    "rim_bgr": [
+      244,
+      232,
+      214
+    ],
+    "cut_flash_strength": 0.18,
+    "horizontal_half_height_ratio": 0.12,
+    "cross_half_width_ratio": 0.045,
+    "cross_half_height_ratio": 0.075,
+    "fan_segments": 8,
+    "fan_open_ratio": 0.54,
+    "circle_radius_ratio": 0.16
+  },
+  "base_source": "06_multi_engagement.mp4",
+  "picture_sources": [
+    "01_opening_finish.mp4",
+    "02_distortion_bridge.mp4",
+    "03_midrange_gunfight.mp4",
+    "04_doorway_kill_reload.mp4",
+    "05_weapon_action_bridge.mp4",
+    "06_multi_engagement.mp4",
+    "07_close_range_kill.mp4",
+    "08_final_kill_victory.mp4"
+  ],
+  "picture_sample_ratios": [
+    0.22,
+    0.52,
+    0.82
+  ],
+  "effect_id": "mask_beat",
+  "usage_profile": {
+    "content_types": [
+      "game",
+      "anime",
+      "live_stream"
+    ],
+    "trigger_events": [
+      "kill_chain",
+      "beat",
+      "highlight",
+      "host_reaction"
+    ],
+    "transition_roles": [
+      "beat_transition",
+      "montage_bridge"
+    ],
+    "source_requirements": [
+      "至少5个独立高光画面",
+      "音乐卡点清晰"
+    ],
+    "recommended_duration_seconds": [
+      2.5,
+      6.0
+    ],
+    "intensity": "strong",
+    "avoid_when": [
+      "单一对白镜头",
+      "画面主体位置变化过大"
+    ],
+    "selection_prompt": "当素材属于游戏、动漫或实况直播并出现连续击杀、节拍、高光或主播反应时，若至少有5个独立画面且卡点清晰，优先使用蒙版卡点；效果持续2.5至6秒；避免用于单一对白或主体位置剧烈漂移。"
+  },
+  "knowledge_path": "knowledge/effects/mask_beat.json"
+}

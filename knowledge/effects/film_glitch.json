@@ -1,0 +1,94 @@
+{
+  "schema": "supercut-effect-knowledge-v3",
+  "effect_id": "film_glitch",
+  "name": "电影故障跳帧",
+  "principle": "digital_glitch",
+  "techniques": [
+    "frame_skip",
+    "film_dust",
+    "chromatic_aberration"
+  ],
+  "usage_profile": {
+    "content_types": [
+      "anime",
+      "short_drama",
+      "live_stream"
+    ],
+    "trigger_events": [
+      "flashback",
+      "emotion_turn",
+      "signal_loss",
+      "scene_change"
+    ],
+    "transition_roles": [
+      "memory_transition",
+      "discontinuity_transition"
+    ],
+    "source_requirements": [
+      "情绪或时间断裂明确",
+      "可接受2至4帧跳帧"
+    ],
+    "recommended_duration_seconds": [
+      0.18,
+      0.65
+    ],
+    "intensity": "medium",
+    "avoid_when": [
+      "连续口型同步",
+      "平稳产品展示"
+    ],
+    "selection_prompt": "当素材属于动漫、短剧或直播并出现闪回、情绪断裂、信号异常或场景变化时，若允许少量跳帧，优先使用电影故障跳帧；效果持续0.18至0.65秒；避免用于口型同步或平稳产品展示。"
+  },
+  "implementation": {
+    "status": "catalog_only",
+    "template_path": null,
+    "renderer_path": null,
+    "runtime_status": "generic",
+    "runtime_renderer_path": "effect_runtime.py",
+    "paid_plugin_required": false
+  },
+  "references": [
+    {
+      "platform": "bilibili",
+      "bvid": "BV1JqraYAELK",
+      "part": 20,
+      "url": "https://www.bilibili.com/video/BV1JqraYAELK/?p=20",
+      "chapter_title": "信号干扰转场",
+      "verification": {
+        "status": "frame_reviewed",
+        "verified_segment": {
+          "start": 0.0,
+          "end": 35.0
+        },
+        "note": "信号干扰章节提供无需商业插件的切片思路。",
+        "reviewed_sample_times": [
+          0.0,
+          1.785,
+          3.0,
+          3.162,
+          4.488,
+          5.0,
+          5.0,
+          5.0
+        ],
+        "download_sha256": "2E354E408D9CCF004D71A6C86496E521B04DF0F71452E6D92A1356232B843C87",
+        "media": {
+          "width": 640,
+          "height": 360,
+          "fps": 30.0,
+          "frames": 153,
+          "duration": 5.1,
+          "bytes": 1518895
+        },
+        "temporary_media_deleted": true
+      },
+      "research_snapshot": {
+        "title": "【全100集】这才叫PR转场！100个超丝滑转场案例教程，带你轻松玩转视频转场！ p20 信号干扰转场",
+        "timestamp": 1736337231,
+        "view_count": 212393,
+        "like_count": 5914,
+        "comment_count": 510
+      }
+    }
+  ]
+}

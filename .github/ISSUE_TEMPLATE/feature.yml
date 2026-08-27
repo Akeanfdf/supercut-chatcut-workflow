@@ -1,0 +1,22 @@
+name: Feature request
+description: 建议新的能力或流程改进
+title: "[Feature] "
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: 要解决的问题
+    validations: { required: true }
+  - type: textarea
+    id: proposal
+    attributes:
+      label: 建议方案与验收方式
+    validations: { required: true }
+  - type: checkboxes
+    id: rights
+    attributes:
+      label: 媒体与隐私
+      options:
+        - label: 示例不包含无权公开的媒体、私人路径、工程 ID 或凭据
+          required: true

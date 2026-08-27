@@ -1,0 +1,56 @@
+{
+  "template_name": "万花筒切割",
+  "template_id": "kaleidoscope_cut",
+  "version": 1,
+  "mode": "kaleidoscope_cut",
+  "audio_policy": "source_crossfade",
+  "video": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30
+  },
+  "timing": {
+    "pre_duration": 0.75,
+    "transition_duration": 0.62,
+    "post_duration": 0.85,
+    "outgoing_start": 0.8,
+    "incoming_start": 0.5
+  },
+  "effect": {
+    "rotation_degrees": 58,
+    "zoom_strength": 0.24
+  },
+  "effect_id": "kaleidoscope_cut",
+  "usage_profile": {
+    "content_types": [
+      "game",
+      "anime",
+      "live_stream"
+    ],
+    "trigger_events": [
+      "skill_cast",
+      "beat",
+      "scene_change",
+      "host_reaction"
+    ],
+    "transition_roles": [
+      "impact_transition",
+      "beat_transition"
+    ],
+    "source_requirements": [
+      "画面中心有明确主体",
+      "允许短暂几何重复"
+    ],
+    "recommended_duration_seconds": [
+      0.25,
+      0.75
+    ],
+    "intensity": "strong",
+    "avoid_when": [
+      "写实严肃对白",
+      "主体贴边"
+    ],
+    "selection_prompt": "当素材属于游戏、动漫或实况直播并出现技能释放、卡点、场景切换或主播反应时，若主体居中且允许几何重复，优先使用万花筒切割；效果持续0.25至0.75秒；避免用于写实严肃对白或主体贴边镜头。"
+  },
+  "knowledge_path": "knowledge/effects/kaleidoscope_cut.json"
+}

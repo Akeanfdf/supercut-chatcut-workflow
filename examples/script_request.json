@@ -1,0 +1,17 @@
+{
+  "title": "原创高光短片",
+  "objective": "用现有素材把发现目标、交战和结果剪成节奏清楚的短片",
+  "script": "先建立环境和人物位置。随后发现目标并快速交战。最后展示结果并收束主题。",
+  "content_type": "game",
+  "events": [
+    "camera_change",
+    "kill_confirm"
+  ],
+  "target_duration": 18,
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "effect_intensity": "balanced",
+  "video_model": "model-neutral",
+  "allow_generation": false
+}

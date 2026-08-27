@@ -1,0 +1,58 @@
+{
+  "template_name": "文字遮罩卡点",
+  "template_id": "typography_wipe",
+  "version": 1,
+  "mode": "typography_wipe",
+  "audio_policy": "source_crossfade",
+  "video": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30
+  },
+  "timing": {
+    "pre_duration": 0.75,
+    "transition_duration": 0.85,
+    "post_duration": 0.85,
+    "outgoing_start": 0.8,
+    "incoming_start": 0.5
+  },
+  "effect": {
+    "text": "CUT",
+    "font_scale": 4.0,
+    "thickness_ratio": 2.5,
+    "feather_sigma": 2.0
+  },
+  "effect_id": "typography_wipe",
+  "usage_profile": {
+    "content_types": [
+      "anime",
+      "short_drama",
+      "live_stream"
+    ],
+    "trigger_events": [
+      "title",
+      "beat",
+      "quote",
+      "chapter_change"
+    ],
+    "transition_roles": [
+      "title_transition",
+      "beat_transition"
+    ],
+    "source_requirements": [
+      "有1至4个短词",
+      "文字与背景对比足够"
+    ],
+    "recommended_duration_seconds": [
+      0.35,
+      1.1
+    ],
+    "intensity": "medium",
+    "avoid_when": [
+      "长句字幕",
+      "重要画面细节位于字形内部"
+    ],
+    "selection_prompt": "当素材属于动漫、短剧或实况直播并出现标题、卡点、金句或章节变化时，若文案为1至4个短词且对比清晰，优先使用文字遮罩卡点；效果持续0.35至1.1秒；避免用于长句字幕或字形内有重要细节的画面。"
+  },
+  "knowledge_path": "knowledge/effects/typography_wipe.json"
+}

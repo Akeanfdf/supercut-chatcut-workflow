@@ -1,0 +1,94 @@
+{
+  "schema": "supercut-effect-knowledge-v3",
+  "effect_id": "typography_wipe",
+  "name": "文字遮罩卡点",
+  "principle": "graphic_composition",
+  "techniques": [
+    "text_matte",
+    "scale_type",
+    "beat_sync"
+  ],
+  "usage_profile": {
+    "content_types": [
+      "anime",
+      "short_drama",
+      "live_stream"
+    ],
+    "trigger_events": [
+      "title",
+      "beat",
+      "quote",
+      "chapter_change"
+    ],
+    "transition_roles": [
+      "title_transition",
+      "beat_transition"
+    ],
+    "source_requirements": [
+      "有1至4个短词",
+      "文字与背景对比足够"
+    ],
+    "recommended_duration_seconds": [
+      0.35,
+      1.1
+    ],
+    "intensity": "medium",
+    "avoid_when": [
+      "长句字幕",
+      "重要画面细节位于字形内部"
+    ],
+    "selection_prompt": "当素材属于动漫、短剧或实况直播并出现标题、卡点、金句或章节变化时，若文案为1至4个短词且对比清晰，优先使用文字遮罩卡点；效果持续0.35至1.1秒；避免用于长句字幕或字形内有重要细节的画面。"
+  },
+  "implementation": {
+    "status": "implemented",
+    "template_path": "templates/typography_wipe/template.json",
+    "renderer_path": "tools/render_research_effect.py",
+    "runtime_status": "specialized",
+    "runtime_renderer_path": "effect_runtime.py",
+    "paid_plugin_required": false
+  },
+  "references": [
+    {
+      "platform": "bilibili",
+      "bvid": "BV1SqabzaEDL",
+      "part": 97,
+      "url": "https://www.bilibili.com/video/BV1SqabzaEDL/?p=97",
+      "chapter_title": "【卡点篇】片头文字卡点",
+      "verification": {
+        "status": "frame_reviewed",
+        "verified_segment": {
+          "start": 0.0,
+          "end": 35.0
+        },
+        "note": "章节以片头短词为节拍锚点，展示文字大小、位置和显隐关键帧。",
+        "reviewed_sample_times": [
+          0.0,
+          3.0,
+          8.0,
+          15.0,
+          15.785,
+          25.0,
+          27.962,
+          39.688
+        ],
+        "download_sha256": "DD69D0CBC0C7ADE59A3FBBE88461D12006AB93078F08244B7406201A8A3281A4",
+        "media": {
+          "width": 1280,
+          "height": 720,
+          "fps": 30.0,
+          "frames": 1353,
+          "duration": 45.1,
+          "bytes": 2642325
+        },
+        "temporary_media_deleted": true
+      },
+      "research_snapshot": {
+        "title": "【剪辑教程】100集（全）从零开始学AE/PR软件基础教程（2025新手入门实用版）2025零基础入门教程！！！ p97 【卡点篇】片头文字卡点",
+        "timestamp": 1757065418,
+        "view_count": 3339,
+        "like_count": 249,
+        "comment_count": 11
+      }
+    }
+  ]
+}

@@ -1,0 +1,95 @@
+{
+  "schema": "supercut-effect-knowledge-v3",
+  "effect_id": "freeze_frame_outline",
+  "name": "人物定格描边",
+  "principle": "graphic_composition",
+  "techniques": [
+    "freeze_frame",
+    "subject_cutout",
+    "outline_stroke"
+  ],
+  "usage_profile": {
+    "content_types": [
+      "game",
+      "anime",
+      "short_drama",
+      "live_stream"
+    ],
+    "trigger_events": [
+      "character_entry",
+      "kill_confirm",
+      "host_reaction",
+      "hero_reveal"
+    ],
+    "transition_roles": [
+      "character_intro",
+      "impact_accent"
+    ],
+    "source_requirements": [
+      "人物轮廓完整",
+      "定格帧清晰无严重拖影"
+    ],
+    "recommended_duration_seconds": [
+      0.45,
+      1.3
+    ],
+    "intensity": "medium",
+    "avoid_when": [
+      "多人遮挡",
+      "低清运动模糊"
+    ],
+    "selection_prompt": "当素材属于游戏、动漫、短剧或实况直播并出现人物入场、击杀、主播反应或英雄揭示时，若人物轮廓完整且定格帧清晰，优先使用人物定格描边；效果持续0.45至1.3秒；避免用于多人遮挡或低清运动模糊。"
+  },
+  "implementation": {
+    "status": "catalog_only",
+    "template_path": null,
+    "renderer_path": null,
+    "runtime_status": "generic",
+    "runtime_renderer_path": "effect_runtime.py",
+    "paid_plugin_required": false
+  },
+  "references": [
+    {
+      "platform": "bilibili",
+      "bvid": "BV1d8o1YuEqR",
+      "part": 30,
+      "url": "https://www.bilibili.com/video/BV1d8o1YuEqR/?p=30",
+      "chapter_title": "【零基础实训篇】人物定格出场",
+      "verification": {
+        "status": "frame_reviewed",
+        "verified_segment": {
+          "start": 0.0,
+          "end": 35.0
+        },
+        "note": "章节展示人物冻结、抠像分层和定格出场节奏。",
+        "reviewed_sample_times": [
+          0.0,
+          3.0,
+          8.0,
+          15.0,
+          15.785,
+          25.0,
+          27.962,
+          39.688
+        ],
+        "download_sha256": "EFC1563ECA28E465658882E2E1A4060494A577499870EBF87668AA072E76EAEC",
+        "media": {
+          "width": 1280,
+          "height": 720,
+          "fps": 30.0,
+          "frames": 1353,
+          "duration": 45.1,
+          "bytes": 2548553
+        },
+        "temporary_media_deleted": true
+      },
+      "research_snapshot": {
+        "title": "【PR教程】PR零基础效果教程，配套素材练习免费提供，手把手教你用PR！！！B站最细致教程篇~ p30 【零基础实训篇】人物定格出场",
+        "timestamp": 1742801561,
+        "view_count": 30540,
+        "like_count": 914,
+        "comment_count": 26
+      }
+    }
+  ]
+}

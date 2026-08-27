@@ -1,0 +1,32 @@
+{
+  "schema": "supercut-workflow-trigger-v1",
+  "trigger": "执行超级剪辑终版工作流",
+  "title": "通往夏天的隧道｜参考片复刻终版",
+  "objective": "以参考片的叙事、取景、快速切镜和真实鼓点关系重剪《通往夏天的隧道，离别的出口》素材，并在 ChatCut 中保留可编辑终版。",
+  "content_type": "anime",
+  "reference": "https://www.bilibili.com/video/BV17a8CzLEgZ/",
+  "source": "local-media/tunnel-source.mp4",
+  "music": "local-media/music.mp3",
+  "confirm_media_rights": true,
+  "target_duration": 68,
+  "width": 3840,
+  "height": 2160,
+  "fps": 60,
+  "platform": "bilibili",
+  "effect_intensity": "balanced",
+  "allow_generation": false,
+  "text_strategy": "only_if_supported_by_reference_and_audio",
+  "review_policy": "chatcut_required_before_final",
+  "chatcut_project": "select-current-authorized-project",
+  "must_keep": [
+    "真实 BGM Beat、Onset 和重拍",
+    "盛夏相遇、隧道、离别与重逢的叙事弧线",
+    "主要人物和关键动作完整"
+  ],
+  "forbidden": [
+    "机械地每个鼓点强制切镜",
+    "无内容依据地堆叠强特效",
+    "用生成画面替换原电影人物",
+    "把静帧抽查冒充整段播放验收"
+  ]
+}

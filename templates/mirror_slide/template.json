@@ -1,0 +1,77 @@
+{
+  "template_name": "镜面滑屏",
+  "template_id": "mirror_slide",
+  "version": 1,
+  "audio_policy": "source_only",
+  "video": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30
+  },
+  "timing": {
+    "source_start": 0.0,
+    "duration": 3.25,
+    "active_start": 0.42,
+    "active_end": 2.78
+  },
+  "effect": {
+    "axis_slope": 0.58,
+    "strip_half_width_ratio": 0.092,
+    "edge_softness": 5.0,
+    "gray_alpha": 1.07,
+    "gray_beta": -7.0,
+    "shadow_offset_px": 17.0,
+    "shadow_feather_px": 30.0,
+    "shadow_overlap": 0.72,
+    "shadow_strength": 0.4,
+    "rim_width_px": 2.4,
+    "rim_bgr": [
+      24.0,
+      29.0,
+      31.0
+    ],
+    "fade_frames": 5,
+    "motion": {
+      "first_key_progress": 0.25,
+      "start_width": -0.52,
+      "middle_width": 0.31,
+      "middle_height": 0.3,
+      "end_width": 1.52,
+      "end_height": 0.62
+    }
+  },
+  "effect_id": "mirror_slide",
+  "usage_profile": {
+    "content_types": [
+      "game",
+      "anime",
+      "short_drama",
+      "live_stream"
+    ],
+    "trigger_events": [
+      "hero_reveal",
+      "character_turn",
+      "camera_change",
+      "scene_change"
+    ],
+    "transition_roles": [
+      "character_reveal",
+      "scene_transition"
+    ],
+    "source_requirements": [
+      "主体位于画面中心附近",
+      "镜头方向稳定"
+    ],
+    "recommended_duration_seconds": [
+      0.35,
+      0.9
+    ],
+    "intensity": "medium",
+    "avoid_when": [
+      "高速连续击杀",
+      "重要字幕占据斜带区域"
+    ],
+    "selection_prompt": "当素材属于游戏、动漫、短剧或实况直播并出现英雄登场、人物转身、机位变化或场景切换时，若主体靠近视觉中心且镜头稳定，优先使用镜面滑屏；效果持续0.35至0.9秒；避免用于高速连续击杀或字幕遮挡斜带。"
+  },
+  "knowledge_path": "knowledge/effects/mirror_slide.json"
+}
