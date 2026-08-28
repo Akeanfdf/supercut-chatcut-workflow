@@ -348,6 +348,9 @@ def evaluate_quality(
     coverage: dict[str, Any],
     blueprint: dict[str, Any],
     prompt_pack: dict[str, Any],
+    rhythm_map: dict[str, Any] | None = None,
+    rhythm_sync: dict[str, Any] | None = None,
+    rhythm_required: bool = False,
 ) -> dict[str, Any]:
     critical: list[str] = []
     requests: list[str] = []
@@ -362,6 +365,24 @@ def evaluate_quality(
         requests.append("请补充缺失镜头素材，或明确允许使用目标视频模型生成。")
     if not blueprint.get("shots"):
         critical.append("empty_timeline")
+    rhythm_complete = bool(
+        rhythm_map
+        and rhythm_map.get("schema") == "supercut-beat-map-v2"
+        and rhythm_map.get("status") == "complete"
+        and rhythm_map.get("observed_onsets")
+        and rhythm_map.get("strong_anchors")
+    )
+    alignment_ratio = float((rhythm_sync or {}).get("primary_cut_alignment_ratio", 0.0))
+    if rhythm_required and not rhythm_complete:
+        critical.append("rhythm_analysis_missing_or_unreliable")
+        requests.append("请提供可解码的 BGM，完成真实 Beat/Onset 波形分析后再继续。")
+    if rhythm_required and len(blueprint.get("shots", [])) > 1 and alignment_ratio < 0.7:
+        critical.append("primary_cut_alignment_below_threshold")
+        requests.append("当前强节奏段主切点命中率低于 70%；请调整素材余量、吸附窗口或卡点强度。")
+    p95_offset = (rhythm_sync or {}).get("p95_cut_offset_ms")
+    if rhythm_required and p95_offset is not None and float(p95_offset) > 120.0:
+        critical.append("beat_alignment_error_above_threshold")
+        requests.append("95% 切点的节拍对齐误差超过 120ms；请重新分析或调整切点。")
 
     score = 0
     score += 8 if brief.get("objective") else 0
@@ -397,6 +418,13 @@ def evaluate_quality(
             "asset_coverage_complete": coverage["summary"]["missing"] == 0,
             "reference_semantics_complete": reference_timeline.get("semantic_complete") if reference_timeline else None,
             "prompts_complete": len(prompt_pack.get("shots", [])) == len(shots),
+            "rhythm_required": rhythm_required,
+            "rhythm_analysis_complete": rhythm_complete,
+            "observed_onset_count": len((rhythm_map or {}).get("observed_onsets", [])),
+            "strong_anchor_count": len((rhythm_map or {}).get("strong_anchors", [])),
+            "primary_cut_alignment_ratio": alignment_ratio if rhythm_sync else None,
+            "median_cut_offset_ms": (rhythm_sync or {}).get("median_cut_offset_ms"),
+            "p95_cut_offset_ms": (rhythm_sync or {}).get("p95_cut_offset_ms"),
         },
     }
 
@@ -502,13 +530,37 @@ def compose_v2(
     template: dict[str, Any],
     effects_catalog: dict[str, Any],
     annotations: dict[str, Any] | None = None,
+    *,
+    rhythm_map: dict[str, Any] | None = None,
+    rhythm_required: bool = False,
+    beat_sync: str = "balanced",
+    max_beat_snap_ms: float = 150.0,
 ) -> dict[str, Any]:
+    rhythm_map = rhythm_map or base_plan.get("beat_map")
+    if rhythm_map and not base_plan.get("rhythm_sync"):
+        from rhythm import align_plan_to_rhythm
+
+        base_plan = align_plan_to_rhythm(
+            base_plan,
+            rhythm_map,
+            intensity=beat_sync,
+            max_snap_ms=max_beat_snap_ms,
+        )
     reference_timeline = build_reference_timeline(template, annotations) if brief["input_mode"] == "reference" else None
     grammar = build_visual_grammar(brief, template, reference_timeline)
     coverage = build_asset_coverage(base_plan)
     blueprint = build_shot_blueprint(brief, base_plan, grammar, annotations)
     prompt_pack = build_generation_prompt_pack(brief, blueprint)
-    qc = evaluate_quality(brief, reference_timeline, coverage, blueprint, prompt_pack)
+    qc = evaluate_quality(
+        brief,
+        reference_timeline,
+        coverage,
+        blueprint,
+        prompt_pack,
+        rhythm_map,
+        base_plan.get("rhythm_sync"),
+        rhythm_required,
+    )
 
     shots: list[dict[str, Any]] = []
     for source, blueprint_row in zip(base_plan.get("shots", []), blueprint["shots"]):
@@ -523,7 +575,11 @@ def compose_v2(
         row["action"] = blueprint_row["action"]
         shots.append(row)
     effects = plan_effects(shots, brief, effects_catalog)
-    revision_payload = json.dumps({"brief": brief, "shots": shots, "effects": effects}, ensure_ascii=False, sort_keys=True)
+    revision_payload = json.dumps(
+        {"brief": brief, "shots": shots, "effects": effects, "rhythm_sync": base_plan.get("rhythm_sync")},
+        ensure_ascii=False,
+        sort_keys=True,
+    )
     plan_revision = hashlib.sha256(revision_payload.encode("utf-8")).hexdigest()[:16]
     return {
         "schema": "supercut-edit-plan-v2",
@@ -533,12 +589,26 @@ def compose_v2(
         "output": copy.deepcopy(base_plan["output"]),
         "shots": shots,
         "effects": effects,
+        "rhythm_sync": base_plan.get("rhythm_sync"),
+        "audio": (
+            {
+                "mode": "music_only",
+                "music": {
+                    "source": rhythm_map.get("source", {}).get("path"),
+                    "offset_seconds": float(rhythm_map.get("source", {}).get("timeline_offset_seconds", 0.0)),
+                    "volume": 0.85,
+                },
+            }
+            if rhythm_map and rhythm_map.get("source", {}).get("path") not in {None, "in-memory"}
+            else None
+        ),
         "artifacts": {
             "reference_timeline": reference_timeline,
             "visual_grammar": grammar,
             "asset_coverage": coverage,
             "shot_blueprint": blueprint,
             "generation_prompt_pack": prompt_pack,
+            "beat_map": rhythm_map,
             "quality_gate": qc,
         },
         "sync": {
@@ -572,6 +642,7 @@ def save_artifacts(plan: dict[str, Any], directory: Path) -> None:
         "asset_coverage.json": plan.get("artifacts", {}).get("asset_coverage"),
         "shot_blueprint.json": plan.get("artifacts", {}).get("shot_blueprint"),
         "generation_prompt_pack.json": plan.get("artifacts", {}).get("generation_prompt_pack"),
+        "beat_map.json": plan.get("artifacts", {}).get("beat_map"),
         "analysis_qc.json": plan.get("artifacts", {}).get("quality_gate"),
     }
     for name, value in mapping.items():

@@ -8,7 +8,8 @@
 
 ## 1.2 — 更强的节拍与语义
 
-- 多频段 Onset / Downbeat 置信度可视化
+- [x] 多频段 Onset / Downbeat 置信度与可审阅 `beat_map`
+- [x] 真实 Onset 切点吸附、严格节拍质量门和 ChatCut BGM 音轨
 - 镜头语义人工复核界面和差异报告
 - 更多无生成依赖的确定性转场代理
 

@@ -165,6 +165,35 @@ def build_chatcut_manifest(
             )
         cursor += duration - overlap
 
+    music = (plan.get("audio") or {}).get("music")
+    if music and music.get("source"):
+        music_source = str(music["source"])
+        music_asset_id = _asset_id(music_source)
+        assets[music_asset_id] = {
+            "id": music_asset_id,
+            "kind": "music_source",
+            "original_path": music_source,
+            "proxy_path": music_source,
+            "proxy_policy": {"preserve_duration_and_timecode": True},
+        }
+        items.append(
+            {
+                "id": "cc-supercut-music",
+                "track": "SC_AUDIO",
+                "asset_id": music_asset_id,
+                "timeline_start": 0.0,
+                "duration": round(cursor, 6),
+                "source_start": float(music.get("offset_seconds", 0.0)),
+                "speed": 1.0,
+                "volume": float(music.get("volume", 0.85)),
+                "metadata": {
+                    "role": "bgm",
+                    "rhythm_schema": (plan.get("artifacts", {}).get("beat_map") or {}).get("schema"),
+                    "plan_revision": plan["plan_revision"],
+                },
+            }
+        )
+
     manifest = {
         "schema": "supercut-chatcut-manifest-v1",
         "project": {

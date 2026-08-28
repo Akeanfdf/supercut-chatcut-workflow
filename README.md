@@ -46,6 +46,8 @@ python supercut.py all \
   --reference "https://www.bilibili.com/video/BV..." \
   --source "https://www.bilibili.com/video/BV..." \
   --music "music.mp3" \
+  --music-offset auto \
+  --rhythm-mode required \
   --confirm-media-rights \
   --out "output/draft.mp4"
 ```
@@ -66,10 +68,17 @@ $supercut-chatcut-workflow
 - `edit_brief.json`：目标、平台、时长、约束和权限边界。
 - `visual_grammar.json`：叙事、镜头、运动、转场、文字与声音语法。
 - `acquisition_manifest.json`：原 URL、BV 号、分P、格式、时长、SHA-256 和授权状态。
+- `beat_map.json`：波形观测 Onset、推断 Beat/Downbeat、强锚点、段落、静音与置信度。
 - `asset_coverage.json`：每个镜头的素材覆盖与缺口。
 - `shot_blueprint.json`：镜头首帧、动作、运镜、尾帧和衔接。
 - `supercut-edit-plan-v2`：入出点、速度、声音、特效、理由和备选方案。
 - 两道质量报告与 ChatCut 多轨同步清单。
+
+### 真实节拍不是 BPM 占位符
+
+运行时先对低频、中频和高频分别计算频谱通量，再输出波形直接观测的 `observed_onsets`。BPM、Beat Grid 与 Downbeat 保存在 `inferred_beats`，不会冒充真实鼓点。自动剪切只吸附到 `source: observed_onset` 的强锚点，并在计划里记录吸附前后时间、调整量和最终误差。
+
+`--rhythm-mode required` 会执行硬质量门：没有可用 Onset/强锚点、主切点命中率低于 70%，或 p95 对齐误差超过 120ms 时停止渲染。`analyze` 模式允许保留叙事切点并明确报告降级，`off` 用于不需要音乐卡点的任务。
 
 ## ChatCut 轨道
 
@@ -111,7 +120,7 @@ cd site && npm ci && npm run build
 
 ## English summary
 
-Supercut is an effect-aware, beat-grounded editing workflow that turns a reference video or an original brief into an editable ChatCut timeline. Its smallest input mode accepts two public Bilibili links and one local music file; local-file and original-planning routes are also supported. Every run exposes its intermediate JSON artifacts, passes two quality gates, and preserves source relationships in ChatCut. Remote acquisition is rights-gated and never reads browser cookies or bypasses access controls.
+Supercut is an effect-aware, beat-grounded editing workflow that turns a reference video or an original brief into an editable ChatCut timeline. The v1.2 runtime separates waveform-observed onsets from inferred beat/downbeat grids, snaps eligible cuts only to observed anchors, and exposes alignment metrics as a hard quality gate. Its smallest input mode accepts two public Bilibili links and one local music file; local-file and original-planning routes are also supported. Remote acquisition is rights-gated and never reads browser cookies or bypasses access controls.
 
 ## License
 

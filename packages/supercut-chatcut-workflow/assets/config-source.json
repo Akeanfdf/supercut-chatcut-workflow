@@ -1,12 +1,12 @@
 {
   "schema": "supercut-config-source-v1",
   "channel": "stable",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "fallback_to_embedded": true,
   "package": {
-    "url": "https://github.com/Akeanfdf/supercut-chatcut-workflow/releases/download/v1.1.0/supercut-chatcut-config-1.1.0.zip",
-    "embedded": "config/supercut-chatcut-config-1.1.0.zip",
-    "sha256": "bd157df4d1247805494f6d215d58c63d7ca45c587db1df98b07261742fe213b9",
-    "size_bytes": 156449
+    "url": "https://github.com/Akeanfdf/supercut-chatcut-workflow/releases/download/v1.2.0/supercut-chatcut-config-1.2.0.zip",
+    "embedded": "config/supercut-chatcut-config-1.2.0.zip",
+    "sha256": "bba9248f3d8b48feac9b251252bfccaddc1f626091a2729f76c299da6732229b",
+    "size_bytes": 168116
   }
 }

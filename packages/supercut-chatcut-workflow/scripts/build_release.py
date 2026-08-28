@@ -59,6 +59,7 @@ def _copy_runtime(staging: Path) -> None:
         "chatcut_bridge.py",
         "chatcut_proxy.py",
         "media_acquisition.py",
+        "rhythm.py",
         "requirements.txt",
     ]:
         shutil.copy2(REPO_ROOT / name, runtime / name)

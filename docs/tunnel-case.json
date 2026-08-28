@@ -19,6 +19,12 @@
     "bgm_source_offset_seconds": 2.72,
     "normalized_multiband_audio_correlation": 0.696807
   },
+  "rhythm_validation": {
+    "workflow_version": "1.1.0",
+    "method": "reference_cut_inheritance_with_same_source_bgm_offset",
+    "supercut_beat_map_v2_executed": false,
+    "note": "v1.2 runtime results are not retroactively claimed for this published case"
+  },
   "quality_gates": [
     { "gate": 1, "score": 96, "threshold": 85, "status": "passed" },
     { "gate": 2, "score": 97, "threshold": 85, "status": "passed" }

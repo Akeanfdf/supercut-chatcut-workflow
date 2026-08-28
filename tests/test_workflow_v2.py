@@ -151,6 +151,33 @@ class WorkflowV2Tests(unittest.TestCase):
         self.assertEqual(approved["review_status"], "approved")
         self.assertEqual(approved["artifacts"]["quality_gate"]["status"], "approved")
 
+    def test_rhythm_map_is_preserved_in_plan_and_chatcut_audio(self) -> None:
+        brief = build_edit_brief(
+            {
+                "title": "真实卡点",
+                "objective": "按真实鼓点剪辑",
+                "script": "建立。推进。收束。",
+                "content_type": "game",
+                "target_duration": 6,
+            }
+        )
+        catalog = source_catalog()
+        template = build_script_template(brief, catalog)
+        rhythm_map = {
+            "schema": "supercut-beat-map-v2",
+            "status": "complete",
+            "source": {"path": str(ROOT / "fixtures/music.wav"), "timeline_offset_seconds": 0.5},
+            "observed_onsets": [{"id": "onset-1", "time": 2.5, "timeline_time": 2.0}],
+            "strong_anchors": [{"id": "anchor-1", "time": 2.5, "timeline_time": 2.0, "source_event_id": "onset-1", "source": "observed_onset", "type": "kick", "strength": 0.95, "confidence": 0.95}],
+            "inferred_beats": [],
+        }
+        base = build_plan(template, catalog, rhythm_map=rhythm_map, max_beat_snap_ms=250)
+        plan = compose_v2(brief, base, template, self.effects, rhythm_map=rhythm_map)
+        self.assertEqual(plan["artifacts"]["beat_map"]["schema"], "supercut-beat-map-v2")
+        self.assertEqual(plan["audio"]["music"]["offset_seconds"], 0.5)
+        manifest = build_chatcut_manifest(plan)
+        self.assertTrue(any(item["track"] == "SC_AUDIO" for item in manifest["items"]))
+
     def test_chatcut_manifest_forbids_ai_and_uses_owned_tracks(self) -> None:
         plan = self.make_script_plan()
         manifest = build_chatcut_manifest(plan)

@@ -34,6 +34,7 @@ class WorkflowPackageTests(unittest.TestCase):
         with zipfile.ZipFile(package) as archive:
             names = set(archive.namelist())
             self.assertIn("runtime/supercut.py", names)
+            self.assertIn("runtime/rhythm.py", names)
             self.assertIn("config/workflow.defaults.json", names)
             catalog = json.loads(archive.read("knowledge/effect_catalog.json").decode("utf-8"))
         self.assertEqual(catalog["summary"]["effect_count"], 38)

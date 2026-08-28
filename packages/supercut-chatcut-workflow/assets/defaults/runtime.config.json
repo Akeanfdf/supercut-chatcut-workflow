@@ -25,6 +25,12 @@
       "yt-dlp": "2026.8.19"
     }
   },
+  "rhythm": {
+    "runtime_module": "runtime/rhythm.py",
+    "schema": "supercut-beat-map-v2",
+    "observed_onsets_are_distinct_from_inferred_beats": true,
+    "strict_mode": "required"
+  },
   "media_acquisition": {
     "supported_remote_hosts": [
       "www.bilibili.com",

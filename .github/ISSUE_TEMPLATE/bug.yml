@@ -26,5 +26,5 @@ body:
     id: version
     attributes:
       label: 版本
-      placeholder: 1.1.0
+      placeholder: 1.2.0
     validations: { required: true }

@@ -1,6 +1,6 @@
 interface:
   display_name: "超级剪辑与 ChatCut 工作流"
-  short_description: "两个B站链接与音乐生成 ChatCut 可编辑终版"
+  short_description: "真实 Onset 驱动的 ChatCut 可编辑剪辑工作流"
   brand_color: "#6D5DFB"
   default_prompt: "Use $supercut-chatcut-workflow to execute the full editable video workflow for my footage."
 

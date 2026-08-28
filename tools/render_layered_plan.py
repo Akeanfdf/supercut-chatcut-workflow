@@ -420,6 +420,29 @@ def assemble_audio(shots: list[dict], fps: float, duration: float, ffmpeg: str, 
     run(command, "Audio assembly")
 
 
+def assemble_music(music: dict, duration: float, ffmpeg: str, output: Path) -> None:
+    source = Path(str(music["source"])).expanduser().resolve()
+    if not source.is_file():
+        raise RuntimeError(f"Music source is missing: {source}")
+    offset = max(0.0, float(music.get("offset_seconds", 0.0)))
+    volume = max(0.0, float(music.get("volume", 0.85)))
+    fade_duration = min(0.5, max(0.08, duration * 0.04))
+    fade_start = max(0.0, duration - fade_duration)
+    run(
+        [
+            ffmpeg, "-y", "-hide_banner", "-loglevel", "warning",
+            "-stream_loop", "-1", "-i", str(source),
+            "-af",
+            (
+                f"atrim=start={offset:.6f}:end={offset + duration:.6f},asetpts=PTS-STARTPTS,"
+                f"volume={volume:.6f},afade=t=out:st={fade_start:.6f}:d={fade_duration:.6f}"
+            ),
+            "-c:a", "aac", "-b:a", "192k", str(output.resolve()),
+        ],
+        "Music assembly",
+    )
+
+
 def all_sources_have_audio(shots: list[dict], ffmpeg: str) -> bool:
     checked: dict[str, bool] = {}
     for shot in shots:
@@ -465,7 +488,20 @@ def render_reviewed_plan(
         else assemble_visual(shots, segments, fps, ffmpeg, visual)
     )
     print(f"Visual: {duration:.3f}s -> {visual}")
-    if all_sources_have_audio(shots, ffmpeg):
+    music = (plan.get("audio") or {}).get("music")
+    if music and music.get("source"):
+        assemble_music(music, duration, ffmpeg, audio)
+        print(f"Music -> {audio}")
+        run(
+            [
+                ffmpeg, "-y", "-hide_banner", "-loglevel", "warning",
+                "-i", str(visual.resolve()), "-i", str(audio.resolve()),
+                "-map", "0:v:0", "-map", "1:a:0", "-c", "copy", "-shortest",
+                "-movflags", "+faststart", str(output.resolve()),
+            ],
+            "Final mux",
+        )
+    elif all_sources_have_audio(shots, ffmpeg):
         assemble_audio(shots, fps, duration, ffmpeg, audio)
         print(f"Audio -> {audio}")
         run(

@@ -1,6 +1,6 @@
 {
   "schema": "supercut-workflow-defaults-v1",
-  "workflow_version": "1.0.0",
+  "workflow_version": "1.2.0",
   "quality_gates": {
     "minimum_score": 85,
     "reference_timeline_requires_no_gaps_or_overlaps": true,
@@ -17,7 +17,13 @@
       "secondary_onset"
     ],
     "mechanical_every_beat_cut": false,
-    "analyze_actual_waveform": true
+    "analyze_actual_waveform": true,
+    "observed_and_inferred_events_are_distinct": true,
+    "required_mode": {
+      "minimum_primary_cut_alignment_ratio": 0.7,
+      "maximum_p95_alignment_error_ms": 120,
+      "default_maximum_snap_ms": 150
+    }
   },
   "effects": {
     "catalog_first": true,

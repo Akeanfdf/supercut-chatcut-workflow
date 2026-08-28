@@ -2,7 +2,7 @@
 
 ## Codex 直接导入
 
-导入 `supercut-chatcut-workflow-1.0.0.zip`。首次使用以下任一触发词时，Skill 会自动运行首启程序并激活内置配置：
+导入 `supercut-chatcut-workflow-1.2.0.zip`。首次使用以下任一触发词时，Skill 会自动运行首启程序并激活内置配置：
 
 - `执行超级剪辑终版工作流`
 - `按终版工作流剪辑`
@@ -17,13 +17,13 @@
 在解压后的发布目录运行：
 
 ```powershell
-.\install.ps1 -Source ".\supercut-chatcut-workflow-1.0.0.zip"
+.\install.ps1 -Source ".\supercut-chatcut-workflow-1.2.0.zip"
 ```
 
 从 HTTPS 地址安装时必须提供发布清单中的 SHA-256：
 
 ```powershell
-python .\install_workflow.py --source "https://example.invalid/supercut-chatcut-workflow-1.1.0.zip" --sha256 "发布清单中的64位SHA-256"
+python .\install_workflow.py --source "https://example.invalid/supercut-chatcut-workflow-1.2.0.zip" --sha256 "发布清单中的64位SHA-256"
 ```
 
 安装器把旧版本移动为带时间戳的备份，然后运行配置首启程序。默认 Skill 目录为 `$CODEX_HOME/skills`（若设置）或 `~/.codex/skills`；默认配置目录为 `~/.supercut-chatcut`。

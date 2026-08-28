@@ -47,12 +47,16 @@ export default function Home() {
 
   const request = useMemo(() => ({
     schema: 'supercut-workflow-trigger-v1',
-    version: '1.1.0',
+    version: '1.2.0',
     trigger: route === 'original' ? '原创规划终版' : '执行超级剪辑终版工作流',
     route,
     reference: route === 'original' ? null : reference,
     source,
     music: music || null,
+    rhythm_mode: 'required',
+    beat_sync: 'balanced',
+    music_offset: 'auto',
+    max_beat_snap_ms: 150,
     brief: route === 'original' ? script : null,
     confirm_media_rights: rights,
     review_policy: 'chatcut_required_before_final',
@@ -88,7 +92,7 @@ export default function Home() {
       </nav>
 
       <section className="hero shell" id="top">
-        <div className="eyebrow"><span /> EFFECT-AWARE EDITING × CHATCUT <i>v1.1.0</i></div>
+        <div className="eyebrow"><span /> EFFECT-AWARE EDITING × CHATCUT <i>v1.2.0</i></div>
         <h1>让参考风格、真实节拍与叙事，<br/>落进 <em>ChatCut 可编辑终版</em></h1>
         <p className="lede">从参考片或原创文案出发，把镜头语法、Beat / Onset、特效与文字变成可审阅的多轨时间线。网页只生成任务，不上传你的素材，也不在浏览器中假装完成渲染。</p>
 
@@ -138,8 +142,8 @@ export default function Home() {
           <header className="case-head"><div><p>REAL CASE · REFERENCE-DRIVEN</p><h2>《通往夏天的隧道，离别的出口》</h2><a href="https://www.bilibili.com/video/BV17a8CzLEgZ/" target="_blank" rel="noreferrer">参考片 BV17a8CzLEgZ ↗</a></div><p className="case-note">本案例实际采用一条 B 站参考链接＋用户合法持有的本地目标素材＋音乐。未公开完整电影、完整参考片或原始 BGM。</p></header>
           <div className="metrics">{[['4966.206 s','源素材'],['70','镜头'],['68 s','可编辑终版'],['27','短转场'],['+2.720 s','BGM 偏移'],['0.696807','音频相关度']].map(([value,label])=><div key={label}><strong>{value}</strong><span>{label}</span></div>)}</div>
           <div className="case-visuals">
-            <article className="wave-card"><div className="card-title"><span>REFERENCE AUDIO · ONSET MAP</span><code>00:00 — 01:08</code></div><div className="waveform" aria-label="抽象节拍波形">{bars.map((height,index)=><i key={index} style={{height:`${height}%`}} className={index%7===5?'strong':''}/>)}</div><div className="wave-labels"><span>叙事铺垫</span><span>人物靠近</span><span>隧道推进</span><span>情绪停留</span><span>安静收束</span></div></article>
-            <article className="gate-card"><div className="gate"><span>QUALITY GATE 01</span><strong>96<small>/100</small></strong><i><b style={{width:'96%'}}/></i><p>参考时间线、实际鼓点、70 镜素材覆盖与转场条件通过。</p></div><div className="gate"><span>QUALITY GATE 02</span><strong>97<small>/100</small></strong><i><b style={{width:'97%'}}/></i><p>结构、合成像素、音画衔接、字幕安全与完整播放通过。</p></div></article>
+            <article className="wave-card"><div className="card-title"><span>RHYTHM GRAMMAR · ABSTRACT REPLAY</span><code>00:00 — 01:08</code></div><div className="waveform" aria-label="参考节奏抽象回放">{bars.map((height,index)=><i key={index} style={{height:`${height}%`}} className={index%7===5?'strong':''}/>)}</div><div className="wave-labels"><span>叙事铺垫</span><span>人物靠近</span><span>隧道推进</span><span>情绪停留</span><span>安静收束</span></div></article>
+            <article className="gate-card"><div className="gate"><span>QUALITY GATE 01</span><strong>96<small>/100</small></strong><i><b style={{width:'96%'}}/></i><p>该案例按参考片 70 个切点与同源 BGM 偏移完成；v1.2 新任务另生成真实 beat_map 验收。</p></div><div className="gate"><span>QUALITY GATE 02</span><strong>97<small>/100</small></strong><i><b style={{width:'97%'}}/></i><p>结构、合成像素、音画衔接、字幕安全与完整播放通过。</p></div></article>
           </div>
           <div className="shot-map"><div className="card-title"><span>70-SHOT ABSTRACT TIMELINE</span><code>60 FPS · 4080 FRAMES</code></div><div>{Array.from({length:70},(_,index)=><i key={index} className={index>39&&index<53?'people':index>52&&index<62?'tunnel':index>61&&index<64?'hold':index>63?'outro':''}/>)}</div><footer><span>40 个盛夏微镜头</span><span>13 个人物连接</span><span>9 个隧道推进</span><span>2 个情绪长镜</span><span>6 个收束镜头</span></footer></div>
         </div>
@@ -155,9 +159,9 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="install-section" id="install"><div className="shell install-grid"><div><p>INSTALL · ONE COMMAND AFTER IMPORT</p><h2>导入 Skill，配置自动下载并校验</h2><span>版本化配置、38 项特效知识库、B站获取策略与 ChatCut 审阅规范一起安装。</span></div><pre><code><b>$</b> python install_workflow.py \<br/>  --source supercut-chatcut-workflow-1.1.0.zip<br/><br/><em>✓ SHA-256 verified</em><br/><em>✓ config 1.1.0 ready</em></code></pre></div></section>
+      <section className="install-section" id="install"><div className="shell install-grid"><div><p>INSTALL · ONE COMMAND AFTER IMPORT</p><h2>导入 Skill，配置自动下载并校验</h2><span>真实 Onset 运行时、版本化配置、38 项特效知识库、B站获取策略与 ChatCut 审阅规范一起安装。</span></div><pre><code><b>$</b> python install_workflow.py \<br/>  --source supercut-chatcut-workflow-1.2.0.zip<br/><br/><em>✓ SHA-256 verified</em><br/><em>✓ config 1.2.0 ready</em></code></pre></div></section>
 
-      <footer className="footer shell"><div className="brand"><span className="brand-mark">SC</span><span>Supercut × ChatCut</span></div><p>Effect-aware editing that stays editable.</p><span>MIT · v1.1.0</span></footer>
+      <footer className="footer shell"><div className="brand"><span className="brand-mark">SC</span><span>Supercut × ChatCut</span></div><p>Effect-aware editing that stays editable.</p><span>MIT · v1.2.0</span></footer>
     </main>
   );
 }

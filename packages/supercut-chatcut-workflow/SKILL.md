@@ -31,9 +31,9 @@ Infer discoverable values from attached files, the active task, and the active C
 
 1. Normalize the request into `edit_brief.json` using `assets/defaults/request-template.json` as the schema example.
 2. Analyze a reference into a gap-free shot timeline or design an original `visual_grammar.json`.
-3. Analyze the actual BGM waveform. Detect Beat, Onset, downbeat/strong accents, sections, rises, releases, and silence. Use those timestamps as candidate edit anchors; never substitute guessed BPM grids for observed attacks.
+3. Analyze the actual BGM waveform with the bundled `runtime/rhythm.py`. Run `python runtime/supercut.py analyze-rhythm --music <path> --out <beat_map.json>` when a reusable map is needed, or use `all --rhythm-mode required` for an enforced end-to-end run. Keep waveform-observed Onsets separate from inferred Beat/downbeat grids. Use only `strong_anchors` whose `source` is `observed_onset` as automatic cut anchors; never present a guessed BPM grid as a measured drum hit.
 4. Produce `asset_coverage.json`, then `shot_blueprint.json` and any required generation prompt pack.
-5. Run quality gate 1. A score below the configured threshold or any hard failure yields `needs_input`; do not generate, sync, or claim completion.
+5. Run quality gate 1. For a requested beat-synced result, require `beat_map.json`, observed Onsets, strong anchors, at least 70% primary-cut alignment, and no more than 120ms p95 alignment error. A score below the configured threshold or any hard failure yields `needs_input`; do not generate, sync, or claim completion.
 6. Produce `supercut-edit-plan-v2` with source in/out points, duration, speed curves, story stage, beat anchors, micro-events, text, sound, effects, reasons, and fallbacks.
 7. Select effects catalog-first. Apply an effect only when its source conditions and confidence threshold pass; otherwise use an editorial hard cut, action match, composition match, sound bridge, or simple transition.
 8. If ChatCut is available, preserve editable original clip relationships and use it as the visual review layer. Load and follow the active ChatCut basic/import/verification skills. Use generation, shader, motion-graphics, voice, music, transcription, or export skills only when the user request requires them.
@@ -45,6 +45,7 @@ Infer discoverable values from attached files, the active task, and the active C
 
 - Narrative and action continuity can override mechanical beat cutting.
 - Strong beats carry primary cuts; secondary onsets may drive within-shot events, typography, exposure pulses, or restrained accents.
+- An `observed_onset` is waveform evidence. `inferred_beats` and downbeats are structural estimates and must retain their confidence and inference labels.
 - Under `balanced`, average no more than one obvious effect per six seconds and keep strong effects at least six seconds apart unless the user's explicit style target requires denser treatment.
 - Confidence below `0.7` falls back to a basic editorial transition.
 - Text must have a verified source, sufficient reading time, and frame-aware subject avoidance.

@@ -14,6 +14,8 @@ Personal media, downloaded reference videos, project output, local drive paths, 
 
 Version 1.1 adds a rights-gated Bilibili acquisition layer. It accepts public BV links, mobile links, and public `b23.tv` redirects, records URL/BV/part/format/duration/SHA-256 in `acquisition_manifest.json`, and keeps downloads in a private cache. It never imports browser cookies or bypasses access controls.
 
+Version 1.2 adds the packaged `runtime/rhythm.py`, `supercut-beat-map-v2`, observed-Onset cut anchoring, strict rhythm quality metrics, BGM offset handling, and editable `SC_AUDIO` placement. FFmpeg remains an external dependency because waveform decoding and final rendering must use the same deterministic media toolchain.
+
 ## First-run behavior
 
 `scripts/bootstrap.py --ensure --json` reads `assets/config-source.json` and selects the configured stable version. If `package.url` is a valid HTTPS URL, it downloads that ZIP. It verifies SHA-256, enforces a size limit, rejects symlinks and unsafe paths, and then installs into a versioned directory. If the remote manifest or package is unavailable and fallback is enabled, it activates the bundled ZIP.

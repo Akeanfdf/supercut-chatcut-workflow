@@ -15,6 +15,8 @@ from typing import Any, Iterable
 import cv2
 import numpy as np
 
+from rhythm import align_plan_to_rhythm, analyze_rhythm, estimate_audio_offset, save_beat_map, write_rhythm_graph
+
 
 VIDEO_EXTENSIONS = {".mp4", ".mov", ".mkv", ".avi", ".m4v", ".webm"}
 TRANSITION_MAP = {
@@ -518,7 +520,14 @@ def _rank(values: list[float], value: float) -> float:
     return position / (len(ordered) - 1)
 
 
-def build_plan(template: dict[str, Any], catalog: dict[str, Any], seed: int = 7) -> dict[str, Any]:
+def build_plan(
+    template: dict[str, Any],
+    catalog: dict[str, Any],
+    seed: int = 7,
+    rhythm_map: dict[str, Any] | None = None,
+    beat_sync: str = "balanced",
+    max_beat_snap_ms: float = 150.0,
+) -> dict[str, Any]:
     shots = template.get("shots", [])
     assets = catalog.get("assets", [])
     if not shots or not assets:
@@ -562,7 +571,7 @@ def build_plan(template: dict[str, Any], catalog: dict[str, Any], seed: int = 7)
             }
         )
     ref = template["reference"]
-    return {
+    result = {
         "schema": "supercut-edit-plan-v1",
         "output": {
             "width": int(ref["width"]),
@@ -571,6 +580,14 @@ def build_plan(template: dict[str, Any], catalog: dict[str, Any], seed: int = 7)
         },
         "shots": plan_shots,
     }
+    if rhythm_map:
+        result = align_plan_to_rhythm(
+            result,
+            rhythm_map,
+            intensity=beat_sync,
+            max_snap_ms=max_beat_snap_ms,
+        )
+    return result
 
 
 def apply_manual_overrides(template: dict[str, Any], overrides: dict[str, Any] | None) -> dict[str, Any]:
@@ -691,7 +708,13 @@ def _escape_filter_path(value: str) -> str:
     return value.replace("\\", "/").replace(":", "\\:").replace("'", "\\'")
 
 
-def render_plan(plan: dict[str, Any], out: Path, music: Path | None = None, ffmpeg_path: str | None = None) -> None:
+def render_plan(
+    plan: dict[str, Any],
+    out: Path,
+    music: Path | None = None,
+    ffmpeg_path: str | None = None,
+    music_offset: float | None = None,
+) -> None:
     shots = plan.get("shots", [])
     if not shots:
         raise RuntimeError("剪辑计划中没有镜头。")
@@ -806,7 +829,13 @@ def render_plan(plan: dict[str, Any], out: Path, music: Path | None = None, ffmp
     if music:
         command += ["-stream_loop", "-1", "-i", str(music.resolve())]
         music_index = len(shots)
-        filters.append(f"[{music_index}:a]atrim=duration={current_duration:.6f},asetpts=PTS-STARTPTS,volume=0.85[aout]")
+        if music_offset is None:
+            music_offset = float(plan.get("audio", {}).get("music", {}).get("offset_seconds", 0.0))
+        music_offset = max(0.0, float(music_offset))
+        filters.append(
+            f"[{music_index}:a]atrim=start={music_offset:.6f}:end={music_offset + current_duration:.6f},"
+            "asetpts=PTS-STARTPTS,volume=0.85[aout]"
+        )
 
     command += [
         "-filter_complex",
@@ -906,7 +935,15 @@ def cmd_plan(args: argparse.Namespace) -> None:
     template = load_json(Path(args.template))
     if args.overrides:
         template = apply_manual_overrides(template, load_json(Path(args.overrides)))
-    plan = build_plan(template, load_json(Path(args.catalog)), args.seed)
+    rhythm_map = load_json(Path(args.rhythm_map)) if args.rhythm_map else None
+    plan = build_plan(
+        template,
+        load_json(Path(args.catalog)),
+        args.seed,
+        rhythm_map,
+        args.beat_sync,
+        args.max_beat_snap_ms,
+    )
     save_json(Path(args.out), plan)
     print(f"剪辑计划完成：{len(plan['shots'])} 个镜头 -> {args.out}")
 
@@ -921,8 +958,59 @@ def cmd_blueprint(args: argparse.Namespace) -> None:
 
 
 def cmd_render(args: argparse.Namespace) -> None:
-    render_plan(load_json(Path(args.plan)), Path(args.out), Path(args.music) if args.music else None, args.ffmpeg)
+    render_plan(
+        load_json(Path(args.plan)),
+        Path(args.out),
+        Path(args.music) if args.music else None,
+        args.ffmpeg,
+        args.music_offset,
+    )
     print(f"渲染完成：{args.out}")
+
+
+def _resolve_music_offset(value: str, reference: Path | None, music: Path, ffmpeg: str) -> tuple[float, dict[str, Any] | None]:
+    if value.strip().lower() != "auto":
+        offset = float(value)
+        if offset < 0:
+            raise ValueError("--music-offset 不能小于 0")
+        return offset, None
+    if reference is None:
+        raise ValueError("--music-offset auto 需要参考视频或音频")
+    alignment = estimate_audio_offset(reference, music, ffmpeg)
+    if alignment.get("status") != "complete":
+        return 0.0, alignment
+    return float(alignment.get("offset_seconds", 0.0)), alignment
+
+
+def _rhythm_is_usable(value: dict[str, Any]) -> bool:
+    return bool(
+        value.get("schema") == "supercut-beat-map-v2"
+        and value.get("status") == "complete"
+        and value.get("observed_onsets")
+        and value.get("strong_anchors")
+    )
+
+
+def cmd_analyze_rhythm(args: argparse.Namespace) -> None:
+    music = Path(args.music)
+    ffmpeg = find_ffmpeg(args.ffmpeg)
+    reference = Path(args.reference) if args.reference else None
+    offset, alignment = _resolve_music_offset(args.music_offset, reference, music, ffmpeg)
+    result = analyze_rhythm(music, ffmpeg, timeline_offset_seconds=offset)
+    if alignment:
+        result["reference_audio_alignment"] = alignment
+        if alignment.get("status") != "complete" and args.rhythm_mode == "required":
+            result["status"] = "needs_input"
+    save_beat_map(Path(args.out), result)
+    if args.graph:
+        write_rhythm_graph(Path(args.graph), result)
+    if args.rhythm_mode == "required" and not _rhythm_is_usable(result):
+        raise RuntimeError(f"节拍分析未达到 required 模式要求；报告已写入 {args.out}")
+    analysis = result["analysis"]
+    print(
+        f"节拍分析完成：{analysis['observed_onset_count']} 个真实 Onset，"
+        f"{analysis['strong_anchor_count']} 个强锚点，BPM {analysis['estimated_bpm']} -> {args.out}"
+    )
 
 
 def cmd_recommend(args: argparse.Namespace) -> None:
@@ -958,6 +1046,7 @@ def cmd_compose(args: argparse.Namespace) -> None:
     brief = load_json(Path(args.brief))
     source_catalog = load_json(Path(args.catalog))
     annotations = load_json(Path(args.annotations)) if args.annotations else None
+    rhythm_map = load_json(Path(args.rhythm_map)) if args.rhythm_map else None
     if args.template:
         template = load_json(Path(args.template))
     else:
@@ -969,9 +1058,26 @@ def cmd_compose(args: argparse.Namespace) -> None:
     elif not source_catalog.get("assets"):
         base_plan = build_unassigned_base_plan(template)
     else:
-        base_plan = build_plan(template, source_catalog, args.seed)
+        base_plan = build_plan(
+            template,
+            source_catalog,
+            args.seed,
+            rhythm_map,
+            args.beat_sync,
+            args.max_beat_snap_ms,
+        )
     effects_catalog = load_json(Path(args.effects_catalog))
-    plan = compose_v2(brief, base_plan, template, effects_catalog, annotations)
+    plan = compose_v2(
+        brief,
+        base_plan,
+        template,
+        effects_catalog,
+        annotations,
+        rhythm_map=rhythm_map,
+        rhythm_required=args.rhythm_mode == "required",
+        beat_sync=args.beat_sync,
+        max_beat_snap_ms=args.max_beat_snap_ms,
+    )
     save_json(Path(args.out), plan)
     artifact_dir = Path(args.artifacts_dir) if args.artifacts_dir else Path(args.out).parent / "workflow"
     save_artifacts(plan, artifact_dir)
@@ -1099,11 +1205,73 @@ def cmd_all(args: argparse.Namespace) -> None:
     template_path = work_dir / "template.json"
     catalog_path = work_dir / "catalog.json"
     plan_path = work_dir / "edit_plan.json"
+    rhythm_path = work_dir / "beat_map.json"
     template = analyze_reference(reference_path, template_path, work_dir / "reference_sheet.jpg")
     catalog = catalog_sources(source_path, catalog_path, work_dir / "source_sheet.jpg")
-    plan = build_plan(template, catalog, args.seed)
+    rhythm_map: dict[str, Any] | None = None
+    music_offset = 0.0
+    music_path = Path(args.music).expanduser().resolve() if args.music else None
+    if args.rhythm_mode == "required" and music_path is None:
+        save_json(
+            rhythm_path,
+            {
+                "schema": "supercut-beat-map-v2",
+                "status": "needs_input",
+                "reason": "rhythm_required_but_music_missing",
+            },
+        )
+        raise RuntimeError(f"required 节拍模式必须提供 --music；报告已写入 {rhythm_path}")
+    if music_path is not None and args.rhythm_mode != "off":
+        ffmpeg = find_ffmpeg(args.ffmpeg)
+        try:
+            music_offset, alignment = _resolve_music_offset(args.music_offset, reference_path, music_path, ffmpeg)
+            rhythm_map = analyze_rhythm(music_path, ffmpeg, timeline_offset_seconds=music_offset)
+            if alignment:
+                rhythm_map["reference_audio_alignment"] = alignment
+                if alignment.get("status") != "complete" and args.rhythm_mode == "required":
+                    rhythm_map["status"] = "needs_input"
+            save_beat_map(rhythm_path, rhythm_map)
+            write_rhythm_graph(work_dir / "rhythm_graph.png", rhythm_map)
+        except Exception as exc:
+            save_json(
+                rhythm_path,
+                {
+                    "schema": "supercut-beat-map-v2",
+                    "status": "needs_input",
+                    "reason": str(exc),
+                },
+            )
+            if args.rhythm_mode == "required":
+                raise RuntimeError(f"required 节拍分析失败；报告已写入 {rhythm_path}") from exc
+            print(f"警告：节拍分析失败，继续使用参考叙事切点：{exc}", file=sys.stderr)
+            rhythm_map = None
+        if rhythm_map and not _rhythm_is_usable(rhythm_map) and args.rhythm_mode == "required":
+            raise RuntimeError(f"required 节拍分析未通过；报告已写入 {rhythm_path}")
+    plan = build_plan(
+        template,
+        catalog,
+        args.seed,
+        rhythm_map,
+        args.beat_sync,
+        args.max_beat_snap_ms,
+    )
+    if music_path:
+        plan["audio"] = {
+            "mode": "music_only",
+            "music": {
+                "source": str(music_path),
+                "offset_seconds": round(music_offset, 6),
+                "volume": 0.85,
+            },
+        }
     save_json(plan_path, plan)
-    render_plan(plan, output_path, Path(args.music) if args.music else None, args.ffmpeg)
+    if args.rhythm_mode == "required":
+        ratio = float(plan.get("rhythm_sync", {}).get("primary_cut_alignment_ratio", 0.0))
+        if len(plan.get("shots", [])) > 1 and ratio < 0.7:
+            raise RuntimeError(
+                f"required 节拍质量门未通过：主切点命中率 {ratio:.1%} 低于 70%；计划已写入 {plan_path}"
+            )
+    render_plan(plan, output_path, music_path, args.ffmpeg, music_offset)
     print(f"全部完成：{output_path}")
 
 
@@ -1149,6 +1317,9 @@ def build_parser() -> argparse.ArgumentParser:
     plan_parser.add_argument("--out", default="output/edit_plan.json")
     plan_parser.add_argument("--seed", type=int, default=7)
     plan_parser.add_argument("--overrides", help="人工确认的转场覆盖 JSON")
+    plan_parser.add_argument("--rhythm-map", help="supercut-beat-map-v2 JSON")
+    plan_parser.add_argument("--beat-sync", choices=["subtle", "balanced", "intense"], default="balanced")
+    plan_parser.add_argument("--max-beat-snap-ms", type=float, default=150.0)
     plan_parser.set_defaults(func=cmd_plan)
 
     blueprint_parser = subparsers.add_parser("blueprint", help="在素材到位前生成待分配镜头计划")
@@ -1161,8 +1332,19 @@ def build_parser() -> argparse.ArgumentParser:
     render_parser.add_argument("--plan", required=True)
     render_parser.add_argument("--out", default="output/draft.mp4")
     render_parser.add_argument("--music")
+    render_parser.add_argument("--music-offset", type=float)
     render_parser.add_argument("--ffmpeg", help="ffmpeg 可执行文件路径")
     render_parser.set_defaults(func=cmd_render)
+
+    rhythm_parser = subparsers.add_parser("analyze-rhythm", help="分析真实 BGM 波形并输出 Beat/Onset 锚点")
+    rhythm_parser.add_argument("--music", required=True)
+    rhythm_parser.add_argument("--reference", help="用于 --music-offset auto 的参考视频或音频")
+    rhythm_parser.add_argument("--music-offset", default="0", help="BGM 源入点秒数，或 auto")
+    rhythm_parser.add_argument("--rhythm-mode", choices=["analyze", "required"], default="analyze")
+    rhythm_parser.add_argument("--out", default="output/beat_map.json")
+    rhythm_parser.add_argument("--graph", default="output/rhythm_graph.png")
+    rhythm_parser.add_argument("--ffmpeg")
+    rhythm_parser.set_defaults(func=cmd_analyze_rhythm)
 
     recommend_parser = subparsers.add_parser("recommend", help="按内容类型和动作标签推荐特效")
     recommend_parser.add_argument("--content-type", required=True, help="game/anime/short_drama/live_stream，也支持中文")
@@ -1187,6 +1369,10 @@ def build_parser() -> argparse.ArgumentParser:
     compose_parser.add_argument("--out", default="output/edit_plan_v2.json")
     compose_parser.add_argument("--artifacts-dir", default="output/workflow")
     compose_parser.add_argument("--seed", type=int, default=7)
+    compose_parser.add_argument("--rhythm-map", help="真实波形分析生成的 supercut-beat-map-v2 JSON")
+    compose_parser.add_argument("--rhythm-mode", choices=["off", "analyze", "required"], default="analyze")
+    compose_parser.add_argument("--beat-sync", choices=["subtle", "balanced", "intense"], default="balanced")
+    compose_parser.add_argument("--max-beat-snap-ms", type=float, default=150.0)
     compose_parser.set_defaults(func=cmd_compose)
 
     approve_parser = subparsers.add_parser("approve", help="记录用户已通过质量门和时间线审阅")
@@ -1233,6 +1419,10 @@ def build_parser() -> argparse.ArgumentParser:
     source_group.add_argument("--source-dir", help="兼容旧版：本地素材目录")
     all_parser.add_argument("--out", default="output/draft.mp4")
     all_parser.add_argument("--music")
+    all_parser.add_argument("--music-offset", default="0", help="BGM 源入点秒数，或 auto")
+    all_parser.add_argument("--rhythm-mode", choices=["off", "analyze", "required"], default="analyze")
+    all_parser.add_argument("--beat-sync", choices=["subtle", "balanced", "intense"], default="balanced")
+    all_parser.add_argument("--max-beat-snap-ms", type=float, default=150.0)
     all_parser.add_argument("--confirm-media-rights", action="store_true", help="确认有权获取并使用所提供的公开媒体")
     all_parser.add_argument("--ffmpeg", help="ffmpeg 可执行文件路径")
     all_parser.add_argument("--seed", type=int, default=7)
