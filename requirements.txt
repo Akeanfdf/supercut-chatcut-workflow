@@ -1,4 +1,4 @@
-numpy>=2.0
+numpy>=2.5.3
 opencv-python>=4.10
 yt-dlp==2026.8.19
 # FFmpeg 是独立可执行文件；请通过 --ffmpeg、SUPERCUT_FFMPEG 或 PATH 指定。
